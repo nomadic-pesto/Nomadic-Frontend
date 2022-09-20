@@ -5,7 +5,7 @@ import Login from "./login";
 
 const AllPages = () => {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <Routes>
         <Route exact path="/" element={<Dashboard/>}/>
@@ -13,7 +13,7 @@ const AllPages = () => {
         <Route exact path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 };
 
