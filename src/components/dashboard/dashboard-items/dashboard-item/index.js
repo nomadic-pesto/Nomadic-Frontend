@@ -1,4 +1,6 @@
 import React from "react";
+
+//importing MUI
 import { CardContent } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
@@ -13,7 +15,7 @@ import roomsImage from "../../../../public/images/sofa.png";
 const DashboardItem = () => {
   return (
     <>
-      <Grid item lg={4} md={6} sm={6} xs={12}>
+      <Grid item lg={4} sm={6} xs={12}>
         <CardContent className={styles["card"]}>
           <Grid container className={styles["item-container"]}>
             <Grid item md={6} xs={12} padding={0}>

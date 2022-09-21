@@ -1,0 +1,18 @@
+.filters{
+    display: flex;
+    justify-content: space-between;
+}
+.filter-icons-section{
+    display: flex;
+    overflow-x: scroll;
+    margin-right: 5vw;
+}
+.filter-button{
+    margin-right: 2rem;
+}
+
+@media (max-width: 800px) {
+    .filter-button{
+        margin-right: 0;
+    }
+}

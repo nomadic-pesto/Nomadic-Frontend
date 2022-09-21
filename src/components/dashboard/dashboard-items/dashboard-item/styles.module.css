@@ -2,11 +2,14 @@
 .card{
     border-radius: 10px;
     box-shadow: 1px 1px 10px 5px #ebe6e6;
+    background: #fff;
 }
+
 .item-container {
     max-height: "40vh";
     border-radius: "10px";
     outline: "1px solid";
+    
 }
 .main-image {
     width: 100%;
@@ -36,14 +39,14 @@
 }
 .rooms-image{
     max-height: 2rem;
+    margin-right: 1rem;
 }
 .info-rooms{
-    display: flex;
-    justify-content: space-between;
+   display: flex;
     font-size: 0.8rem;
     align-items: center;
-    width: 40%;
     margin-top: 0.3rem;
+    
 }
 .info-price{
     font-weight: 400;
@@ -61,7 +64,6 @@
     margin-top: 1.5rem;
 }
    .info-rooms{
-    width: 30%;
     margin-top: 1rem;
 }
 }
