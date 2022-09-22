@@ -1,0 +1,9 @@
+.filter-icon {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    font-size: 0.8rem;
+    margin-right: 2rem;
+    min-width: 5rem;
+}
