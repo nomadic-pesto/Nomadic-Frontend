@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
 //importing MUI
 import Grid from "@mui/material/Grid";
@@ -10,13 +11,39 @@ import styles from "./styles.module.css";
 import DashboardFilters from "./dashboard-filters";
 import DashboardItem from "./dashboard-item";
 import ButtonComponent from "../../common/button";
+
+//importing other components
 import Loader from "../../common/loader";
 import ModalComponent from "../../common/modal";
 
-const DashboardItems = () => {
+//importing actions
+import { getAllProperties } from "../../../actions/propertyAction";
+
+
+const DashboardItems = ({
+  getAllProperties,
+  state
+}) => {
+
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    getPropertyHandler();
+  }, [])
+
+  const getPropertyHandler = async() =>{
+    setLoading(true)
+    await getAllProperties();
+    setLoading(false)
+  }
+
+  useEffect(()=>{
+    console.log(state)
+  },[state])
+
   return (
     <>
-    {/* <Loader /> */}
+    {loading && <Loader />}
     {/* <ModalComponent /> */}
     <div className={styles["dashboard"]}>
       <section id="dashboard-filters">
@@ -65,4 +92,15 @@ const DashboardItems = () => {
   );
 };
 
-export default DashboardItems;
+
+
+
+const mapStateToProps = (state) => ({
+  state:state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getAllProperties: () => dispatch(getAllProperties()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardItems);
