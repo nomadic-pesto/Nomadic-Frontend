@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Checkbox, FormControlLabel, Grid } from "@mui/material";
 import { useRef, useEffect } from "react";
 
 import { useFormik } from "formik";
@@ -13,6 +13,8 @@ import TextFieldItem from "./text-field";
 
 //importing ButtonComponent
 import ButtonComponent from "../common/button/index"
+
+
 
 const subdestinationdata = [
     'None',
@@ -78,11 +80,25 @@ const AddProperty = () => {
                 <CustomAutoComplete label={"Sub destination"} />
                 <TextFieldItem label={"No of people accommodation"} />
                 <TextFieldItem label={"Price"} />
-                <Grid container item lg={12}>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <CustomAutoComplete label={"HouseType"} />
                 </Grid>
                 <TextFieldItem label={"Overview"} rows={5} multiline={true} alignItems={"flex-start"} />
-                <TextFieldItem label={"Amenties"} />
+                <Grid container xs={12} sm={12} md={6} lg={6} xl={6} alignItems="center">
+                    <Grid container xs={12} sm={12} md={6} lg={6} xl={6} alignItems="flex-end">
+                        <label className={styles["label2"]}>Ammenties</label>
+                    </Grid>
+                    <Grid container xs={12} sm={12} md={3} lg={3} xl={3} alignItems="flex-end">
+
+                        <FormControlLabel control={<Checkbox />} label="Wifi" value='wifi' />
+                        <FormControlLabel control={<Checkbox />} label="TeleVision" value='wifi' />
+                        <FormControlLabel control={<Checkbox />} label="Water Purifier" value='wifi' />
+                        <FormControlLabel control={<Checkbox />} label="Dedicated Workspace" value='wifi' />
+                        <FormControlLabel control={<Checkbox />} label="Parking" value='wifi' />
+                        <FormControlLabel control={<Checkbox />} label="Shared Kitchen" value='wifi' />
+                    </Grid>
+                </Grid>
+
 
 
 
@@ -91,7 +107,7 @@ const AddProperty = () => {
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                         <TextFieldItem label={"Address"} />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <Grid container xs={12} sm={12} md={6} lg={6} xl={6}>
                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                             <TextFieldItem label={"Property Name"} />
                             <TextFieldItem label={"Streetname"} />
@@ -103,9 +119,9 @@ const AddProperty = () => {
 
                 </Grid>
                 <Grid container xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center" justifyContent="center">
-                <ButtonComponent children="Add" />
+                    <ButtonComponent children="Add" />
                 </Grid>
-                
+
 
             </Grid>
 
