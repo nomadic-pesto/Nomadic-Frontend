@@ -17,90 +17,83 @@ import Loader from "../../common/loader";
 import ModalComponent from "../../common/modal";
 
 //importing actions
-import { getAllProperties } from "../../../actions/propertyAction";
+import { getAllProperties,getMoreProperties } from "../../../actions/propertyAction";
+import { constants } from "../../../utils/constants";
 
-
-const DashboardItems = ({
-  getAllProperties,
-  state
-}) => {
-
-  const [loading, setLoading] = useState(false)
+const DashboardItems = ({ getAllProperties,getMoreProperties, propertyState }) => {
+  const [loading, setLoading] = useState(false);
+  const [displayProperties, setDisplayProperties] = useState([]);
 
   useEffect(() => {
     getPropertyHandler();
-  }, [])
+  }, []);
 
-  const getPropertyHandler = async() =>{
-    setLoading(true)
-    await getAllProperties();
-    setLoading(false)
-  }
+  const getPropertyHandler = async () => {
+    setLoading(true);
+    await getAllProperties(0, constants.PRODUCT_LIMIT);
+    setLoading(false);
+  };
 
-  useEffect(()=>{
-    console.log(state)
-  },[state])
+  useEffect(() => {
+    if (propertyState.properties && propertyState.properties.length > 0) {
+      setDisplayProperties(propertyState.properties);
+    } else {
+      setDisplayProperties([]);
+    }
+  }, [propertyState]);
+
+  const loadmoreProducts = async () => {
+    let skip = propertyState.skip + propertyState.limit;
+    let filter = {
+      ...(propertyState.destination && {destination: propertyState.destination ? propertyState.destination : ""}),
+      ...(propertyState.subDestination && {subDestination: propertyState.subDestination ? propertyState.subDestination : ""}),
+      ...(propertyState.sortBy && {sortBy: propertyState.sortBy ? propertyState.sortBy : ""}),
+      ...(propertyState.sortOrder && {sortOrder: propertyState.sortOrder ? propertyState.sortOrder : ""}),
+    };
+    await getMoreProperties(skip, constants.PRODUCT_LIMIT,filter);
+  };
 
   return (
     <>
-    {loading && <Loader />}
-    {/* <ModalComponent /> */}
-    <div className={styles["dashboard"]}>
-      <section id="dashboard-filters">
-      <DashboardFilters />
-      </section>
-      <section id="dashboard-items">
-        <Grid
-          container
-          rowSpacing={4}
-          columnSpacing={0}
-          className={styles["items-container"]}
-        >
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-          <DashboardItem />
-        </Grid>
-      </section>
-      <section>
-        <ButtonComponent
-        className={styles["load-more"]}
-        >Load more</ButtonComponent>
-      </section>
-    </div>
+      {loading && <Loader />}
+      {/* <ModalComponent /> */}
+      <div className={styles["dashboard"]}>
+        <section id="dashboard-filters">
+          <DashboardFilters />
+        </section>
+        <section id="dashboard-items">
+          <Grid
+            container
+            rowSpacing={4}
+            columnSpacing={0}
+            className={styles["items-container"]}
+          >
+            {displayProperties.map((property) => (
+              <DashboardItem property={property} key={property._id} />
+            ))}
+          </Grid>
+        </section>
+        <section>
+          <ButtonComponent
+            className={styles["load-more"]}
+            onClick={loadmoreProducts}
+            disabled={!propertyState.loadMore}
+          >
+            Load more
+          </ButtonComponent>
+        </section>
+      </div>
     </>
   );
 };
 
-
-
-
 const mapStateToProps = (state) => ({
-  state:state,
+  propertyState: state.propertyReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllProperties: () => dispatch(getAllProperties()),
+  getAllProperties: (skip, limit) => dispatch(getAllProperties(skip, limit)),
+  getMoreProperties: (skip, limit,filters) => dispatch(getMoreProperties(skip, limit,filters)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardItems);

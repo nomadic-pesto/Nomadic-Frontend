@@ -7,3 +7,15 @@
     margin-right: 2rem;
     min-width: 5rem;
 }
+.fa-height{
+    font-size: 24px !important;
+    cursor: pointer;
+}
+.fa-height:hover{
+    font-size: 28px !important;
+}
+.highlight{
+    color: rgb(60, 136, 241,0.85) !important;
+    font-weight: 700 !important;
+    font-size: 28px !important;
+}
