@@ -1,0 +1,17 @@
+.common-button {
+    background: rgba(
+        71,
+        70,
+        70,
+        0.3
+    ) !important; /*included *!important* - conflicting with MUI */
+    border-radius: 0.75rem !important; /*included *!important* - conflicting with MUI */
+    color: rgba(
+        255,
+        255,
+        255,
+        1
+    ) !important; /*included *!important* - conflicting with MUI */
+    text-transform: none !important; /*included *!important* - conflicting with MUI */
+    /* opacity: 0.3; */
+}

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard";
 import Login from "./login";
 
+
 const AllPages = () => {
   return (
     <>

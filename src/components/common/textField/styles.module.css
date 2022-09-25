@@ -1,0 +1,13 @@
+.common-textfield {
+    background: #fff9f9 !important; /*included *!important* - conflicting with MUI */
+    color: rgb(
+        0,
+        0,
+        0
+    ) !important; /*included *!important* - conflicting with MUI */
+    border-radius: 35px !important;
+}
+
+.TextField-without-border-radius fieldset {
+    border-radius: 25px !important;
+}
