@@ -1,5 +1,5 @@
 import React from 'react'
-import AddProperty from '../../components/add-property';
+import AddProperty from "../../components/add-property/index"
 
 const AddPropertyPage = () => {
   return (
