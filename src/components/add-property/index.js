@@ -74,51 +74,26 @@ const AddProperty = () => {
             <div>
                 <h1 className={styles["heading"]}>Add Property</h1>
             </div>
-            <Grid container spacing={2} >
+            <Grid container spacing={10} >
                 <CustomReactDropZone />
                 <CustomAutoComplete label={"Destination Type"} />
                 <CustomAutoComplete label={"Sub destination"} />
                 <TextFieldItem label={"No of people accommodation"} />
                 <TextFieldItem label={"Price"} />
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <CustomAutoComplete label={"HouseType"} />
+                <CustomAutoComplete label={"HouseType"} />
+                <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} justifyContent="flex-start">
+                    <Grid item={true} xs={12} sm={12} md={10} lg={6} xl={6}>
+                    </Grid>                
                 </Grid>
-                <TextFieldItem label={"Overview"} rows={5} multiline={true} alignItems={"flex-start"} />
-                <Grid container xs={12} sm={12} md={6} lg={6} xl={6} alignItems="center">
-                    <Grid container xs={12} sm={12} md={6} lg={6} xl={6} alignItems="flex-end">
-                        <label className={styles["label2"]}>Ammenties</label>
-                    </Grid>
-                    <Grid container xs={12} sm={12} md={3} lg={3} xl={3} alignItems="flex-end">
+                <TextFieldItem label={"Overview"} rows={5} multiline={true}/>
+                
 
-                        <FormControlLabel control={<Checkbox />} label="Wifi" value='wifi' />
-                        <FormControlLabel control={<Checkbox />} label="TeleVision" value='wifi' />
-                        <FormControlLabel control={<Checkbox />} label="Water Purifier" value='wifi' />
-                        <FormControlLabel control={<Checkbox />} label="Dedicated Workspace" value='wifi' />
-                        <FormControlLabel control={<Checkbox />} label="Parking" value='wifi' />
-                        <FormControlLabel control={<Checkbox />} label="Shared Kitchen" value='wifi' />
-                    </Grid>
-                </Grid>
-
-
-
-
-                <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} alignItems="baseline" justifyContent="flex-end">
-
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                        <TextFieldItem label={"Address"} />
-                    </Grid>
-                    <Grid container xs={12} sm={12} md={6} lg={6} xl={6}>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
-                            <TextFieldItem label={"Property Name"} />
-                            <TextFieldItem label={"Streetname"} />
-                            <TextFieldItem label={"District"} />
-                            <TextFieldItem label={"State"} />
-                        </Grid>
-                    </Grid>
-
-
-                </Grid>
-                <Grid container xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center" justifyContent="center">
+                   <TextFieldItem label={"Address"} />
+                    <TextFieldItem label={"Property Name"} />
+                    <TextFieldItem label={"Streetname"} />
+                    <TextFieldItem label={"District"} />
+                    <TextFieldItem label={"State"} />
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     <ButtonComponent children="Add" />
                 </Grid>
 

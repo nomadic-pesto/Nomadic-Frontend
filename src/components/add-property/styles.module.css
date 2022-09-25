@@ -18,5 +18,16 @@
     line-height: 44px !important;
     word-wrap: break-word;
     color: #575757;
-    padding-left: 184px;
+    padding-left: 200px;
+    
+}
+.label3{
+
+    word-wrap: break-word;
+    text-align: end;
+
+}
+.label3 input{
+
+    display: none;
 }
