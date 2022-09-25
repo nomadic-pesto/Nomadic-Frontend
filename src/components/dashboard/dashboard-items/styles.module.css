@@ -1,6 +1,7 @@
 .dashboard {
     background: rgb(239, 239, 239, 0.82);
     padding: 2rem 2rem;
+    min-height: 94vh;
 }
 
 .items-container {
