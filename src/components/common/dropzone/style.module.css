@@ -2,22 +2,22 @@
     position: relative;
     background-color: rgba(254, 254, 254, 0.96);
     
-    border-radius: 7px;
+    border-radius: 10px;
     width: 800px;
-    height: 269px;
+    height: 200px;
     border-style: outset;
-    border: 1px solid #575757
+    border: 1px outset #57575793
 
 
 }
 .upload-tag{
     text-align: center;
     position: relative;
-    padding-top: 75px;
+    padding-top: 35px;
     font-family: 'Roboto';
     font-style: normal !important;
-    font-weight: 600 !important;
-    font-size: 24px !important;
+    font-weight: 500 !important;
+    font-size: 30px !important;
 
 
 }
@@ -26,10 +26,10 @@
     position: relative;
     color: #575757 !important;
     font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
-    font-size: 20px;
-    
+    font-size: 15px;
+    margin: -27px;
 
 }
 .preview{
@@ -58,6 +58,49 @@
 }
 
 
+@media (max-width: 992px) {
+     
+    .dropzone{
+        position: relative;
+        background-color: rgba(254, 254, 254, 0.96);
+        border-radius: 7px;
+        width: 550px;
+        height: 180px;
+        border-style: outset;
+        border: 1px outset #57575793
+    
+    
+    }
+    .upload-tag{
+        text-align: center;
+        position: relative;
+        padding-top: 45px;
+        font-family: 'Roboto';
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 20px !important;
+    
+    
+    }
+    
+        .upload-tag-2{
+            text-align: center;
+            position: relative;
+            color: #575757ab !important;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 15px;
+            padding: 5px;
+            
+        
+        }
+        
+    
+    
+    
+}
+
 @media (max-width: 600px) {
      
     .dropzone{
@@ -75,7 +118,7 @@
     .upload-tag{
         text-align: center;
         position: relative;
-        padding-top: 50px;
+        padding-top: 55px;
         font-family: 'Roboto';
         font-style: normal !important;
         font-weight: 600 !important;

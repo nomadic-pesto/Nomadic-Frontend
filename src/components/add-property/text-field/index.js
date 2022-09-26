@@ -1,26 +1,27 @@
 //importing MUI materials
 import { Grid, TextField, Typography } from "@mui/material";
+import { ArraySchema } from "yup";
 
 //importing styles
-import styles from "./style.module.css"
+// import styles from "./style.module.css"
 
-const TextFieldItem = (props)=>{
+//importing styles
+import styles from "./style.module.js"
 
 
+const TextFieldItem = (props) => {
+    let value = "48px";
+    console.log("here "+props.multiline);
+    if(props.multiline === true){
+
+        value = "auto";
+
+    }
     return <>
-    
-    <Grid container item xs={12} sm={12} md={6} lg={6} xl={6} alignItems="flex-start" justifyContent="center" >
-        <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
-            <Typography className={styles["typography"]} wrap="true" >{props.label}</Typography>
-        </Grid>  
-        <Grid item xs={12} sm={12} md={7} lg={7} xl={7}>
-            <TextField className= {styles["root"]} name={props.label} rows={props.rows} multiline={props.multiline}/>
-        </Grid>  
-    </Grid>
-    
-    
-    
-    
+
+            <TextField fullWidth  sx={styles(value)} name={props.label} rows={props.rows} multiline={props.multiline} />
+
+
     </>;
 
 

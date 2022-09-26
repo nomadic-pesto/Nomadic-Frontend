@@ -42,7 +42,7 @@ const CustomReactDropZone = (props) => {
                 <div className={styles["close2"]} onClick={handlechange}>
                 <CancelOutlinedIcon className={styles["close"]}/>
                 </div>
-                <img
+                <img alt={"i"}
                     src={file.preview}
                     
                     // Revoke data uri after image is loaded
@@ -58,7 +58,7 @@ const CustomReactDropZone = (props) => {
     useEffect(() => {
         // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
         return () => files.forEach(file => URL.revokeObjectURL(file.preview));
-    }, []);
+    }, [files]);
 
     return <>
         <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} alignItems="center" justifyContent="center" alignContent="space-evenly">
@@ -66,7 +66,7 @@ const CustomReactDropZone = (props) => {
                 <div {...getRootProps({ className: styles["dropzone"] })}>
                     <input {...getInputProps()} />
                     <p className = {styles["upload-tag"]}>Upload Images</p>
-                    <p className = {styles["upload-tag-2"]}>(Max 6 image allowed)</p>
+                    <p className = {styles["upload-tag-2"]}>(Max 6 images allowed)</p>
                 </div>
                 <aside className = {styles["preview"]}>
                     {thumbs}
