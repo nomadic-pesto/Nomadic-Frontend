@@ -1,16 +1,14 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
+
 // import Button from '@mui/material/Button';
 import TextFieldComponent from "../../common/textField";
-import ButtonTransparent from "./../../common/buttonTransparent";
 import Button from "./../../common/button";
 import styles from "./styles.module.css";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { GoogleLogin,GoogleOAuthProvider } from "@react-oauth/google";
-import axios from "axios";
 
-const LogIn = () => {
+
+const SignUp = () => {
     const validate = Yup.object({
         email: Yup.string()
             .email("Invalid email")
@@ -18,6 +16,7 @@ const LogIn = () => {
         password: Yup.string()
             .min(8, "password must be atleast 8 character")
             .required("password is required"),
+        confirmPassword: Yup.string().oneOf([Yup.ref('password'),null],"confirm password should match with above password")
     });
 
     return (
@@ -27,6 +26,7 @@ const LogIn = () => {
                     initialValues={{
                         email: "",
                         password: "",
+                        confirmPassword:""
                     }}
                     validationSchema={validate}
                     onSubmit={(values, { setSubmitting }) => {
@@ -57,40 +57,25 @@ const LogIn = () => {
                                 type={"password"}
                             />
                         </label>
+                        <label>
+                            Confirm your password:
+                            <TextFieldComponent
+                                id="login-confirm-password"
+                                name="confirmPassword"
+                                placeholder=""
+                                width={500}
+                                type={"password"}
+                            />
+                        </label>
                         <Button variant="contained" type="submit">
-                            Log In
+                            Sign up
                         </Button>
                     </form>
                 </Formik>
-                <GoogleOAuthProvider clientId="817056518934-0p9ituunl6pnooif02pfgli1kr4n5ldh.apps.googleusercontent.com">
-                    <GoogleLogin
-                        onSuccess={(response) => {
-                            console.log(response);
-                            axios({
-                                method:"POST",
-                                url:"http://localhost:5001/v1/auth/googlelogin",
-                                data:{tokenId:response.credential}
-                            })
-                        }}
-                        onError={() => {
-                            console.log("Login Failed");
-                        }}
-                    />
-                    ;
-                </GoogleOAuthProvider>
-                <div>
-                    <Stack spacing={12} direction="row">
-                        <ButtonTransparent>
-                            Forgot your password
-                        </ButtonTransparent>
-                        <ButtonTransparent variant="contained">
-                            Sign Up
-                        </ButtonTransparent>
-                    </Stack>
-                </div>
+                
             </div>
         </div>
     );
 };
 
-export default LogIn;
+export default SignUp;
