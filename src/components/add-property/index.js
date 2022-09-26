@@ -20,9 +20,20 @@ import styles from "./style.module.js"
 
 
 const AddProperty = () => {
+    const formik = useFormik({
+        initialValues: {
+          firstName: '',
+          lastName: '',
+          email: '',
+        },
+        onSubmit: values => {
+          alert(JSON.stringify(values, null, 2));
+        },
+      });
 
     return (
-        <Grid container style={{ background: "rgb(239, 239, 239, 0.82)" }} justifyContent={"center"}>
+       
+        <Grid container spacing={2} style={{ background: "rgb(239, 239, 239, 0.82)" }} justifyContent={"center"} direction="column">
             <Grid item zeroMinWidth>
                 <CustomReactDropZone />
             </Grid>
@@ -42,7 +53,7 @@ const AddProperty = () => {
                         <Grid item zeroMinWidth xs={2} xl={2} />
                     </Grid>
                 </Grid>
-                <Grid item zeroMinWidth lg={1} xl={2} />
+                <Grid item zeroMinWidth xs={12} sx={{ paddingBottom: { xs : 5} }} lg={1} xl={2} />
                 <Grid item zeroMinWidth xs={12} lg={1.5} xl={1}>
                     <Typography sx={styles} wrap="true">Sub destination *</Typography>
                 </Grid>
@@ -69,12 +80,12 @@ const AddProperty = () => {
                     <Grid container>
                         <Grid item zeroMinWidth xs={2} />
                         <Grid item zeroMinWidth xs={8} lg={12} xl={12}>
-                            <CustomAutoComplete />
+                        <TextFieldItem />
                         </Grid>
                         <Grid item zeroMinWidth xs={2} />
                     </Grid>
                 </Grid>
-                <Grid item zeroMinWidth lg={1} xl={2} />
+                <Grid item zeroMinWidth xs={12} sx={{ paddingBottom: { xs : 5} }} lg={1} xl={2} />
                 <Grid item zeroMinWidth xs={12} lg={1.5} xl={1}>
                     <Typography sx={styles} wrap="true">Price *</Typography>
                 </Grid>
@@ -101,7 +112,8 @@ const AddProperty = () => {
                     <Grid container>
                         <Grid item zeroMinWidth xs={2} />
                         <Grid item zeroMinWidth xs={8} lg={12} xl={12}>
-                            <TextFieldItem />
+                        <CustomAutoComplete />
+                        
                         </Grid>
                         <Grid item zeroMinWidth xs={2} />
                     </Grid>
@@ -132,7 +144,7 @@ const AddProperty = () => {
                         <Grid item zeroMinWidth xs={2} />
                     </Grid>
                 </Grid>
-                <Grid item zeroMinWidth lg={1} xl={2} />
+                <Grid item zeroMinWidth xs={12} sx={{ paddingBottom: { xs : 5} }} lg={1} xl={2} />
                 <Grid item zeroMinWidth xs={12} lg={1.5} xl={1}>
                     <Typography sx={styles} >Amenties *</Typography>
                 </Grid>
@@ -177,7 +189,7 @@ const AddProperty = () => {
                         <Grid item zeroMinWidth xs={2} />
                     </Grid>
                 </Grid>
-                <Grid item zeroMinWidth lg={1} xl={2} />
+                <Grid item zeroMinWidth xs={12} sx={{ paddingBottom: { xs : 5} }} lg={1} xl={2} />
                 <Grid item zeroMinWidth xs={12} lg={1.5} xl={1}>
                     <Typography sx={styles} >Property Name *</Typography>
                 </Grid>
@@ -302,7 +314,7 @@ const AddProperty = () => {
 
 
         </Grid>
-
+       
     );
 
 
