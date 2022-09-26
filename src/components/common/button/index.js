@@ -15,6 +15,7 @@ const ButtonComponent = (props) => {
         onClick={props.onClick}
         disabled={props.disabled}
         color={props.color}
+        type={props.type ? props.type : "button"}
       >
         {props.children}
       </Button>
