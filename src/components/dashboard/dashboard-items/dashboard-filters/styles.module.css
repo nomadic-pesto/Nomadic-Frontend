@@ -10,10 +10,21 @@
 }
 .filter-button{
     margin-right: 2rem;
+    display: flex;
+    align-items: center;
+}
+.filter-button-section{
+    display: flex;
 }
 
 @media (max-width: 800px) {
     .filter-button{
         margin-right: 0;
+    }
+    .filter-button-section{
+        flex-direction: column-reverse;
+    }
+    .filter-button.red{
+        margin-top: 1rem;
     }
 }

@@ -11,6 +11,7 @@ const AllPages = () => {
         <Route exact path="/" element={<Dashboard/>}/>
         <Route exact path="/dashoard" element={<Dashboard/>}/>
         <Route exact path="/login" element={<Login/>}/>
+        <Route exact path="/details/:id" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </>

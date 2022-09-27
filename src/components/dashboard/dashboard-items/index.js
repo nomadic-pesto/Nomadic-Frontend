@@ -47,6 +47,7 @@ const DashboardItems = ({ getAllProperties,getMoreProperties, propertyState }) =
     let filter = {
       ...(propertyState.destination && {destination: propertyState.destination ? propertyState.destination : ""}),
       ...(propertyState.subDestination && {subDestination: propertyState.subDestination ? propertyState.subDestination : ""}),
+      ...(propertyState.search && {search: propertyState.search ? propertyState.search : ""}),
       ...(propertyState.sortBy && {sortBy: propertyState.sortBy ? propertyState.sortBy : ""}),
       ...(propertyState.sortOrder && {sortOrder: propertyState.sortOrder ? propertyState.sortOrder : ""}),
     };
