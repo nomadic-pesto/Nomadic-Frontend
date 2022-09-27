@@ -26,7 +26,7 @@ const TextFieldComponent = (props) => {
         margin={props.margin}
         fullWidth
       />
-      <ErrorMessage component="div" name={field.name} color={'danger'} />
+      <ErrorMessage component="div" name={field.name} color='danger' />
     </>
   );
 };
