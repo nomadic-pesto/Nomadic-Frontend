@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 const ButtonComponent = (props) => {
   return (
     <>
-        <Button variant="contained" className={`${styles["common-button"]} ${props.className}`}>
+        <Button variant="contained" className={`${styles["common-button"]} ${props.className}`} onClick={props.onClick} disabled={props.disabled}>
             {props.children}
         </Button>
     </>
