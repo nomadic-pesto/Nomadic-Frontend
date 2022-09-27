@@ -12,10 +12,13 @@
 }
 .center-card {
     margin: auto;
-    background-color: rgba(71, 70, 70, 0.3);
+    background-color: rgba(71, 70, 70,0.15);
     width: 50%;
     height: 50%;
     display: grid;
+    backdrop-filter: blur(6px);
+    padding: 5vh 5vw;
+    border-radius: 1.2rem;
 }
 
 .google-button{
@@ -23,7 +26,18 @@
     color: black !important;
 }
 
+.common-textfield{
+    border-radius: 0.75rem;
+    border: none !important;
+    outline: none !important;
+}
+
 .input-container {
-    display: grid;
-    
+    display: grid;   
+}
+.input-title{
+    font-size: 1.5rem;
+}
+.input-field{
+    margin-top: 1.5rem !important;
 }

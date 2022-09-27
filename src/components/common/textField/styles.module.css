@@ -8,6 +8,10 @@
     border-radius: 35px !important;
 }
 
-.TextField-without-border-radius fieldset {
-    border-radius: 25px !important;
+.common-textfield fieldset {
+    /* border-radius: 25px !important; */
+    border: none !important;
 }
+/* .error{
+    color: ;
+} */

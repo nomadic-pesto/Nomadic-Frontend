@@ -38,13 +38,14 @@ const LogIn = () => {
                 >
                     <form className={styles["input-container"]}>
                         <label>
-                            Email Address:
+                            <span className={styles["input-title"]}>Email Address</span>
                             <TextFieldComponent
                                 id="login-email"
                                 name="email"
                                 placeholder=""
                                 width={500}
                                 type={"text"}
+                                className={styles["input-field"]}
                             />
                         </label>
                         <label>
