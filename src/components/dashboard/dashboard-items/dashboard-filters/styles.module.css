@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .filters{
     display: flex;
     justify-content: space-between;
@@ -27,4 +28,35 @@
     .filter-button.red{
         margin-top: 1rem;
     }
+=======
+.filters{
+    display: flex;
+    justify-content: space-between;
+}
+.filter-icons-section{
+    display: flex;
+    overflow-x: scroll;
+    margin-right: 5vw;
+    padding: 0.75rem 0;
+}
+.filter-button{
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+}
+.filter-button-section{
+    display: flex;
+}
+
+@media (max-width: 800px) {
+    .filter-button{
+        margin-right: 0;
+    }
+    .filter-button-section{
+        flex-direction: column-reverse;
+    }
+    .filter-button.red{
+        margin-top: 1rem;
+    }
+>>>>>>> 176447a (login integration done)
 }
