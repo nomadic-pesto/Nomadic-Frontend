@@ -10,7 +10,8 @@ export default (
     sortOrder: "",
     skip:0,
     limit:constants.PRODUCT_LIMIT,
-    loadMore:true
+    loadMore:true,
+    search:""
   },
   action
 ) => {
@@ -21,6 +22,7 @@ export default (
         properties: action.payload.properties ? action.payload.properties : [],
         destination: action.destination ? action.destination : "",
         subDestination: action.subDestination ? action.subDestination : "",
+        search: action.search ? action.search : "",
         sortBy: action.sortBy ? action.sortBy : "",
         sortOrder: action.sortOrder ? action.sortOrder : "",
         skip: action.skip ? action.skip : 0,
