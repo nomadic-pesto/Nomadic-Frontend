@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .nomadic{
     width:10rem;
 }
@@ -21,4 +22,29 @@
         height: 2rem;
         width: 2rem;
     }
+=======
+.nomadic{
+    width:10rem;
+}
+.main-header{
+    background: rgb(239, 239, 239, 0.82);
+    padding: 0.5rem 2rem;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.profile-image{
+    height: 3rem;
+    width: 3rem;
+}
+
+@media (max-width: 1000px) {
+    .nomadic{
+        width:4rem;
+    }
+
+    .profile-image{
+        height: 2rem;
+        width: 2rem;
+    }
+>>>>>>> 176447a (login integration done)
 }

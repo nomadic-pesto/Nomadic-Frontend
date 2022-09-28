@@ -1,0 +1,29 @@
+.login-background {
+    /* The image used */
+    background-image: url(./../../../public/images/Signup.svg);
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-card {
+    margin: auto;
+    background-color: rgba(71, 70, 70, 0.3);
+    width: 50%;
+    height: 50%;
+    display: grid;
+}
+
+.google-button{
+    background: #fff !important;
+    color: black !important;
+}
+
+.input-container {
+    display: grid;
+    
+}
