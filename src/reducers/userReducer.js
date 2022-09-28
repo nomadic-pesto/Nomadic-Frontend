@@ -14,6 +14,11 @@ export default (
         ...state,
         user:action.payload ? action.payload : [],
       };
+      case types.SIGNUP_USER:
+      return {
+        ...state,
+        user:action.payload ? action.payload : [],
+      };
       
     default:
       return state;

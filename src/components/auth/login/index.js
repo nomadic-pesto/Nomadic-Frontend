@@ -16,7 +16,11 @@ import { Formik } from "formik";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 
+//importing actions
 import { loginUser } from "../../../actions/userAction";
+
+//importing toastr
+import { toast } from "react-toastify";
 
 
 
@@ -38,19 +42,23 @@ const LogIn = ({ userState, loginUser }) => {
   };
 
   const handleSubmit = async (values) => {
+    
     setLoading(true);
     await loginUser(values);
     setLoading(false);
+    toast.success("Welcome!")
     navigate("/dashboard");
   };
 
   useEffect(() => {
+    
     console.log(userState);
   }, [userState]);
 
   return (
     <>
       {loading && <Loader />}
+     
       <div className={styles["login-background"]}>
         <div className={styles["center-card"]}>
           <Formik
@@ -70,10 +78,11 @@ const LogIn = ({ userState, loginUser }) => {
                   <TextFieldComponent
                     id="login-email"
                     name="email"
-                    placeholder=""
+                    placeholder="Email"
                     width={500}
                     type={"text"}
                     className={styles["input-field"]}
+                    
                   />
                 </label>
                 <label>
@@ -81,7 +90,7 @@ const LogIn = ({ userState, loginUser }) => {
                   <TextFieldComponent
                     id="login-password"
                     name="password"
-                    placeholder=""
+                    placeholder="Password"
                     width={500}
                     type={"password"}
                     className={styles["input-field"]}

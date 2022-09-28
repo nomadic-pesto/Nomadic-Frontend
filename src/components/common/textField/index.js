@@ -22,7 +22,7 @@ const TextFieldComponent = (props) => {
         } ${props.className}`}
         {...field}
         name={props.name}
-        placeholder={props.label}
+        placeholder={props.placeholder}
         margin={props.margin}
         fullWidth
       />
