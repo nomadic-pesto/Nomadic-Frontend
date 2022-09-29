@@ -31,7 +31,7 @@ const DashboardFilters = ({ propertyState,getAllProperties }) => {
   }, []);
 
   useEffect(() => {
-    console.log(propertyState);
+    // console.log(propertyState);
     if (
       propertyState.destination !== "" ||
       propertyState.subDestination !== "" ||

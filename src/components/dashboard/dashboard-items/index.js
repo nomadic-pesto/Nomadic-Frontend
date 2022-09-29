@@ -40,7 +40,7 @@ const DashboardItems = ({ getAllProperties,getMoreProperties, propertyState }) =
     } else {
       setDisplayProperties([]);
     }
-  }, [propertyState]);
+  }, [propertyState.properties]);
 
   const loadmoreProducts = async () => {
     let skip = propertyState.skip + propertyState.limit;
