@@ -5,11 +5,13 @@ import Dashboard from "./dashboard";
 import Login from "./login";
 import Signup from "./signup"
 import Forgotpassword from "./forgotpassword";
+import Toast from "../components/common/toaster";
 
 
 const AllPages = () => {
   return (
     <>
+     <Toast />
       <BrowserRouter>
         <Routes>
         <Route exact path="/" element={<Dashboard/>}/>
@@ -17,7 +19,7 @@ const AllPages = () => {
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/details/:id" element={<Login/>}/>
         <Route exact path="/signup" element={<Signup/>}/>
-        <Route exact path="/resetpassword" element={<Resetpassword/>}/>
+        <Route exact path="/resetpassword/:token" element={<Resetpassword/>}/>
         <Route exact path="/forgotPassword" element={<Forgotpassword/>}/>
         </Routes>
       </BrowserRouter>

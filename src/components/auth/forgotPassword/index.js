@@ -1,54 +1,88 @@
-import React from "react";
-// import Button from '@mui/material/Button';
-import TextFieldComponent from "../../common/textField";
-import Button from "./../../common/button";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+//importing styles
 import styles from "./styles.module.css";
+
+//importing Formik
 import * as Yup from "yup";
 import { Formik } from "formik";
 
+//importing other components
+import TextFieldComponent from "../../common/textField";
+import Button from "./../../common/button";
+import Loader from "../../common/loader";
 
-const ForgotPassword = () => {
-    const validate = Yup.object({
-        email: Yup.string()
-            .email("Invalid email")
-            .required("Email is required"),
-    });
+//importing actions
+import { forgotPassword } from "../../../actions/userAction";
 
-    return (
-        <div className={styles["login-background"]}>
-            <div className={styles["center-card"]}>
-                <Formik
-                    initialValues={{
-                        email: "",
-                    }}
-                    validationSchema={validate}
-                    onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                        }, 400);
-                    }}
+const ForgotPassword = ({ userState, forgotPassword }) => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const validate = Yup.object({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+  });
+
+  const handleSubmit = async (values) => {
+    setLoading(true);
+    let response = await forgotPassword(values);
+    console.log(response)
+
+    setLoading(false);
+    // navigate("/dashboard");
+  };
+
+
+  return (
+    <>
+      {loading && <Loader />}
+      <div className={styles["login-background"]}>
+        <div className={styles["center-card"]}>
+          <Formik
+            initialValues={{
+              email: "",
+            }}
+            validationSchema={validate}
+            onSubmit={(values) => {
+              handleSubmit(values);
+            }}
+          >
+            {(form) => (
+              <form
+                onSubmit={form.handleSubmit}
+                className={styles["input-container"]}
+              >
+                <label>
+                  <span className={styles["input-title"]}>Email Address</span>
+                  <TextFieldComponent
+                    id="login-email"
+                    name="email"
+                    placeholder="Email"
+                    width={500}
+                    type={"text"}
+                    className={styles["input-field"]}
+                  />
+                </label>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  className={styles["forgot-button"]}
                 >
-                    <form className={styles["input-container"]}>
-                        <label>
-                            Email Address:
-                            <TextFieldComponent
-                                id="login-email"
-                                name="email"
-                                placeholder=""
-                                width={500}
-                                type={"text"}
-                            />
-                        </label>
-                        <Button variant="contained" type="submit">
-                            Get Reset Link
-                        </Button>
-                    </form>
-                </Formik>
-                
-            </div>
+                  Reset
+                </Button>
+              </form>
+            )}
+          </Formik>
         </div>
-    );
+      </div>
+    </>
+  );
 };
 
-export default ForgotPassword;
+const mapStateToProps = (state) => ({
+  userState: state.userReducer,
+});
+
+export default connect(mapStateToProps, { forgotPassword })(ForgotPassword);

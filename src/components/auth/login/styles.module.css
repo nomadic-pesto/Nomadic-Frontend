@@ -42,6 +42,10 @@
     margin-top: 1.5rem !important;/*included *!important* - conflicting with MUI */
     width: 80%;
     max-width: 700px;
+    
+}
+.input-field input{
+    padding-left: 2rem !important;
 }
 
 .login-button{
@@ -77,13 +81,14 @@
 @media (max-width: 800px) {
     .center-card {
         width: 90%;
-        /* height: 80%; */
     }
     .input-title{
         font-size: 1rem;
     }
     .input-field{
-        height: 2.5rem;
+    }
+    .input-field input{
+        padding: 0.7rem 1rem 0.7rem 2rem !important;
     }
     .login-button{
         width: 70% !important; /*included *!important* - conflicting with MUI */
@@ -98,7 +103,6 @@
 
 @media (max-height: 800px) {
     .center-card {
-        /* width: 90%; */
         height: 80%;
     }
 }
