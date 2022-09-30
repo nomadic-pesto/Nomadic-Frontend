@@ -1,0 +1,14 @@
+.property-name{
+    font-size: 2rem;
+}
+@media (max-width: 1200px) {
+    .property-name{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .property-name{
+        font-size: 1rem;
+    }
+}

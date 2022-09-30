@@ -1,0 +1,22 @@
+.details{
+    background: rgb(239, 239, 239, 0.82);
+    padding: 2rem 2rem;
+    min-height: 76vh;
+}
+.details-grid{
+    margin-top: 4vh !important;/*included *!important* - conflicting with MUI */
+    width: 80%;
+    margin: auto;
+}
+
+@media (max-width: 1200px) {
+    .details-grid{
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .details-grid{
+        width: 100%;
+    }
+}
