@@ -1,7 +1,8 @@
 .profile-container{
     padding: 1rem 2rem;
     margin: auto;
-    background: rgb(239, 239, 239, 0.82);
+    /* background: rgb(239, 239, 239, 0.82); */
+    background: linear-gradient(#ffafbc6e,#ffc3a09e);
     min-height: 81vh;
     display: flex;
     flex-direction: column;

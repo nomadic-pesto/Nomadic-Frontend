@@ -2,7 +2,8 @@
     width:10rem;
 }
 .main-header{
-    background: rgb(239, 239, 239, 0.82);
+    /* background: rgb(239, 239, 239, 0.82); */
+    background: #ffafbc6e;
     padding: 0.5rem 2rem;
     display: flex;
     /* justify-content: space-between; */
