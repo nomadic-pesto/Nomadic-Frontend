@@ -9,6 +9,7 @@ import Signup from "./signup"
 import Forgotpassword from "./forgotpassword";
 import Toast from "../components/common/toaster";
 import PropertyDetails from "./propertyDetails";
+import Profile from "./profile";
 
 
 const AllPages = () => {
@@ -25,6 +26,7 @@ const AllPages = () => {
         <Route exact path="/signup" element={<Signup/>}/>
         <Route exact path="/resetpassword/:token" element={<Resetpassword/>}/>
         <Route exact path="/forgotPassword" element={<Forgotpassword/>}/>
+        <Route exact path="/profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
     </>
