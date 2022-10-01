@@ -6,10 +6,12 @@ import styles from "./styles.module.css";
 //importing components
 import Loader from "../../common/loader";
 import DetailImage from "./detailImage";
+import LeftSection from "./leftSection";
 
 //importing MUI
 import Grid from "@mui/material/Grid";
-import LeftSection from "./leftSection";
+import RightSection from "./rightSection";
+
 
 const Details = () => {
   const [loading, setLoading] = useState(false);
@@ -23,11 +25,17 @@ const Details = () => {
       spacing={2}
       className={styles["details-grid"]}
       >
-        <Grid item xs={12} md={8}>
+        <Grid 
+        className={styles["details-grid-item"]}
+        item xs={12} md={8}>
          <LeftSection />
         </Grid>
-        <Grid item xs={12} md={4}>
-        <div>4</div>
+        <Grid 
+        className={styles["details-grid-item"]}
+        item xs={12} md={4}>
+        <div>
+          <RightSection />
+        </div>
         </Grid>
         
       </Grid>

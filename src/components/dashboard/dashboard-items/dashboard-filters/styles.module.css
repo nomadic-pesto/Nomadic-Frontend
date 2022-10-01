@@ -17,6 +17,44 @@
     display: flex;
 }
 
+.sort-dropdown{
+    /* width: 80%; */
+    padding: 1rem 2rem;
+    /* margin: 0 2rem; */
+    background: no-repeat;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 0.8rem;
+}
+
+.sort-dropdown:focus-visible{
+    outline: none;
+}
+.filter-modal{
+    display: flex;
+    flex-direction: column;
+}
+.margin-modal{
+    margin-top: 2rem !important;
+}
+.modal-title{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #5798F1;
+}
+.close-modal{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+.close-modal img{
+    height: 1.5rem;
+    cursor: pointer;
+}
+.filter-modal-button{
+    margin-top: 5rem !important;
+    padding: 0.5rem !important;
+    font-size: 1.5rem !important;
+}
 @media (max-width: 800px) {
     .filter-button{
         margin-right: 0;
