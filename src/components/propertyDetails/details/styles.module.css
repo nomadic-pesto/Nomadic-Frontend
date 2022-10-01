@@ -1,0 +1,32 @@
+.details{
+    background: rgb(239, 239, 239, 0.82);
+    padding: 2rem 2rem;
+    min-height: 76vh;
+}
+.details-grid{
+    margin-top: 4vh !important;/*included *!important* - conflicting with MUI */
+    padding: 0 5% 0 10% !important;/*included *!important* - conflicting with MUI */
+    margin: auto;
+}
+
+@media (max-width: 1250px) {
+    .details-grid{
+        width: 100% !important;/*included *!important* - conflicting with MUI */
+        padding:0 !important;/*included *!important* - conflicting with MUI */
+    }
+}
+
+@media (max-width: 900px) {
+    .details{
+       
+        padding: 2rem 1rem;
+    }
+    .details-grid{
+        width: 100% !important;/*included *!important* - conflicting with MUI */
+        padding:0;
+        margin: 0 !important;/*included *!important* - conflicting with MUI */
+    }
+    .details-grid-item{
+        padding-left: 0  !important;/*included *!important* - conflicting with MUI */
+    }
+}

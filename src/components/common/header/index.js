@@ -23,7 +23,7 @@ import styles from "./styles.module.css";
 //importing other comps.
 import Search from "./search";
 
-const Header = (displaySearch=false) => {
+const Header = ({displaySearch=false}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {

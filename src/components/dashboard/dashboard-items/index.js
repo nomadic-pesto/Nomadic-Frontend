@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 //importing MUI
 import Grid from "@mui/material/Grid";
@@ -17,10 +18,19 @@ import Loader from "../../common/loader";
 import ModalComponent from "../../common/modal";
 
 //importing actions
-import { getAllProperties,getMoreProperties } from "../../../actions/propertyAction";
+import {
+  getAllProperties,
+  getMoreProperties,
+} from "../../../actions/propertyAction";
 import { constants } from "../../../utils/constants";
 
-const DashboardItems = ({ getAllProperties,getMoreProperties, propertyState }) => {
+const DashboardItems = ({
+  getAllProperties,
+  getMoreProperties,
+  propertyState,
+}) => {
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [displayProperties, setDisplayProperties] = useState([]);
 
@@ -45,19 +55,31 @@ const DashboardItems = ({ getAllProperties,getMoreProperties, propertyState }) =
   const loadmoreProducts = async () => {
     let skip = propertyState.skip + propertyState.limit;
     let filter = {
-      ...(propertyState.destination && {destination: propertyState.destination ? propertyState.destination : ""}),
-      ...(propertyState.subDestination && {subDestination: propertyState.subDestination ? propertyState.subDestination : ""}),
-      ...(propertyState.search && {search: propertyState.search ? propertyState.search : ""}),
-      ...(propertyState.sortBy && {sortBy: propertyState.sortBy ? propertyState.sortBy : ""}),
-      ...(propertyState.sortOrder && {sortOrder: propertyState.sortOrder ? propertyState.sortOrder : ""}),
+      ...(propertyState.destination && {
+        destination: propertyState.destination ? propertyState.destination : "",
+      }),
+      ...(propertyState.subDestination && {
+        subDestination: propertyState.subDestination
+          ? propertyState.subDestination
+          : "",
+      }),
+      ...(propertyState.search && {
+        search: propertyState.search ? propertyState.search : "",
+      }),
+      ...(propertyState.sortBy && {
+        sortBy: propertyState.sortBy ? propertyState.sortBy : "",
+      }),
+      ...(propertyState.sortOrder && {
+        sortOrder: propertyState.sortOrder ? propertyState.sortOrder : "",
+      }),
     };
-    await getMoreProperties(skip, constants.PRODUCT_LIMIT,filter);
+    await getMoreProperties(skip, constants.PRODUCT_LIMIT, filter);
   };
 
   return (
     <>
       {loading && <Loader />}
-      {/* <ModalComponent /> */}
+     
       <div className={styles["dashboard"]}>
         <section id="dashboard-filters">
           <DashboardFilters />
@@ -94,7 +116,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllProperties: (skip, limit) => dispatch(getAllProperties(skip, limit)),
-  getMoreProperties: (skip, limit,filters) => dispatch(getMoreProperties(skip, limit,filters)),
+  getMoreProperties: (skip, limit, filters) =>
+    dispatch(getMoreProperties(skip, limit, filters)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardItems);
