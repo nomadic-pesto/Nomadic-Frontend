@@ -10,6 +10,10 @@ import Forgotpassword from "./forgotpassword";
 import Toast from "../components/common/toaster";
 import PropertyDetails from "./propertyDetails";
 import Profile from "./profile";
+import Bookings from "./bookings";
+import Orders from "./orders";
+import Wishlist from "./wishlist";
+import MyProperties from "./myProperties";
 
 
 const AllPages = () => {
@@ -27,6 +31,10 @@ const AllPages = () => {
         <Route exact path="/resetpassword/:token" element={<Resetpassword/>}/>
         <Route exact path="/forgotPassword" element={<Forgotpassword/>}/>
         <Route exact path="/profile" element={<Profile/>}/>
+        <Route exact path="/bookings" element={<Bookings/>}/>
+        <Route exact path="/orders" element={<Orders/>}/>
+        <Route exact path="/wishlist" element={<Wishlist />}/>
+        <Route exact path="/properties" element={<MyProperties />}/>
         </Routes>
       </BrowserRouter>
     </>

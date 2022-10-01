@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { green, pink } from "@mui/material/colors";
 
 //importing images
 import profile from "../../../public/images/profile.png";
@@ -23,7 +25,6 @@ import styles from "./styles.module.css";
 
 //importing other comps.
 import Search from "./search";
-
 
 const Header = ({ displaySearch = false }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -47,7 +48,7 @@ const Header = ({ displaySearch = false }) => {
         }}
       >
         <Link className={styles["custom-link"]} to={"/dashboard"}>
-        <img className={styles["nomadic"]} src={nomadic} />
+          <img className={styles["nomadic"]} src={nomadic} />
         </Link>
         {displaySearch && <Search />}
         <Tooltip title="Account settings">
@@ -59,9 +60,7 @@ const Header = ({ displaySearch = false }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            
-              <img className={styles["profile-image"]} src={profile} />
-            
+            <img className={styles["profile-image"]} src={profile} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -106,22 +105,39 @@ const Header = ({ displaySearch = false }) => {
             Profile
           </Link>
         </MenuItem>
-        {/* <MenuItem>
-          <Avatar /> My account
-        </MenuItem> */}
-        <Divider />
-        {/* <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem> */}
-        {/* <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem> */}
+        <MenuItem>
+          <Link className={styles["custom-link"]} to={"/bookings"}>
+            <Avatar sx={{ bgcolor: green[500] }}>
+              <AssignmentIcon />
+            </Avatar>
+            My Bookings
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link className={styles["custom-link"]} to={"/orders"}>
+            <Avatar sx={{ bgcolor: green[500] }}>
+              <AssignmentIcon />
+            </Avatar>
+            My Orders
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link className={styles["custom-link"]} to={"/wishlist"}>
+            <Avatar sx={{ bgcolor: green[500] }}>
+              <AssignmentIcon />
+            </Avatar>
+            Wishlist
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link className={styles["custom-link"]} to={"/properties"}>
+            <Avatar sx={{ bgcolor: green[500] }}>
+              <AssignmentIcon />
+            </Avatar>
+            My Properties
+          </Link>
+        </MenuItem>
+        
         <MenuItem>
           <ListItemIcon>
             <Logout fontSize="small" />

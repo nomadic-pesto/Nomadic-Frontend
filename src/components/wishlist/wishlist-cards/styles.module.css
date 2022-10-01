@@ -1,0 +1,15 @@
+.bookings-container{
+    padding: 1rem 2rem;
+    margin: auto;
+    /* background: rgb(239, 239, 239, 0.82); */
+    background: linear-gradient(#ffafbc6e,#ffc3a09e);
+    min-height: 81vh;
+  
+}
+.title{
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: left;
+  color: #575757;
+  margin-top: 1.5rem;
+}
