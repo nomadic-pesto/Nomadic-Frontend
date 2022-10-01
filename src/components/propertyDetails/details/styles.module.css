@@ -1,5 +1,6 @@
 .details{
-    background: rgb(239, 239, 239, 0.82);
+    /* background: rgb(239, 239, 239, 0.82); */
+    background: linear-gradient(#ffafbc6e,#ffc3a09e);
     padding: 2rem 2rem;
     min-height: 76vh;
 }

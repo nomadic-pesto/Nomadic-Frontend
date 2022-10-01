@@ -25,6 +25,7 @@ const TextFieldComponent = (props) => {
         placeholder={props.placeholder}
         margin={props.margin}
         fullWidth
+        disabled={props.disabled ? props.disabled : false}
       />
       <ErrorMessage component="div" name={field.name}  className={`${styles["error"]}`}/>
     </>

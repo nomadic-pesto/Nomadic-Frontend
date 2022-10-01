@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 //importing MUI
 import Box from "@mui/material/Box";
@@ -23,7 +24,8 @@ import styles from "./styles.module.css";
 //importing other comps.
 import Search from "./search";
 
-const Header = ({displaySearch=false}) => {
+
+const Header = ({ displaySearch = false }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -41,11 +43,13 @@ const Header = ({displaySearch=false}) => {
           alignItems: "center",
           textAlign: "center",
           justifyContent: "space-between",
-          width:"100%"
+          width: "100%",
         }}
       >
+        <Link className={styles["custom-link"]} to={"/dashboard"}>
         <img className={styles["nomadic"]} src={nomadic} />
-        {displaySearch && <Search /> }
+        </Link>
+        {displaySearch && <Search />}
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -55,8 +59,9 @@ const Header = ({displaySearch=false}) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            {/* <Avatar sx={{ width: 32, height: 32 }}>M</Avatar> */}
-            <img className={styles["profile-image"]} src={profile} />
+            
+              <img className={styles["profile-image"]} src={profile} />
+            
           </IconButton>
         </Tooltip>
       </Box>
@@ -96,24 +101,27 @@ const Header = ({displaySearch=false}) => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <Link className={styles["custom-link"]} to={"/profile"}>
+            <Avatar />
+            Profile
+          </Link>
         </MenuItem>
-        <MenuItem>
+        {/* <MenuItem>
           <Avatar /> My account
-        </MenuItem>
+        </MenuItem> */}
         <Divider />
-        <MenuItem>
+        {/* <MenuItem>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
-        </MenuItem>
-        <MenuItem>
+        </MenuItem> */}
+        {/* <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem>
           <ListItemIcon>
             <Logout fontSize="small" />
