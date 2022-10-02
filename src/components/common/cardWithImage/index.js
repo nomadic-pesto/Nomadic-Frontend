@@ -9,12 +9,12 @@ const CardWithImage = (props) => {
   const navigate = useNavigate();
   return (
     <>
-      <Grid container spacing={2} className={styles["bookings-card"]}>
+      <Grid container spacing={2} className={`${styles["bookings-card"]} ${props.className}`}>
         <Grid className={styles["bookings-grid-item"]} item xs={12} md={3}>
           <img src={props.image} />
         </Grid>
         <Grid className={styles["bookings-grid-item-right"]} item xs={12} md={9}>
-          <div>{props.children}</div>
+          <>{props.children}</>
         </Grid>
       </Grid>
     </>

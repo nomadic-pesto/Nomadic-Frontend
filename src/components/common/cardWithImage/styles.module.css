@@ -1,10 +1,10 @@
 .bookings-card{
-
     width: 100%;
     padding: 1rem 1rem !important;/*included *!important* - conflicting with MUI */
     background: #fff;
     margin-top: 2rem !important;/*included *!important* - conflicting with MUI */
     border-radius: 0.8rem !important;/*included *!important* - conflicting with MUI */
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 .bookings-grid-item{
     padding: 0 !important;/*included *!important* - conflicting with MUI */
@@ -20,4 +20,11 @@
 .bookings-grid-item-right{
     padding: 0 2rem !important;/*included *!important* - conflicting with MUI */
     text-align: left;
+}
+
+@media (max-width: 900px) {
+    .bookings-grid-item-right{
+        padding: 1rem 0 !important;/*included *!important* - conflicting with MUI */
+        text-align: left;
+    }
 }
