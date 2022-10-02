@@ -70,8 +70,14 @@
 .success-button{
     background: #30CC7E;
 }
+.success-button:hover{
+    background-color: #24a564;
+}
 .danger-button{
     background: #DF736E;
+}
+.danger-button:hover{
+    background: #c26460;
 }
 
 @media (max-width: 900px) {
