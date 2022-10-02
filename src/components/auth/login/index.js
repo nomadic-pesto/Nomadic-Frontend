@@ -22,6 +22,12 @@ import { loginUser } from "../../../actions/userAction";
 //importing toastr
 import { toast } from "react-toastify";
 
+//importing methods 
+import { apiCall } from "../../../services/methods";
+
+//importing constants
+import { constants } from "../../../utils/constants";
+
 
 
 const LogIn = ({ userState, loginUser }) => {
@@ -44,16 +50,37 @@ const LogIn = ({ userState, loginUser }) => {
   const handleSubmit = async (values) => {
     
     setLoading(true);
-    await loginUser(values);
+    let loginApiResponse = await loginUser(values);
     setLoading(false);
-    toast.success("Welcome!")
-    navigate("/dashboard");
+    loginResponseHandler(loginApiResponse)
   };
 
-  useEffect(() => {
-    
-    console.log(userState);
-  }, [userState]);
+  const googleSuccessHandler = async (response) => {
+    let backendResponse =await apiCall(`${constants.BACKEND_URL}/v1/auth/googlelogin`,'POST',{},{ tokenId: response.credential })
+    loginResponseHandler(backendResponse)
+  }
+
+  const googleErrorHandler = (err) => {
+    toast.error(err)
+  }
+
+  const loginResponseHandler = (loginApiResponse) =>{
+    if(loginApiResponse.status === 'success'){
+      toast.success("Welcome!");
+      localStorage.setItem("user",JSON.stringify(loginApiResponse.data.user));
+      localStorage.setItem("authToken",loginApiResponse.token);
+      navigate("/dashboard");
+    }
+    else{
+      let errorMessage = loginApiResponse.message ? loginApiResponse.message : "Error Occurred!"
+      //Check for making 
+      //1st letter capital 
+      let formatedErrorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1);
+      toast.error(formatedErrorMessage);
+    }
+  }
+
+
 
   return (
     <>
@@ -109,17 +136,8 @@ const LogIn = ({ userState, loginUser }) => {
           <div className={styles["google-button"]}>
             <GoogleOAuthProvider clientId="817056518934-0p9ituunl6pnooif02pfgli1kr4n5ldh.apps.googleusercontent.com">
               <GoogleLogin
-                onSuccess={(response) => {
-                  console.log(response);
-                  axios({
-                    method: "POST",
-                    url: "http://localhost:5001/v1/auth/googlelogin",
-                    data: { tokenId: response.credential },
-                  });
-                }}
-                onError={() => {
-                  console.log("Login Failed");
-                }}
+                onSuccess={googleSuccessHandler}
+                onError={googleErrorHandler}
               />
             </GoogleOAuthProvider>
           </div>

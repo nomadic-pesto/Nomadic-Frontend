@@ -15,9 +15,16 @@ export const apiCall = async (url, method, headers = {}, data = {}) => {
         } else if (response.status === 204) {
             return response.data;
         } else {
+            console.log("No status")
             return response.data;
         }
     } catch (error) {
-        return error;
+        if(error.response.data){
+            return error.response.data;
+        }
+        else{
+            return error;
+        }
+        
     }
 };

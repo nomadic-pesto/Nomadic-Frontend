@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 //importing MUI
 import Box from "@mui/material/Box";
@@ -7,14 +7,12 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { green, pink } from "@mui/material/colors";
+import PersonIcon from "@mui/icons-material/Person";
 
 //importing images
 import profile from "../../../public/images/profile.png";
@@ -28,6 +26,11 @@ import Search from "./search";
 
 const Header = ({ displaySearch = false }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const userDetails = JSON.parse(localStorage.getItem("user"));
+
+  const navigate = useNavigate();
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,6 +38,19 @@ const Header = ({ displaySearch = false }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, []);
+
+  const logoutHandler = () =>{
+    localStorage.clear();
+    navigate("/login");
+  }
 
   return (
     <div className={styles["main-header"]}>
@@ -47,7 +63,10 @@ const Header = ({ displaySearch = false }) => {
           width: "100%",
         }}
       >
-        <Link className={styles["custom-link"]} to={"/dashboard"}>
+        <Link
+          className={`${styles["custom-link"]} ${styles["logo"]}`}
+          to={"/dashboard"}
+        >
           <img className={styles["nomadic"]} src={nomadic} />
         </Link>
         {displaySearch && <Search />}
@@ -99,51 +118,77 @@ const Header = ({ displaySearch = false }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <Link className={styles["custom-link"]} to={"/profile"}>
-            <Avatar />
-            Profile
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link className={styles["custom-link"]} to={"/bookings"}>
-            <Avatar sx={{ bgcolor: green[500] }}>
-              <AssignmentIcon />
-            </Avatar>
-            My Bookings
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link className={styles["custom-link"]} to={"/orders"}>
-            <Avatar sx={{ bgcolor: green[500] }}>
-              <AssignmentIcon />
-            </Avatar>
-            My Orders
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link className={styles["custom-link"]} to={"/wishlist"}>
-            <Avatar sx={{ bgcolor: green[500] }}>
-              <AssignmentIcon />
-            </Avatar>
-            Wishlist
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link className={styles["custom-link"]} to={"/properties"}>
-            <Avatar sx={{ bgcolor: green[500] }}>
-              <AssignmentIcon />
-            </Avatar>
-            My Properties
-          </Link>
-        </MenuItem>
-        
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
+        {loggedIn && (
+          <div>
+            {" "}
+            <MenuItem>
+              <Link
+                className={`${styles["custom-link"]} ${styles["header-name"]}`}
+                to={"/profile"}
+              >
+                Hi {userDetails.name}
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className={styles["custom-link"]} to={"/profile"}>
+                <Avatar sx={{ bgcolor: pink[500] }}>
+                  <PersonIcon />
+                </Avatar>
+                Profile
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className={styles["custom-link"]} to={"/bookings"}>
+                <Avatar sx={{ bgcolor: green[500] }}>
+                  <AssignmentIcon />
+                </Avatar>
+                My Bookings
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className={styles["custom-link"]} to={"/orders"}>
+                <Avatar sx={{ bgcolor: green[500] }}>
+                  <AssignmentIcon />
+                </Avatar>
+                My Orders
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className={styles["custom-link"]} to={"/wishlist"}>
+                <Avatar sx={{ bgcolor: green[500] }}>
+                  <AssignmentIcon />
+                </Avatar>
+                Wishlist
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className={styles["custom-link"]} to={"/properties"}>
+                <Avatar sx={{ bgcolor: green[500] }}>
+                  <AssignmentIcon />
+                </Avatar>
+                My Properties
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={logoutHandler}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </div>
+        )}
+        {!loggedIn && (
+          <div>
+            <MenuItem>
+              <Link className={styles["custom-link"]} to={"/login"}>
+                <Avatar sx={{ bgcolor: pink[500] }}>
+                  <PersonIcon />
+                </Avatar>
+                Login
+              </Link>
+            </MenuItem>
+          </div>
+        )}
       </Menu>
     </div>
   );

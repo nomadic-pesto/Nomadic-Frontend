@@ -17,6 +17,9 @@ import Loader from "../../common/loader";
 //importing actions
 import { forgotPassword } from "../../../actions/userAction";
 
+//importing toastr
+import { toast } from "react-toastify";
+
 const ForgotPassword = ({ userState, forgotPassword }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -28,11 +31,25 @@ const ForgotPassword = ({ userState, forgotPassword }) => {
   const handleSubmit = async (values) => {
     setLoading(true);
     let response = await forgotPassword(values);
-    console.log(response)
-
+    fogotPasswordResponseHandler(response)
     setLoading(false);
     // navigate("/dashboard");
   };
+
+  const fogotPasswordResponseHandler = (apiResponse) =>{
+    if(apiResponse.status === 'success'){
+      toast.success("Please check your Email!");
+      navigate("/login");
+    }
+    else{
+      console.log(apiResponse)
+      let errorMessage = apiResponse.responseData.message ? apiResponse.responseData.message : "Error Occurred!"
+      //Check for making 
+      //1st letter capital 
+      let formatedErrorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1);
+      toast.error(formatedErrorMessage);
+    }
+  }
 
 
   return (

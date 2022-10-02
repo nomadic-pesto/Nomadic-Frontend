@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 //importing styles
 import styles from "./styles.module.css";
@@ -12,14 +14,48 @@ import LeftSection from "./leftSection";
 import Grid from "@mui/material/Grid";
 import RightSection from "./rightSection";
 
+//importing actions
+import {
+  getPropertyById
+} from "../../../actions/propertyAction";
 
-const Details = () => {
+//importing toastr
+import { toast } from "react-toastify";
+
+
+const Details = ({getPropertyById}) => {
   const [loading, setLoading] = useState(false);
+  const [displayProperty, setDisplayProperty] = useState([]);
+
+  const params = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getPropertyHandler();
+  }, []);
+
+  const getPropertyHandler = async () => {
+    setLoading(true);
+
+    const propertyDetails = await getPropertyById(params.id);
+    if(propertyDetails.status === 'success' && propertyDetails.data.rental){
+      setDisplayProperty(propertyDetails.data.rental)
+    }
+    else{
+      toast.success("Property Not found");
+      navigate("/dashboard");
+    }
+   
+    setLoading(false);
+  };
+
 
   return (
     <div className={styles["details"]}>
       {loading && <Loader />}
-      <DetailImage />
+      <DetailImage 
+      displayProperty={displayProperty ? displayProperty : {}}
+      />
       <Grid 
       container 
       spacing={2}
@@ -28,13 +64,17 @@ const Details = () => {
         <Grid 
         className={styles["details-grid-item"]}
         item xs={12} md={8}>
-         <LeftSection />
+         <LeftSection 
+         displayProperty={displayProperty ? displayProperty : {}}
+         />
         </Grid>
         <Grid 
         className={styles["details-grid-item"]}
         item xs={12} md={4}>
         <div>
-          <RightSection />
+          <RightSection 
+          displayProperty={displayProperty ? displayProperty : {}}
+          />
         </div>
         </Grid>
         
@@ -43,4 +83,9 @@ const Details = () => {
   );
 };
 
-export default Details;
+const mapStateToProps = (state) => ({
+  propertyState: state.propertyReducer,
+});
+
+export default connect(mapStateToProps, {getPropertyById})(Details);
+

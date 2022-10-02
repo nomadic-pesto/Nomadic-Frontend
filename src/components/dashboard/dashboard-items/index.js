@@ -46,7 +46,7 @@ const DashboardItems = ({
 
   useEffect(() => {
     if (propertyState.properties && propertyState.properties.length > 0) {
-      setDisplayProperties(propertyState.properties);
+      // setDisplayProperties(propertyState.properties);
     } else {
       setDisplayProperties([]);
     }

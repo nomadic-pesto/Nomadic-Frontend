@@ -8,7 +8,10 @@ import styles from "./styles.module.css";
 import ButtonComponent from "../../../common/button";
 import BasicDateRangePicker from "./BasicDateRangePicker";
 
-const RightSection = () => {
+const RightSection = ({displayProperty}) => {
+
+  const {price } =
+  displayProperty;
   return (
     <>
     <section 
@@ -37,7 +40,7 @@ const RightSection = () => {
       <div
       className={`${styles["row"]} ${styles["price"]}`}
       >
-        ₹1200 /- Day
+        ₹{price} /- Day
       </div>
      
     </section>
