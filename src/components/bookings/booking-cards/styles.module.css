@@ -68,16 +68,16 @@
     text-align: center;
 }
 .success-button{
-    background: #30CC7E;
+    background: #30CC7E !important;/*included *!important* - conflicting with MUI */
 }
 .success-button:hover{
-    background-color: #24a564;
+    background-color: #24a564 !important;/*included *!important* - conflicting with MUI */
 }
 .danger-button{
-    background: #DF736E;
+    background: #DF736E !important;/*included *!important* - conflicting with MUI */
 }
 .danger-button:hover{
-    background: #c26460;
+    background: #c26460 !important;/*included *!important* - conflicting with MUI */
 }
 
 @media (max-width: 900px) {

@@ -17,6 +17,9 @@ import Button from "../../common/button";
 import { resetPassword } from "../../../actions/userAction";
 import Loader from "../../common/loader";
 
+//importing toastr
+import { toast } from "react-toastify";
+
 const ResetPassword = ({ userState, resetPassword }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -33,15 +36,29 @@ const ResetPassword = ({ userState, resetPassword }) => {
   });
 
   const handleSubmit = async (values) => {
-    
-    console.log({...values,token})
+  
     setLoading(true);
     let response = await resetPassword({...values,token});
+    resetPasswordResponseHandler(response)
     console.log(response);
 
     setLoading(false);
     // navigate("/dashboard");
   };
+
+  const resetPasswordResponseHandler = (apiResponse) =>{
+    if(apiResponse.responseData && apiResponse.responseData.status === 'success'){
+      toast.success("Password changed Successfully!");
+      navigate("/login");
+    }
+    else{
+      let errorMessage = apiResponse.responseData.message ? apiResponse.responseData.message : "Error Occurred!"
+      //Check for making 
+      //1st letter capital 
+      let formatedErrorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1);
+      toast.error(formatedErrorMessage);
+    }
+  }
 
   return (
     <>

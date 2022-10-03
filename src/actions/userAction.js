@@ -33,7 +33,7 @@ export const signup =
       type: types.SIGNUP_USER,
       payload: signupResponse,
     });
-    return { error: false, errorData: null, responseData: null };
+    return signupResponse;
   };
 
 export const forgotPassword =

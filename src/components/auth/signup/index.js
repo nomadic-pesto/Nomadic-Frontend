@@ -17,6 +17,9 @@ import Loader from "../../common/loader";
 //importing actions
 import { signup } from "../../../actions/userAction";
 
+//importing toastr
+import { toast } from "react-toastify";
+
 
 const SignUp = ({ userState, signup }) => {
   const [loading, setLoading] = useState(false);
@@ -37,10 +40,23 @@ const SignUp = ({ userState, signup }) => {
   const handleSubmit = async (values) => {
 
     setLoading(true);
-    await signup(values);
+    let response = await signup(values);
+    signupResponseHandler(response)
     setLoading(false);
-    navigate("/dashboard");
   };
+
+  const signupResponseHandler = (apiResponse) =>{
+    console.log(apiResponse)
+    if(apiResponse && apiResponse.status === 'success'){
+      toast.success("Welcome!");
+      navigate("/dashboard");
+    }
+    else{
+      let errorMessage = apiResponse.message ? apiResponse.message : "Error Occurred!"
+      let formatedErrorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1);
+      toast.error(formatedErrorMessage);
+    }
+  }
 
   useEffect(() => {
     console.log(userState);

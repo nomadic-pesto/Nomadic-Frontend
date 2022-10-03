@@ -37,12 +37,11 @@ const ForgotPassword = ({ userState, forgotPassword }) => {
   };
 
   const fogotPasswordResponseHandler = (apiResponse) =>{
-    if(apiResponse.status === 'success'){
+    if(apiResponse.responseData && apiResponse.responseData.status === 'success'){
       toast.success("Please check your Email!");
       navigate("/login");
     }
     else{
-      console.log(apiResponse)
       let errorMessage = apiResponse.responseData.message ? apiResponse.responseData.message : "Error Occurred!"
       //Check for making 
       //1st letter capital 
