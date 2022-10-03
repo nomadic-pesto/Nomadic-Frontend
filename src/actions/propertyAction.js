@@ -1,4 +1,4 @@
-import { getAllPropertiesService } from "../services/propertyServices";
+import { getAllPropertiesService, getPropertyByIdService } from "../services/propertyServices";
 import { types } from "./actionTypes";
 
 export const getAllProperties =
@@ -19,7 +19,6 @@ export const getAllProperties =
 export const getMoreProperties =
   (skip, limit, filters = {}) =>
   async (dispatch) => {
-    console.log(filters)
     let properties = await getAllPropertiesService(skip, limit, filters);
     dispatch({
       type: types.GET_MORE_PROPERTIES,
@@ -29,4 +28,11 @@ export const getMoreProperties =
       loadMore: properties.data.length > 0 ? true : false,
     });
     return { error: false, errorData: null, responseData: null };
+  };
+
+  export const getPropertyById =
+  (id) =>
+  async (dispatch) => {
+    let propertyDetails = await getPropertyByIdService(id);
+    return propertyDetails;
   };
