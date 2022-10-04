@@ -9,7 +9,6 @@ import "./styles.css";
 const DetailImage = ({ displayProperty }) => {
   const { originalImages } = displayProperty;
   const [propertyImages, setPropertyImages] = useState("");
-  console.log(originalImages);
 
   useEffect(() => {
     if (originalImages && originalImages.length > 0) {

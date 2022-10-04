@@ -2,7 +2,7 @@ export const constants = {
   BACKEND_URL: "http://localhost:5001",
   PRODUCT_LIMIT: 24,
   DESTINATION_TYPES: [
-    {icon:"fa-anchor",name:"Beaches"},
+    {icon:"fa-anchor",name:"Karnataka"},
     {icon:"fa-area-chart",name: "Hill station"},
     {icon:"fa-thermometer-full",name:"Dessert"},
     {icon:"fa-envira",name:"Wildlife"},
@@ -13,4 +13,5 @@ export const constants = {
     {icon:"fa-map-signs",name:"Farms"},
     {icon:"fa-sun-o",name:"Plantation"},
   ],
+  SLIDER_MAX_VALUE : 10000
 };

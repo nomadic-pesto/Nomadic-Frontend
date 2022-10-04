@@ -40,20 +40,20 @@ const DashboardItems = ({
 
   const getPropertyHandler = async () => {
     setLoading(true);
-    await getAllProperties(0, constants.PRODUCT_LIMIT);
+    await getAllProperties(1, constants.PRODUCT_LIMIT);
     setLoading(false);
   };
 
   useEffect(() => {
     if (propertyState.properties && propertyState.properties.length > 0) {
-      // setDisplayProperties(propertyState.properties);
+      setDisplayProperties(propertyState.properties);
     } else {
       setDisplayProperties([]);
     }
   }, [propertyState.properties]);
 
   const loadmoreProducts = async () => {
-    let skip = propertyState.skip + propertyState.limit;
+    let skip = propertyState.skip + 1;//propertyState.limit;
     let filter = {
       ...(propertyState.destination && {
         destination: propertyState.destination ? propertyState.destination : "",
@@ -73,7 +73,10 @@ const DashboardItems = ({
         sortOrder: propertyState.sortOrder ? propertyState.sortOrder : "",
       }),
     };
-    await getMoreProperties(skip, constants.PRODUCT_LIMIT, filter);
+   
+      await getMoreProperties(skip, constants.PRODUCT_LIMIT, filter);
+    
+    
   };
 
   return (
@@ -117,7 +120,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getAllProperties: (skip, limit) => dispatch(getAllProperties(skip, limit)),
   getMoreProperties: (skip, limit, filters) =>
-    dispatch(getMoreProperties(skip, limit, filters)),
+    dispatch(getMoreProperties(skip, limit, filters))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardItems);

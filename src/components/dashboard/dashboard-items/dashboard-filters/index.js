@@ -17,6 +17,7 @@ import { getAllProperties } from "../../../../actions/propertyAction";
 
 //importing images
 import crossIcon from "../../../../public/images/custom-color-cross.svg";
+import SortDropDown from "./sortDropDown";
 
 const DashboardFilters = ({ propertyState, getAllProperties }) => {
   const [displayFilters, setDisplayFilters] = useState([]);
@@ -58,7 +59,9 @@ const DashboardFilters = ({ propertyState, getAllProperties }) => {
   return (
     <>
       {openModal && (
-        <ModalComponent>
+        <ModalComponent
+        className={styles["modal-container"]}
+        >
           <div
             className={styles["close-modal"]}
             onClick={setOpenModal.bind(null, false)}
@@ -77,12 +80,15 @@ const DashboardFilters = ({ propertyState, getAllProperties }) => {
             >
               Sort By
             </div>
-            <select
+            <SortDropDown 
+            className={`${styles["margin-modal"]}`}
+            />
+            {/* <select
               className={`${styles["margin-modal"]} ${styles["sort-dropdown"]}`}
             >
               <option>1</option>
               <option>2</option>
-            </select>
+            </select> */}
             <ButtonComponent
               className={styles["filter-modal-button"]}
               onClick={setOpenModal.bind(null, false)}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 
 //importing styles
@@ -13,14 +13,27 @@ import { getAllProperties } from '../../../../actions/propertyAction';
 import { constants } from '../../../../utils/constants';
 
 
-const Search = ({getAllProperties}) => {
+const Search = ({getAllProperties,propertyState}) => {
 
     const [searchInput, setSearchInput] = useState("");
 
     const setFilters = async (e) =>{
         e.preventDefault();
-        await getAllProperties(0, constants.PRODUCT_LIMIT,{search:searchInput});
+
+        let filtersToSet = {...propertyState}
+        
+        delete filtersToSet.properties;
+        delete filtersToSet.loadMore;
+        filtersToSet.search = searchInput
+
+        await getAllProperties(0, constants.PRODUCT_LIMIT,filtersToSet);
       }
+
+      useEffect(() => {
+
+        setSearchInput(propertyState.search)
+  
+    }, [propertyState.search])
     
   return (
     <form 
