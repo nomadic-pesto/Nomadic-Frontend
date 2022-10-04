@@ -73,9 +73,14 @@ const Header = ({ displaySearch = false }) => {
         {displaySearch && <Search />}
         {
           !loggedIn && 
-          <ButtonComponent
-          className={styles["login-button"]}
-          >Login</ButtonComponent>
+          <>
+            <ButtonComponent
+            onClick={()=>navigate('/login')}
+              className={styles["login-button"]}
+              >Login</ButtonComponent>
+              
+          </>
+        
         }
         {loggedIn &&  <Tooltip title="Account settings">
           <IconButton
