@@ -27,8 +27,11 @@ const ModalComponent = (props) => {
         onClose={props.handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        
       >
-        <Box sx={style}>
+        <Box 
+        className={props.className}
+        sx={style}>
          {props.children}
         </Box>
       </Modal>

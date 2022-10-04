@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 
 //importing actions
 import { getAllProperties } from "../../../../../actions/propertyAction";
+
 import { constants } from "../../../../../utils/constants";
 
 
@@ -14,7 +15,13 @@ import { constants } from "../../../../../utils/constants";
 const DashboardFilter = ({getAllProperties,name,icon,propertyState}) => {
 
   const setFilters = async (destination) =>{
-    await getAllProperties(0, constants.PRODUCT_LIMIT,{destination});
+    let filtersToSet = {...propertyState}
+        
+    delete filtersToSet.properties;
+    delete filtersToSet.loadMore;
+    filtersToSet.destination = destination;
+
+    await getAllProperties(0, constants.PRODUCT_LIMIT,filtersToSet);
   }
 
   return (
@@ -34,8 +41,5 @@ const mapStateToProps = (state) => ({
   propertyState: state.propertyReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getAllProperties: (skip, limit,filters) => dispatch(getAllProperties(skip, limit,filters)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardFilter);
+export default connect(mapStateToProps, {getAllProperties})(DashboardFilter);
