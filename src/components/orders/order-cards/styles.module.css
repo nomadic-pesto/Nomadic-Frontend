@@ -113,8 +113,7 @@
   }
 
   .orders-button {
-    margin-top: 3rem !important;
-    /*included *!important* - conflicting with MUI */
+    margin-top: 3rem !important;/*included *!important* - conflicting with MUI */
   }
 
   .orders-time {
