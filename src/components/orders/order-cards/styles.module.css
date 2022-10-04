@@ -1,15 +1,123 @@
-.bookings-container{
-    padding: 1rem 2rem;
-    margin: auto;
-    /* background: rgb(239, 239, 239, 0.82); */
-    background: linear-gradient(#ffafbc6e,#ffc3a09e);
-    min-height: 81vh;
-  
+.orders-container {
+  padding: 1rem 2rem;
+  margin: auto;
+  /* background: rgb(239, 239, 239, 0.82); */
+  background: linear-gradient(#ffafbc6e, #ffc3a09e);
+  min-height: 81vh;
+  color: #706F6F;
 }
-.title{
-    font-size: 1.8rem;
-    font-weight: 500;
-    text-align: left;
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: left;
   color: #575757;
   margin-top: 1.5rem;
+}
+
+.orders-card {
+  height: 100%;
+}
+
+.orders-card-left {
+  display: flex !important;
+  /*included *!important* - conflicting with MUI */
+  flex-direction: column !important;
+  /*included *!important* - conflicting with MUI */
+}
+
+.orders-card-right {
+  display: flex !important;
+  /*included *!important* - conflicting with MUI */
+  flex-direction: column !important;
+  /*included *!important* - conflicting with MUI */
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 3rem 0 2rem !important;
+  /*included *!important* - conflicting with MUI */
+}
+
+.card-item {
+  height: 100%;
+}
+
+.property-name {
+  font-size: 1.5rem;
+}
+
+.text-thin {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.margin-left {
+  margin-left: 1rem;
+}
+
+.rooms-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 3rem;
+}
+
+.margin-right {
+  margin-right: 1rem;
+}
+
+.price {
+  color: #3C88F1;
+  font-size: 1.3rem;
+  margin: 0 auto;
+}
+
+.phone {
+  color: #3C88F1;
+  font-weight: 400;
+}
+
+.orders-time {
+  color: #706F6F;
+  font-weight: 500;
+  text-align: center;
+}
+
+.rooms-image {
+  max-height: 2rem;
+  margin-right: 1rem;
+}
+.title-margin{
+  margin-top: 5rem;
+}
+.orders-past{
+  background: #e5e0e0f5 !important;
+}
+
+
+@media (max-width: 900px) {
+  .property-name span {
+    margin-left: 0;
+  }
+
+  .rooms-row {
+    margin-top: 2rem;
+  }
+
+  .property-name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-item {
+    height: auto;
+  }
+
+  .orders-button {
+    margin-top: 3rem !important;
+    /*included *!important* - conflicting with MUI */
+  }
+
+  .orders-time {
+    margin-top: 2rem;
+  }
 }

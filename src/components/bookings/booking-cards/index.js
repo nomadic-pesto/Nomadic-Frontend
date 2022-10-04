@@ -8,10 +8,12 @@ import { Grid } from "@mui/material";
 
 //importing other components
 import Loader from "../../common/loader";
-import CardWithImage from "../../common/cardWithImage";
-
-import roomsImage from "../../../public/images/sofa.png";
 import ButtonComponent from "../../common/button";
+
+//importing images
+import CardWithImage from "../../common/cardWithImage";
+import roomsImage from "../../../public/images/sofa.png";
+
 
 const BookingCards = () => {
   const [loading, setLoading] = useState(false);
