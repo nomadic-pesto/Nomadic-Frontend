@@ -120,4 +120,7 @@
   .orders-time {
     margin-top: 2rem;
   }
+  .orders-container {
+    padding: 1rem ;
+  }
 }

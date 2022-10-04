@@ -1,10 +1,12 @@
 .bookings-card{
-    width: 100%;
+    width: 100% !important;/*included *!important* - conflicting with MUI */
     padding: 1rem 1rem !important;/*included *!important* - conflicting with MUI */
     background: #fff;
     margin-top: 2rem !important;/*included *!important* - conflicting with MUI */
     border-radius: 0.8rem !important;/*included *!important* - conflicting with MUI */
     box-shadow: 0px 4px 4px 0px #00000040;
+    margin-left: 0 !important;/*included *!important* - conflicting with MUI */
+
 }
 .bookings-grid-item{
     padding: 0 !important;/*included *!important* - conflicting with MUI */

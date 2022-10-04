@@ -46,17 +46,6 @@ const MyPropertiesCards = () => {
                   2 rooms
                 </span>
               </div>
-              <div className={`${styles["rooms-row"]} ${styles["date"]} `}>
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-right"]}`}
-                >
-                  From
-                </span>
-                12/12/2022 - 15/12/2022
-              </div>
-              <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
-                Booked for ₹2,400
-              </div>
             </Grid>
             <Grid
               className={`${styles["properties-card-right"]} ${styles["card-item"]}`}
@@ -64,13 +53,22 @@ const MyPropertiesCards = () => {
               xs={12}
               md={4}
             >
-              <div className={styles["properties-time"]}>Check-in Time 11 am</div>
+              <div className={styles["properties-time"]}>
+                Check-in Time 11 am
+              </div>
               <ButtonComponent className={styles["properties-button"]}>
-                Cancel Booking
+                Edit Property
               </ButtonComponent>
             </Grid>
           </Grid>
         </CardWithImage>
+
+        <ButtonComponent 
+        
+        className={`${styles["properties-button"]} ${styles["add-property"]}`}
+        >
+          Add Property
+        </ButtonComponent>
       </div>
     </>
   );
