@@ -30,4 +30,16 @@ export const getPropertyByIdService = async(id) =>{
     return await apiCall(`${constants.BACKEND_URL}/v1/rental/${id}`,'GET',{})
 }
 
+export const getBookingsService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/booking/getAllBookingUser/${id}`,'GET',{})
+}
+
+export const getBookingsServiceAdmin = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/booking/getAllBookingAdmin/${id}`,'GET',{})
+}
+
+export const getPropertiesService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/rental/owner/${id}`,'GET',{})
+}
+
 

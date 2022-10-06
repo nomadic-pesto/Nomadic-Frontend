@@ -11,7 +11,8 @@ const Toast = (props) => {
   return (
     <>
       <ToastContainer 
-      
+      autoClose={2500}
+      hideProgressBar
       />
     </>
   );

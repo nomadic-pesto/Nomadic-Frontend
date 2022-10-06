@@ -26,6 +26,9 @@
 .header-name{
     justify-content: center;
 }
+.login-button{
+    padding: 0.4rem 3rem !important;/*included *!important* - conflicting with MUI */
+}
 
 @media (max-width: 1000px) {
     .nomadic{
@@ -35,5 +38,8 @@
     .profile-image{
         height: 2rem;
         width: 2rem;
+    }
+    .login-button{
+        padding: 0.4rem 1.5rem !important;/*included *!important* - conflicting with MUI */
     }
 }

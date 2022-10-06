@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 //importing styles
 import styles from "./styles.module.css";
@@ -14,66 +16,116 @@ import Loader from "../../common/loader";
 import CardWithImage from "../../common/cardWithImage";
 import ButtonComponent from "../../common/button";
 
-const MyPropertiesCards = () => {
+import { getProperties } from "../../../actions/propertyAction";
+
+//importing toastr
+import { toast } from "react-toastify";
+
+const MyPropertiesCards = ({getProperties}) => {
   const [loading, setLoading] = useState(false);
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    setProperties([]);
+    getPropertiesHandler();
+  }, []);
+
+  const navigate = useNavigate();
+
+  const getPropertiesHandler = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user._id && user.name && localStorage.getItem("authToken")) {
+      setLoading(true);
+
+      const propertiesResponse = await getProperties(user._id);
+     console.log(propertiesResponse)
+      if (
+        propertiesResponse.status === "success" &&
+        propertiesResponse.data.rental.length > 0
+      ) {
+        propertiesResponse.data.rental.forEach((rental) => {
+          setProperties((prev) => [
+            ...prev,
+            <Fragment key={rental._id}>
+              <CardWithImage image={rental.originalImages[0]}>
+                <Grid
+                  container
+                  spacing={2}
+                  className={styles["properties-card"]}
+                >
+                  <Grid
+                    className={`${styles["properties-card-left"]} ${styles["card-item"]}`}
+                    item
+                    xs={12}
+                    md={8}
+                  >
+                    <div className={styles["property-name"]}>
+                    {rental.rentalName}
+                      <span
+                        className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                      >
+                       {rental.district}, {rental.state}
+                      </span>
+                    </div>
+                    <div className={styles["rooms-row"]}>
+                      <img className={styles["rooms-image"]} src={roomsImage} />
+                      <span
+                        className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                      >
+                        {rental.noOfPeopleAccomodate} rooms
+                      </span>
+                    </div>
+                  </Grid>
+                  <Grid
+                    className={`${styles["properties-card-right"]} ${styles["card-item"]}`}
+                    item
+                    xs={12}
+                    md={4}
+                  >
+                    <div className={styles["properties-time"]}>
+                      Check-in Time 11 am
+                    </div>
+                    <ButtonComponent className={styles["properties-button"]}>
+                      Edit Property
+                    </ButtonComponent>
+                  </Grid>
+                </Grid>
+              </CardWithImage>
+            </Fragment>,
+          ]);
+        });
+      } else {
+        setProperties([]);
+        toast.error("No Properties found!");
+      }
+
+      setLoading(false);
+    } else {
+      toast.error("Please Login!");
+      navigate("/dashboard");
+    }
+  };
 
   return (
     <>
       {loading && <Loader />}
       <div className={styles["properties-container"]}>
         <div className={styles["title"]}>My Properties</div>
-        <CardWithImage image="https://user-images.githubusercontent.com/38355753/192111149-954a08fa-f366-4eb6-b4ee-b98d2334bb74.jpg">
-          <Grid container spacing={2} className={styles["properties-card"]}>
-            <Grid
-              className={`${styles["properties-card-left"]} ${styles["card-item"]}`}
-              item
-              xs={12}
-              md={8}
-            >
-              <div className={styles["property-name"]}>
-                New Village Appartment
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-left"]}`}
-                >
-                  Old Town, Shimla
-                </span>
-              </div>
-              <div className={styles["rooms-row"]}>
-                <img className={styles["rooms-image"]} src={roomsImage} />
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-left"]}`}
-                >
-                  2 rooms
-                </span>
-              </div>
-              <div className={`${styles["rooms-row"]} ${styles["date"]} `}>
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-right"]}`}
-                >
-                  From
-                </span>
-                12/12/2022 - 15/12/2022
-              </div>
-              <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
-                Booked for ₹2,400
-              </div>
-            </Grid>
-            <Grid
-              className={`${styles["properties-card-right"]} ${styles["card-item"]}`}
-              item
-              xs={12}
-              md={4}
-            >
-              <div className={styles["properties-time"]}>Check-in Time 11 am</div>
-              <ButtonComponent className={styles["properties-button"]}>
-                Cancel Booking
-              </ButtonComponent>
-            </Grid>
-          </Grid>
-        </CardWithImage>
+
+        {properties.map((rental) => rental)}
+        <ButtonComponent
+          className={`${styles["properties-button"]} ${styles["add-property"]}`}
+        >
+          Add Property
+        </ButtonComponent>
       </div>
     </>
   );
 };
 
-export default MyPropertiesCards;
+
+const mapStateToProps = (state) => ({
+  propertyState: state.propertyReducer,
+});
+
+export default connect(mapStateToProps, {getProperties  })(MyPropertiesCards);

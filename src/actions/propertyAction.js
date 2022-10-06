@@ -1,4 +1,4 @@
-import { getAllPropertiesService, getPropertyByIdService, getSearchPropertiesService } from "../services/propertyServices";
+import { getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyByIdService, getSearchPropertiesService } from "../services/propertyServices";
 import { constants } from "../utils/constants";
 import { types } from "./actionTypes";
 
@@ -60,3 +60,26 @@ export const getMoreProperties =
     let propertyDetails = await getPropertyByIdService(id);
     return propertyDetails;
   };
+
+  export const getBookings =
+  (id) =>
+  async (dispatch) => {
+    let getBookings = await getBookingsService(id);
+    return getBookings;
+  };
+
+  export const getBookingsAdmin =
+  (id) =>
+  async (dispatch) => {
+    let getBookings = await getBookingsServiceAdmin(id);
+    return getBookings;
+  };
+
+  export const getProperties =
+  (id) =>
+  async (dispatch) => {
+    let getBookings = await getPropertiesService(id);
+    return getBookings;
+  };
+
+

@@ -16,11 +16,17 @@
 .properties-card{
   height: 100%;
 }
-.properties-card-left,
+.properties-card-left {
+  display: flex !important;
+  /*included *!important* - conflicting with MUI */
+  flex-direction: column !important;
+
+}
 .properties-card-right{
   display: flex !important;/*included *!important* - conflicting with MUI */
   flex-direction: column !important;/*included *!important* - conflicting with MUI */
   justify-content: space-between;
+  padding: 3rem 0 2rem !important;
 }
 .card-item{
   height: 100%;
@@ -57,7 +63,10 @@
   max-height: 2rem;
   margin-right: 1rem;
 }
-
+.add-property{
+  margin-top: 5rem !important;/*included *!important* - conflicting with MUI */
+  padding: 0.4rem 3rem !important;/*included *!important* - conflicting with MUI */
+}
 
 @media (max-width: 900px) {
   .property-name span {
@@ -78,5 +87,11 @@
   }
   .properties-time{
       margin-top: 2rem;
+  }
+  .properties-card-right {
+    padding-left: 1rem !important;
+  }
+  .properties-container {
+    padding: 1rem;
   }
 }

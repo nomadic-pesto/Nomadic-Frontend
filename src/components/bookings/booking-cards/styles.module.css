@@ -100,4 +100,7 @@
     .bookings-time{
         margin-top: 2rem;
     }
+    .bookings-container {
+        padding: 1rem;
+    }
 }

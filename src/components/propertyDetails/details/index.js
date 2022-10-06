@@ -42,7 +42,7 @@ const Details = ({getPropertyById}) => {
       setDisplayProperty(propertyDetails.data.rental)
     }
     else{
-      toast.success("Property Not found");
+      toast.error("Property Not found");
       navigate("/dashboard");
     }
    

@@ -29,7 +29,7 @@ const WishlistCards = () => {
               className={`${styles["wishlist-card-left"]} ${styles["card-item"]}`}
               item
               xs={12}
-              md={8}
+              md={7}
             >
               <div className={styles["property-name"]}>
                 New Village Appartment
@@ -47,28 +47,29 @@ const WishlistCards = () => {
                   2 rooms
                 </span>
               </div>
-              <div className={`${styles["rooms-row"]} ${styles["date"]} `}>
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-right"]}`}
-                >
-                  From
-                </span>
-                12/12/2022 - 15/12/2022
-              </div>
-              <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
-                Booked for ₹2,400
-              </div>
             </Grid>
             <Grid
               className={`${styles["wishlist-card-right"]} ${styles["card-item"]}`}
               item
               xs={12}
-              md={4}
+              md={5}
             >
               <div className={styles["wishlist-time"]}>Check-in Time 11 am</div>
-              <ButtonComponent className={styles["wishlist-button"]}>
-                Cancel Booking
+              <div
+              className={styles["wishlist-buttons"]}
+              >
+              <ButtonComponent 
+               className={`${styles["wishlist-button"]} ${styles["danger-button"]}`}
+              >
+                Remove
               </ButtonComponent>
+
+              <ButtonComponent className={styles["wishlist-button"]}>
+                Book Now
+              </ButtonComponent>
+
+              </div>
+             
             </Grid>
           </Grid>
         </CardWithImage>

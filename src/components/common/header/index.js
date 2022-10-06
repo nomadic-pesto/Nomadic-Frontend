@@ -23,6 +23,7 @@ import styles from "./styles.module.css";
 
 //importing other comps.
 import Search from "./search";
+import ButtonComponent from "../button";
 
 const Header = ({ displaySearch = false }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -70,7 +71,18 @@ const Header = ({ displaySearch = false }) => {
           <img className={styles["nomadic"]} src={nomadic} />
         </Link>
         {displaySearch && <Search />}
-        <Tooltip title="Account settings">
+        {
+          !loggedIn && 
+          <>
+            <ButtonComponent
+            onClick={()=>navigate('/login')}
+              className={styles["login-button"]}
+              >Login</ButtonComponent>
+              
+          </>
+        
+        }
+        {loggedIn &&  <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -81,9 +93,9 @@ const Header = ({ displaySearch = false }) => {
           >
             <img className={styles["profile-image"]} src={profile} />
           </IconButton>
-        </Tooltip>
+        </Tooltip>}
       </Box>
-      <Menu
+      {loggedIn && <Menu
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
@@ -189,7 +201,7 @@ const Header = ({ displaySearch = false }) => {
             </MenuItem>
           </div>
         )}
-      </Menu>
+      </Menu>}
     </div>
   );
 };
