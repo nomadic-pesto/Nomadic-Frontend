@@ -64,7 +64,7 @@
   margin-right: 1rem;
 }
 .add-property{
-  margin-top: 5rem;
+  margin-top: 5rem !important;/*included *!important* - conflicting with MUI */
   padding: 0.4rem 3rem !important;/*included *!important* - conflicting with MUI */
 }
 

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //importing styles
 import styles from "./styles.module.css";
@@ -15,11 +16,28 @@ import Loader from "../../common/loader";
 import TextFieldComponent from "../../common/textField";
 import Button from "./../../common/button";
 
+//importing toastr
+import { toast } from "react-toastify";
+
 const ProfileFields = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user._id && user.name && localStorage.getItem("authToken")) {
+
+    }
+    else{
+      toast.error("Please Login!");
+      navigate("/dashboard");
+    }
+  }, [])
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  
   const initialValues = {
-    name: "",
+    name: user.name ? user.name : "",
     phoneNumber: "",
-    email: "",
+    email: user.email ? user.email : "",
     address: "",
   };
   const [loading, setLoading] = useState(false);
