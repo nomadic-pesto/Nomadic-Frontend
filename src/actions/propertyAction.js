@@ -1,4 +1,4 @@
-import { getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyByIdService, getSearchPropertiesService } from "../services/propertyServices";
+import { cancelBookingsService, getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyByIdService, getSearchPropertiesService, getWishlistService, removeWishlistService } from "../services/propertyServices";
 import { constants } from "../utils/constants";
 import { types } from "./actionTypes";
 
@@ -80,6 +80,28 @@ export const getMoreProperties =
   async (dispatch) => {
     let getBookings = await getPropertiesService(id);
     return getBookings;
+  };
+
+
+  export const getWishlist =
+  (id) =>
+  async (dispatch) => {
+    let wishlist = await getWishlistService(id);
+    return wishlist;
+  };
+
+  export const removeWishlist =
+  (id) =>
+  async (dispatch) => {
+    let wishlist = await removeWishlistService(id);
+    return wishlist;
+  };
+
+  export const cancelBookings =
+  (id) =>
+  async (dispatch) => {
+    let cancelBookings = await cancelBookingsService(id);
+    return cancelBookings;
   };
 
 

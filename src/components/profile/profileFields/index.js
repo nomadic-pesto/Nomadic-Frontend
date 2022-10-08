@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 //importing styles
 import styles from "./styles.module.css";
@@ -15,11 +16,13 @@ import Grid from "@mui/material/Grid";
 import Loader from "../../common/loader";
 import TextFieldComponent from "../../common/textField";
 import Button from "./../../common/button";
+import { editProfile } from "../../../actions/userAction";
 
 //importing toastr
 import { toast } from "react-toastify";
 
-const ProfileFields = () => {
+
+const ProfileFields = ({userState,editProfile}) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,9 +39,9 @@ const ProfileFields = () => {
   
   const initialValues = {
     name: user.name ? user.name : "",
-    phoneNumber: "",
+    phoneNumber: user.mobileNumber ? user.mobileNumber : "",
     email: user.email ? user.email : "",
-    address: "",
+    address: user.address ? user.address : "",
   };
   const [loading, setLoading] = useState(false);
 
@@ -51,7 +54,19 @@ const ProfileFields = () => {
   });
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    
+    setLoading(true);
+    const editProfileResponse =  await editProfile({...values,token:localStorage.getItem("authToken")});
+    if(editProfileResponse.status === 'success'){
+      localStorage.setItem("user",JSON.stringify(editProfileResponse.data.user));
+      toast.success("Profile Updated!");
+      navigate("/dashboard");
+    }else{
+      let errorMessage = editProfileResponse.message ? editProfileResponse.message : "Error Occurred!"
+      toast.error(errorMessage);
+    }
+   
+    setLoading(false);
   };
 
   return (
@@ -181,4 +196,9 @@ const ProfileFields = () => {
   );
 };
 
-export default ProfileFields;
+const mapStateToProps = (state) => ({
+  userState: state.userReducer,
+});
+
+
+export default connect(mapStateToProps, {editProfile})(ProfileFields);

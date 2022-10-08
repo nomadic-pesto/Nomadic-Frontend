@@ -38,7 +38,6 @@ const MyPropertiesCards = ({getProperties}) => {
       setLoading(true);
 
       const propertiesResponse = await getProperties(user._id);
-     console.log(propertiesResponse)
       if (
         propertiesResponse.status === "success" &&
         propertiesResponse.data.rental.length > 0

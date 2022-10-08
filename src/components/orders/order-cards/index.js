@@ -20,7 +20,7 @@ import { getBookingsAdmin } from "../../../actions/propertyAction";
 //importing toastr
 import { toast } from "react-toastify";
 
-const OrderCards = ({getBookingsAdmin}) => {
+const OrderCards = ({ getBookingsAdmin }) => {
   const [loading, setLoading] = useState(false);
   const [upcomingBookings, setUpcomingBookings] = useState([]);
   const [pastBookings, setPastBookings] = useState([]);
@@ -42,115 +42,130 @@ const OrderCards = ({getBookingsAdmin}) => {
         bookingsResponse.status === "success" &&
         bookingsResponse.data.bookings.length > 0
       ) {
-      
         bookingsResponse.data.bookings.forEach((booking) => {
           if (new Date(booking.startDate) > new Date()) {
             setUpcomingBookings((prev) => [
               ...prev,
               <Fragment key={booking._id}>
-                 <CardWithImage image="https://user-images.githubusercontent.com/38355753/192111149-954a08fa-f366-4eb6-b4ee-b98d2334bb74.jpg">
-          <Grid container spacing={2} className={styles["orders-card"]}>
-            <Grid
-              className={`${styles["orders-card-left"]} ${styles["card-item"]}`}
-              item
-              xs={12}
-              md={8}
-            >
-              <div className={styles["property-name"]}>
-                {booking.rentalID.rentalName}
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-left"]}`}
-                >
-                  {booking.rentalID.subDestination}
-                </span>
-              </div>
-              <div className={styles["rooms-row"]}>
-                <img className={styles["rooms-image"]} src={roomsImage} />
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-left"]}`}
-                >
-                  {booking.rentalID.noOfPeopleAccomodate} rooms
-                </span>
-              </div>
-            </Grid>
-            <Grid
-              className={`${styles["orders-card-right"]} ${styles["card-item"]}`}
-              item
-              xs={12}
-              md={4}
-            >
-              <div className={styles["orders-time"]}>
-                {booking.userID.name}
-                <div className={`${styles["phone"]}`}>
-                {booking.userID.email}
-                </div>
-              </div>
-              <div className={styles["orders-time"]}>
-              {new Date(booking.startDate).toLocaleDateString('en-GB')} - {new Date(booking.endDate).toLocaleDateString('en-GB')}
-              </div>
-              <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
-                Booked for ₹2,400
-              </div>
-            </Grid>
-          </Grid>
-        </CardWithImage>
+                <CardWithImage image={booking.rentalID.originalImages[0]}>
+                  <Grid container spacing={2} className={styles["orders-card"]}>
+                    <Grid
+                      className={`${styles["orders-card-left"]} ${styles["card-item"]}`}
+                      item
+                      xs={12}
+                      md={8}
+                    >
+                      <div className={styles["property-name"]}>
+                        {booking.rentalID.rentalName}
+                        <span
+                          className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                        >
+                          {booking.rentalID.subDestination}, {booking.rentalID.state}
+                        </span>
+                      </div>
+                      <div className={styles["rooms-row"]}>
+                        <img
+                          className={styles["rooms-image"]}
+                          src={roomsImage}
+                        />
+                        <span
+                          className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                        >
+                          {booking.rentalID.noOfPeopleAccomodate} rooms
+                        </span>
+                      </div>
+                    </Grid>
+                    <Grid
+                      className={`${styles["orders-card-right"]} ${styles["card-item"]}`}
+                      item
+                      xs={12}
+                      md={4}
+                    >
+                      <div className={styles["orders-time"]}>
+                        {booking.userID.name}
+                        <div className={`${styles["phone"]}`}>
+                          {booking.userID.email}
+                        </div>
+                      </div>
+                      <div className={styles["orders-time"]}>
+                        {new Date(booking.startDate).toLocaleDateString(
+                          "en-GB"
+                        )}{" "}
+                        -{" "}
+                        {new Date(booking.endDate).toLocaleDateString("en-GB")}
+                      </div>
+                      <div
+                        className={`${styles["rooms-row"]} ${styles["price"]} `}
+                      >
+                        Booked for ₹{booking.rentalID.price.toLocaleString()}
+                      </div>
+                    </Grid>
+                  </Grid>
+                </CardWithImage>
               </Fragment>,
             ]);
-          
-          } 
-          else{
+          } else {
             setPastBookings((prev) => [
               ...prev,
               <Fragment key={booking._id}>
-                  <CardWithImage 
-        image="https://user-images.githubusercontent.com/38355753/192111149-954a08fa-f366-4eb6-b4ee-b98d2334bb74.jpg"
-        className={styles["orders-past"]}
-        >
-          <Grid container spacing={2} className={styles["orders-card"]}>
-            <Grid
-              className={`${styles["orders-card-left"]} ${styles["card-item"]}`}
-              item
-              xs={12}
-              md={8}
-            >
-              <div className={styles["property-name"]}>
-                {booking.rentalID.rentalName}
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                <CardWithImage
+                  image={booking.rentalID.originalImages[0]}
+                  className={styles["orders-past"]}
                 >
-                  {booking.rentalID.subDestination}
-                </span>
-              </div>
-              <div className={styles["rooms-row"]}>
-                <img className={styles["rooms-image"]} src={roomsImage} />
-                <span
-                  className={`${styles["text-thin"]} ${styles["margin-left"]}`}
-                >
-                  {booking.rentalID.noOfPeopleAccomodate} rooms
-                </span>
-              </div>
-            </Grid>
-            <Grid
-              className={`${styles["orders-card-right"]} ${styles["card-item"]}`}
-              item
-              xs={12}
-              md={4}
-            >
-              <div className={styles["orders-time"]}>
-              {booking.userID.name}
-                <div className={`${styles["phone"]}`}>
-                {booking.userID.email}
-                </div>
-              </div>
-              <div className={styles["orders-time"]}>
-              {new Date(booking.startDate).toLocaleDateString('en-GB')} - {new Date(booking.endDate).toLocaleDateString('en-GB')}
-              </div>
-              <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
-                Booked for ₹2,400
-              </div>
-            </Grid>
-          </Grid>
-        </CardWithImage>
+                  <Grid container spacing={2} className={styles["orders-card"]}>
+                    <Grid
+                      className={`${styles["orders-card-left"]} ${styles["card-item"]}`}
+                      item
+                      xs={12}
+                      md={8}
+                    >
+                      <div className={styles["property-name"]}>
+                        {booking.rentalID.rentalName}
+                        <span
+                          className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                        >
+                          {booking.rentalID.subDestination}, {booking.rentalID.state}
+                        </span>
+                      </div>
+                      <div className={styles["rooms-row"]}>
+                        <img
+                          className={styles["rooms-image"]}
+                          src={roomsImage}
+                        />
+                        <span
+                          className={`${styles["text-thin"]} ${styles["margin-left"]}`}
+                        >
+                          {booking.rentalID.noOfPeopleAccomodate} rooms
+                        </span>
+                      </div>
+                    </Grid>
+                    <Grid
+                      className={`${styles["orders-card-right"]} ${styles["card-item"]}`}
+                      item
+                      xs={12}
+                      md={4}
+                    >
+                      <div className={styles["orders-time"]}>
+                        {booking.userID.name}
+                        <div className={`${styles["phone"]}`}>
+                          {booking.userID.email}
+                        </div>
+                      </div>
+                      <div className={styles["orders-time"]}>
+                        {new Date(booking.startDate).toLocaleDateString(
+                          "en-GB"
+                        )}{" "}
+                        -{" "}
+                        {new Date(booking.endDate).toLocaleDateString("en-GB")}
+                      </div>
+                      <div
+                        className={`${styles["rooms-row"]} ${styles["price"]} `}
+                      >
+                        Booked for ₹{booking.rentalID.price.toLocaleString()}
+                      </div>
+                    </Grid>
+                  </Grid>
+                </CardWithImage>
               </Fragment>,
             ]);
           }
@@ -168,9 +183,9 @@ const OrderCards = ({getBookingsAdmin}) => {
   };
 
   const setBookingsEmpty = () => {
-    setUpcomingBookings([])
-    setPastBookings([])
-  }
+    setUpcomingBookings([]);
+    setPastBookings([]);
+  };
 
   return (
     <>
@@ -179,9 +194,10 @@ const OrderCards = ({getBookingsAdmin}) => {
         <div className={styles["title"]}>Upcoming Orders</div>
         {upcomingBookings.map((booking) => booking)}
 
-        <div className={`${styles["title"]} ${styles["title-margin"]}`}>Past Orders</div>
+        <div className={`${styles["title"]} ${styles["title-margin"]}`}>
+          Past Orders
+        </div>
         {pastBookings.map((booking) => booking)}
-      
       </div>
     </>
   );
@@ -191,4 +207,4 @@ const mapStateToProps = (state) => ({
   propertyState: state.propertyReducer,
 });
 
-export default connect(mapStateToProps, {getBookingsAdmin  })(OrderCards);
+export default connect(mapStateToProps, { getBookingsAdmin })(OrderCards);

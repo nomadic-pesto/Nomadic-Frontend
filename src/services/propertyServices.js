@@ -42,4 +42,18 @@ export const getPropertiesService = async(id) =>{
   return await apiCall(`${constants.BACKEND_URL}/v1/rental/owner/${id}`,'GET',{})
 }
 
+export const getWishlistService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/wishlist/getWishlistData/${id}`,'GET',{})
+}
+
+export const removeWishlistService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/wishlist/deleteWishlist/${id}`,'DELETE',{})
+}
+
+export const cancelBookingsService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/booking/cancelBooking/${id}`,'PATCH',{},{"isCancelled": true})
+}
+
+
+
 
