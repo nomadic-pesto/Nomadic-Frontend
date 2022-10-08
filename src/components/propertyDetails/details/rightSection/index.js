@@ -30,15 +30,18 @@ console.log(orderResponse)
       "image": "https://example.com/your_logo", //need to to upload the image for display
       "order_id": orderResponse.data.id, 
       "handler": async function (response){
-        if (response.razorpay_payment_id){ await apiCall('http://localhost:5001/v1/payment/paymentVerification','POST',{},{
+        if (response.razorpay_payment_id){ const verification= await apiCall('http://localhost:5001/v1/payment/paymentVerification','POST',{},{
           razorpay_order_id:response.razorpay_order_id,
           razorpay_payment_id:response.razorpay_payment_id,
-          razorpay_signature:response.razorpay_signature,
-        }) }
-         
+          razorpay_signature:response.razorpay_signature,         //have to not create orde when verification fails -- implment here
+        }) 
+      
+        if(verification.status){}
         const bookingResponse = await apiCall('http://localhost:5001/v1/booking/bookARental','POST',{},{transactionID:orderResponse.data.id,rentalID: "633b0d5dc83f68055824eb97",userID: "63317eee2f88b24aefbd2659",startDate:1664826173280,endDate: 1664896173280,bookingDate: 1664896173280,userEmail: "user@email.com",ownerId:"63317eee2f88b24aefbd2659",bookingCost: 5000})
          console.log(bookingResponse) 
          navigate("/dashboard");
+      }
+         
       },
       "prefill": {
           "name": "Daniel raj", //need to to know the reducer value to input
