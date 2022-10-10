@@ -1,4 +1,5 @@
 import {
+  editProfileService,
   forgotService,
   loginUserService,
   resetPasswordService,
@@ -56,4 +57,14 @@ export const resetPassword =
       errorData: null,
       responseData: resetPasswordResponse,
     };
+  };
+
+  export const editProfile =
+  ({ name, phoneNumber,address,token }) =>
+  async (dispatch) => {
+    let signupResponse = await editProfileService(
+      name, phoneNumber,address,token
+    );
+   
+    return signupResponse;
   };

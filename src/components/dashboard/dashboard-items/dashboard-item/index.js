@@ -11,6 +11,7 @@ import styles from "./styles.module.css";
 //importing images
 // import dashboardTestImage from "../../../../public/images/dashboard-test-image.jpg";
 import heartIconFilled from "../../../../public/images/heart-icon-filled.svg";
+import heartIconUnfilled from "../../../../public/images/heart-icon.svg";
 import roomsImage from "../../../../public/images/sofa.png";
 
 const DashboardItem = ({ property }) => {
@@ -42,7 +43,11 @@ const DashboardItem = ({ property }) => {
               <section className={styles["info-top"]}>
                 <div className={styles["info-heading"]}>
                   {property.rentalName}
-                  <img src={heartIconFilled} alt="Wishlist" />
+                  <img 
+                  src={heartIconUnfilled} 
+                  alt="Wishlist" 
+                  // onClick={addToWishlist}
+                  />
                 </div>
                 <div className={styles["info-sub-heading"]}>
                   {property.streetName}

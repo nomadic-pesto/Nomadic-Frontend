@@ -79,6 +79,24 @@
 .danger-button:hover{
     background: #c26460 !important;/*included *!important* - conflicting with MUI */
 }
+.modal-padding{
+    padding: 5rem 2rem !important;
+}
+.modal-text{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.modal-buttons{
+    margin-top: 8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.modal-buttons .bookings-button{
+    border-radius: 0.2rem !important;
+    padding: 0.75rem 4rem !important;
+}
 
 @media (max-width: 900px) {
     .property-name span {
@@ -102,5 +120,12 @@
     }
     .bookings-container {
         padding: 1rem;
+    }
+    .modal-padding{
+        padding: 5rem 1rem !important;
+        width: 80% !important;
+    }
+    .modal-buttons .bookings-button{
+        padding: 0.75rem 2rem !important;
     }
 }
