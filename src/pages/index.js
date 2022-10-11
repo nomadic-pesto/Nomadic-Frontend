@@ -14,6 +14,7 @@ import Bookings from "./bookings";
 import Orders from "./orders";
 import Wishlist from "./wishlist";
 import MyProperties from "./myProperties";
+import Property from "./property";
 
 
 const AllPages = () => {
@@ -35,6 +36,7 @@ const AllPages = () => {
         <Route exact path="/orders" element={<Orders/>}/>
         <Route exact path="/wishlist" element={<Wishlist />}/>
         <Route exact path="/properties" element={<MyProperties />}/>
+        <Route exact path="/property/:id" element={<Property />}/>
         </Routes>
       </BrowserRouter>
     </>
