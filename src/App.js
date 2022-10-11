@@ -24,8 +24,8 @@ const theme = createTheme({
     },
     danger: {
       light: '#f73f2f',
-      main: '#f73f2f',
-      dark: '#c33200',
+      main: '#ff0040',
+      dark: '#dd043b',
       contrastText: '#fff',
     },
     success:{
