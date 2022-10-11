@@ -1,5 +1,6 @@
 .dashboard {
-    background: linear-gradient(#ffafbc6e,#ffc3a09e);
+    /* background: linear-gradient(#ffafbc6e,#ffc3a09e); */
+    background: #fff;
     /* background: rgb(239, 239, 239, 0.82); */
     padding: 2rem 2rem;
     min-height: 83vh;

@@ -12,6 +12,7 @@ import styles from "./styles.module.css";
 // import dashboardTestImage from "../../../../public/images/dashboard-test-image.jpg";
 import heartIconFilled from "../../../../public/images/heart-icon-filled.svg";
 import heartIconUnfilled from "../../../../public/images/heart-icon.svg";
+import heart from "../../../../public/images/heart.png";
 import roomsImage from "../../../../public/images/sofa.png";
 
 const DashboardItem = ({ property }) => {
@@ -32,11 +33,13 @@ const DashboardItem = ({ property }) => {
             <Grid item md={6} xs={12} padding={0}>
               {property.thumbnailImages &&
                 property.thumbnailImages.length > 0 && (
+                  <div className={styles["card-image-section"]}>
                   <img
                     className={styles["main-image"]}
                     src={property.thumbnailImages[0]}
                     alt="Property"
                   />
+                  </div>
                 )}
             </Grid>
             <Grid item md={6} xs={12} padding={0} className={styles["info"]}>
@@ -44,7 +47,7 @@ const DashboardItem = ({ property }) => {
                 <div className={styles["info-heading"]}>
                   {property.rentalName}
                   <img 
-                  src={heartIconUnfilled} 
+                  src={heart} 
                   alt="Wishlist" 
                   // onClick={addToWishlist}
                   />

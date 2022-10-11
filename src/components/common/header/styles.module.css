@@ -3,10 +3,14 @@
 }
 .main-header{
     /* background: rgb(239, 239, 239, 0.82); */
-    background: #ffafbc6e;
+    /* background: #ffafbc6e; */
     padding: 0.5rem 2rem;
     display: flex;
     /* justify-content: space-between; */
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 2;
 }
 .profile-image{
     height: 3rem;

@@ -18,14 +18,14 @@ const theme = createTheme({
   palette: {
     primary: {
       light: '#3c88f180',
-      main: '#3c88f1d9',
+      main: '#924bf8',
       dark: '#3c88f1',
       contrastText: '#fff',
     },
     danger: {
-      light: '#DF736E',
-      main: '#DF736E',
-      dark: '#DF736E',
+      light: '#f73f2f',
+      main: '#f73f2f',
+      dark: '#c33200',
       contrastText: '#fff',
     },
     success:{
