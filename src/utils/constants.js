@@ -13,5 +13,12 @@ export const constants = {
     {icon:"fa-map-signs",name:"Farms"},
     {icon:"fa-sun-o",name:"Plantation"},
   ],
+  SUB_DESTINATION_TYPES: [
+    {name:"Sub1"},
+    {name: "Sub2"},
+    {name:"Sub3"},
+    {name:"Sub4"},
+    {name:"Sub5"}
+  ],
   SLIDER_MAX_VALUE : 10000
 };
