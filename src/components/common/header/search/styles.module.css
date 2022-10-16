@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.3rem 0.5rem 0.3rem 1rem;
+    border: 2px solid #f72ca685;
 }
 input{
     width: 80%;

@@ -1,22 +1,22 @@
 import React from "react";
 
 // imporitng text field  from materalUi
-import TextField from "@mui/material/TextField";
+
 import { ErrorMessage, useField } from "formik";
 
 //importing styles
 import styles from "./styles.module.css";
-import { Box } from "@mui/material";
+import { Box, TextareaAutosize } from "@mui/material";
 
-const TextFieldComponent = (props) => {
+const TextAreaComponent = (props) => {
   const width = props.width;
 
   const [field, meta] = useField(props);
   return (
     <>
-      <TextField
+      <TextareaAutosize
         id={props.id}
-        type={props.type}
+       
         className={`${styles["common-textfield"]} ${
           meta.touched && meta.error
         } ${props.className}`}
@@ -24,13 +24,14 @@ const TextFieldComponent = (props) => {
         name={props.name}
         placeholder={props.placeholder}
         margin={props.margin}
-        fullWidth
+        
         disabled={props.disabled ? props.disabled : false}
-        InputProps={props.inputProps}
+        
+        minRows={props.lines}
       />
       <ErrorMessage component="div" name={field.name}  className={`${styles["error"]}`}/>
     </>
   );
 };
 
-export default TextFieldComponent;
+export default TextAreaComponent;

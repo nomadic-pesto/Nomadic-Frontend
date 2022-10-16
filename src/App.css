@@ -8,14 +8,15 @@ body{
   height: 0.5rem;
 }
 ::-webkit-scrollbar-button {
-  background: #eee;
+  background: #fff;
   display: none;
 }
 ::-webkit-scrollbar-track-piece {
-  background: #eee
+  background: #fff
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(136, 136, 136, 0.478)
+  background: rgba(136, 136, 136, 0.478);
+  border-radius: 2rem;
 }
 
 .App {
