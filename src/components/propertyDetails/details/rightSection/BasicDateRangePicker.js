@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Dayjs } from "dayjs";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -12,22 +13,41 @@ import {
 //importing styles
 import styles from "./styles.module.css";
 
-export default function BasicDateRangePicker() {
-  const [value, setValue] = React.useState([null, null]);
+import { getPropertyBookedDates } from "../../../../actions/propertyAction";
+import { useParams } from "react-router-dom";
 
-  const dateRangeArray = {
-    startDate: "2022-10-17T00:00",
-    endDate: "2022-10-22T00:00",
+const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates }) => {
+  const [value, setValue] = React.useState([null, null]);
+  const [bookedDates, setBookedDates] = React.useState([]);
+
+  const params = useParams();
+
+  React.useEffect(() => {
+    getPropertyBookedDatesHandler();
+  }, []);
+
+  const getPropertyBookedDatesHandler = async () => {
+    const getBookedDates = await getPropertyBookedDates(params.id);
+    if (
+      getBookedDates.status === "success" &&
+      getBookedDates.data.blockedDates &&
+      getBookedDates.data.blockedDates.length > 0
+    ) {
+      setBookedDates(getBookedDates.data.blockedDates);
+    }
   };
 
-  function disableRandomDates(date) {
-
-    if(new Date(date).getTime() >= new Date(dateRangeArray.startDate).getTime() && new Date(date).getTime() <= new Date(dateRangeArray.endDate).getTime()){
-      return true
+  const disableRandomDates = (date) => {
+    for (let bookedDate of bookedDates) {
+      if (
+        new Date(date).getTime() >= new Date(bookedDate.startDate).getTime() &&
+        new Date(date).getTime() <= new Date(bookedDate.endDate).getTime()
+      ) {
+        return true;
+      }
     }
     return false;
-   
-  }
+  };
 
   return (
     <LocalizationProvider
@@ -47,9 +67,16 @@ export default function BasicDateRangePicker() {
           </div>
         )}
         disablePast
-        shouldDisableDate={(date)=>disableRandomDates(date)}
-        // shouldDisableDate={(date) => new Date(date).getTime() === new Date('2022-10-16T00:00').getTime()}
+        shouldDisableDate={(date) => disableRandomDates(date)}
       />
     </LocalizationProvider>
   );
-}
+};
+
+const mapStateToProps = (state) => ({
+  propertyState: state.propertyReducer,
+});
+
+export default connect(mapStateToProps, { getPropertyBookedDates })(
+  BasicDateRangePicker
+);

@@ -114,13 +114,13 @@ const DashboardItems = ({
           </Grid>
         </section>
         <section>
-          <ButtonComponent
+         {propertyState.loadMore && <ButtonComponent
             className={styles["load-more"]}
             onClick={loadmoreProducts}
             disabled={!propertyState.loadMore}
           >
             Load more
-          </ButtonComponent>
+          </ButtonComponent>}
         </section>
       </div>
     </>
