@@ -63,5 +63,9 @@ export const addToWishlistService = async(userId, rentalId) =>{
   return await apiCall(`${constants.BACKEND_URL}/v1/wishlist/addwishlist`,'POST',{},{userId, rentalId})
 }
 
+export const getPropertyBookedDatesService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/booking/getBlockDate/${id}`,'GET',{},{})
+}
+
 
 

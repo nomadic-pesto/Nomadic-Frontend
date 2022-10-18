@@ -38,6 +38,7 @@ const DashboardItem = ({ property, propertyState,addToWishlist }) => {
         setLoading(true);
         await addToWishlist(user._id,property._id);
         setLoading(false);
+        toast.success(`${property.rentalName} wishlisted!`);
 
       }
     } else {
