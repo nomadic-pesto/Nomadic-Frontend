@@ -1,5 +1,6 @@
 .book-now{
-    border: 1px solid #575757;
+    /* border: 1px solid #575757; */
+    border: 2px solid #f586146b;
     border-radius: 0.8rem;
     margin: 5rem 0 0 2rem;
     width: 100%;
@@ -15,14 +16,16 @@
     align-items: flex-start;
 }
 .border-bottom{
-    border-bottom: 1px solid #575757;
+    /* border-bottom: 1px solid #575757; */
+    border-bottom: 2px solid #f586146b;
 }
 .col-6{
     width: 50%;
     height: 100%;
 }
 .border-right{
-    border-right: 1px solid #575757;
+    /* border-right: 1px solid #575757; */
+    border-right: 2px solid #f586146b;
 }
 .book-now-button{
     width: 100%;
@@ -60,6 +63,9 @@
     margin: 0 2rem;
     width: 80%;
     font-weight: 500;
+}
+.guests{
+    width: 100% !important;
 }
 
 @media (max-width: 900px) {

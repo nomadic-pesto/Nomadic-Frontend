@@ -16,17 +16,17 @@ export default function BasicDateRangePicker() {
   const [value, setValue] = React.useState([null, null]);
 
   const dateRangeArray = {
-    startDate: "2022-10-10T19:42:53.280Z",
-    endDate: "2022-10-15T15:09:33.280Z",
+    startDate: "2022-10-17T00:00",
+    endDate: "2022-10-22T00:00",
   };
 
-  function disableRandomDates(day) {
-    console.log(day)
-    // if()
-    // const rN = Math.random() > 0.7;
-    // console.log(rN);
+  function disableRandomDates(date) {
 
-    // return rN;
+    if(new Date(date).getTime() >= new Date(dateRangeArray.startDate).getTime() && new Date(date).getTime() <= new Date(dateRangeArray.endDate).getTime()){
+      return true
+    }
+    return false;
+   
   }
 
   return (
@@ -47,7 +47,8 @@ export default function BasicDateRangePicker() {
           </div>
         )}
         disablePast
-        // shouldDisableDate={disableRandomDates}
+        shouldDisableDate={(date)=>disableRandomDates(date)}
+        // shouldDisableDate={(date) => new Date(date).getTime() === new Date('2022-10-16T00:00').getTime()}
       />
     </LocalizationProvider>
   );

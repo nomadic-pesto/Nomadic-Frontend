@@ -51,8 +51,12 @@
 
 }
 
-.info-heading img {
+.info-heading .heart-filled {
     max-height: 1.5rem;
+}
+
+.info-heading .heart-unfilled {
+    max-height: 1.2rem;
 }
 
 .info-sub-heading {

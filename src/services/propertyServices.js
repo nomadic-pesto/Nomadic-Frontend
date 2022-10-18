@@ -55,5 +55,13 @@ export const cancelBookingsService = async(id) =>{
 }
 
 
+export const getWishlistProductsWithoutDetailsService = async(id) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/wishlist/getWishlist/${id}`,'GET',{},{})
+}
+
+export const addToWishlistService = async(userId, rentalId) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/wishlist/addwishlist`,'POST',{},{userId, rentalId})
+}
+
 
 

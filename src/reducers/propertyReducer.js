@@ -14,6 +14,7 @@ export default (
     "price[gte]": "",
     "price[lte]": "",
     sort: "",
+    wishlist:[]
   },
   action
 ) => {
@@ -59,6 +60,16 @@ export default (
         limit: action.limit ? action.limit : constants.PRODUCT_LIMIT,
         loadMore: action.loadMore,
       };
+      case types.GET_WISHLIST:
+        return {
+          ...state,
+          wishlist:action.payload ? action.payload : [],
+        };
+        case types.ADD_WISHLIST:
+        return {
+          ...state,
+          wishlist:[...state.wishlist, (action.payload ? action.payload : {})],
+        };
     default:
       return state;
   }
