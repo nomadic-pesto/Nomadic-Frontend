@@ -1,8 +1,8 @@
 .property-container{
     padding: 1rem 2rem;
-    margin: auto;
+    margin: auto 20vw;
     /* background: rgb(239, 239, 239, 0.82); */
-    background: linear-gradient(#ffafbc6e,#ffc3a09e);
+
     min-height: 81vh;
     display: flex;
     flex-direction: column;
@@ -14,16 +14,19 @@
 
 .input-container {
     display: grid;
+
 }
 .input-title{
     font-size: 1.2rem;
     display: inherit;
+    font-weight: 500;
 }
 .input-field{
     
     max-width: 700px;
     
 }
+
 
 .property-title{
     font-size: 2rem;
@@ -78,7 +81,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    color: #706F6F;
+    color: #222020;
 }
 .flex-center{
     display: flex !important; /*included *!important* - conflicting with MUI */
