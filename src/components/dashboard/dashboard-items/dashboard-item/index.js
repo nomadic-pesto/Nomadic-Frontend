@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 //importing MUI
 import { CardContent, Link } from "@mui/material";
@@ -9,53 +10,104 @@ import Grid from "@mui/material/Grid";
 import styles from "./styles.module.css";
 
 //importing images
-// import dashboardTestImage from "../../../../public/images/dashboard-test-image.jpg";
-import heartIconFilled from "../../../../public/images/heart-icon-filled.svg";
-import heartIconUnfilled from "../../../../public/images/heart-icon.svg";
+import heartIconUnfilled from "../../../../public/images/heart-icon-unfilled.svg";
 import heart from "../../../../public/images/heart.png";
 import roomsImage from "../../../../public/images/sofa.png";
 
-const DashboardItem = ({ property }) => {
+//importing toastr
+import { toast } from "react-toastify";
+
+//importing actions
+import { addToWishlist } from "../../../../actions/propertyAction";
+import Loader from "../../../common/loader";
+
+const DashboardItem = ({ property, propertyState,addToWishlist }) => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const addToWishlistHandler = async () => {
+    if (user && user._id && user.name && localStorage.getItem("authToken")) {
+      if (
+        !propertyState.wishlist.find(
+          (wishlistItem) => wishlistItem.rentalId === property._id
+        )
+      ) {
+
+        setLoading(true);
+        await addToWishlist(user._id,property._id);
+        setLoading(false);
+
+      }
+    } else {
+      toast.error("Please login!");
+    }
+  };
 
   return (
     <>
-      <Grid
-        onClick={navigate.bind(null, `/property-details/${property._id}`)}
-        className={styles["card-grid"]}
-        item
-        lg={4}
-        sm={6}
-        xs={12}
-      >
+     {loading && <Loader />}
+      <Grid className={styles["card-grid"]} item lg={4} sm={6} xs={12}>
         <CardContent className={styles["card"]}>
           <Grid container className={styles["item-container"]}>
-            <Grid item md={6} xs={12} padding={0}>
-              {property.thumbnailImages &&
-                property.thumbnailImages.length > 0 && (
-                  <div className={styles["card-image-section"]}>
+            <Grid
+              onClick={navigate.bind(null, `/property-details/${property._id}`)}
+              item
+              md={6}
+              xs={12}
+              padding={0}
+            >
+              {property.thumbnailImages && property.thumbnailImages.length > 0 && (
+                <div className={styles["card-image-section"]}>
                   <img
                     className={styles["main-image"]}
                     src={property.thumbnailImages[0]}
                     alt="Property"
                   />
-                  </div>
-                )}
+                </div>
+              )}
             </Grid>
             <Grid item md={6} xs={12} padding={0} className={styles["info"]}>
               <section className={styles["info-top"]}>
                 <div className={styles["info-heading"]}>
-                  {property.rentalName}
-                  <img 
-                  src={heart} 
-                  alt="Wishlist" 
-                  // onClick={addToWishlist}
+                  <span
+                    onClick={navigate.bind(
+                      null,
+                      `/property-details/${property._id}`
+                    )}
+                  >
+                    {property.rentalName}
+                  </span>
+                  <img
+                    src={
+                      propertyState.wishlist.find(
+                        (wishlistItem) => wishlistItem.rentalId === property._id
+                      )
+                        ? heart
+                        : heartIconUnfilled
+                    }
+                    alt="Wishlist"
+                    className={
+                      propertyState.wishlist.find(
+                        (wishlistItem) => wishlistItem.rentalId === property._id
+                      )
+                        ? styles["heart-filled"]
+                        : styles["heart-unfilled"]
+                    }
+                    onClick={addToWishlistHandler}
                   />
                 </div>
                 <div className={styles["info-sub-heading"]}>
                   {property.streetName}
                 </div>
-                <div className={styles["info-rooms"]}>
+                <div
+                  className={styles["info-rooms"]}
+                  onClick={navigate.bind(
+                    null,
+                    `/property-details/${property._id}`
+                  )}
+                >
                   <img
                     className={styles["rooms-image"]}
                     src={roomsImage}
@@ -64,7 +116,13 @@ const DashboardItem = ({ property }) => {
                   2 rooms
                 </div>
               </section>
-              <section className={styles["info-bottom"]}>
+              <section
+                className={styles["info-bottom"]}
+                onClick={navigate.bind(
+                  null,
+                  `/property-details/${property._id}`
+                )}
+              >
                 <div className={styles["info-price"]}>
                   ₹{property.price.toLocaleString()} / day
                 </div>
@@ -77,4 +135,8 @@ const DashboardItem = ({ property }) => {
   );
 };
 
-export default DashboardItem;
+const mapStateToProps = (state) => ({
+  propertyState: state.propertyReducer,
+});
+
+export default connect(mapStateToProps, {addToWishlist})(DashboardItem);

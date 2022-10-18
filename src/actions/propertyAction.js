@@ -1,4 +1,4 @@
-import { cancelBookingsService, getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyByIdService, getSearchPropertiesService, getWishlistService, removeWishlistService } from "../services/propertyServices";
+import { addToWishlistService, cancelBookingsService, getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyByIdService, getSearchPropertiesService, getWishlistProductsWithoutDetailsService, getWishlistService, removeWishlistService } from "../services/propertyServices";
 import { constants } from "../utils/constants";
 import { types } from "./actionTypes";
 
@@ -17,6 +17,34 @@ export const getAllProperties =
         ...filters,
       });
       return properties;
+    }
+    
+  };
+
+  export const getWishlistProductsWithoutDetails =
+  (userId) =>
+  async (dispatch) => {
+    let wishlist = await getWishlistProductsWithoutDetailsService(userId);
+    if(wishlist.status === "success"){
+      dispatch({
+        type: types.GET_WISHLIST,
+        payload: wishlist.data.allWishlist,
+      });
+      return wishlist;
+    }
+    
+  };
+
+  export const addToWishlist =
+  (userId, rentalId) =>
+  async (dispatch) => {
+    let wishlist = await addToWishlistService(userId, rentalId);
+    if(wishlist.status === "success"){
+      dispatch({
+        type: types.ADD_WISHLIST,
+        payload: wishlist.data.wishlist,
+      });
+      return wishlist;
     }
     
   };

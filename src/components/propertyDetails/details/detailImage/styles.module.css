@@ -1,6 +1,9 @@
 .image-container{
     width: 75%;
     margin: auto;
+    border: 2px solid #f586146b;
+    border-radius: 1.2rem;
+    box-shadow: 5px 5px 10px 5px #8831f31f;
 }
 .detail-image img{
     width: 60%;

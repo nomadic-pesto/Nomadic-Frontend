@@ -17,10 +17,12 @@ import ButtonComponent from "../../common/button";
 import Loader from "../../common/loader";
 import ModalComponent from "../../common/modal";
 
+
 //importing actions
 import {
   getAllProperties,
   getMoreProperties,
+  getWishlistProductsWithoutDetails
 } from "../../../actions/propertyAction";
 import { constants } from "../../../utils/constants";
 
@@ -28,14 +30,18 @@ const DashboardItems = ({
   getAllProperties,
   getMoreProperties,
   propertyState,
+  getWishlistProductsWithoutDetails
 }) => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [displayProperties, setDisplayProperties] = useState([]);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     getPropertyHandler();
+    getWishlistProductsHandler();
   }, []);
 
   const getPropertyHandler = async () => {
@@ -43,6 +49,14 @@ const DashboardItems = ({
     await getAllProperties(1, constants.PRODUCT_LIMIT);
     setLoading(false);
   };
+
+  const getWishlistProductsHandler = async () => {
+    if (user && user._id && user.name && localStorage.getItem("authToken")) {
+    await getWishlistProductsWithoutDetails(user._id);
+    }
+    
+  };
+  
 
   useEffect(() => {
     if (propertyState.properties && propertyState.properties.length > 0) {
@@ -117,10 +131,9 @@ const mapStateToProps = (state) => ({
   propertyState: state.propertyReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getAllProperties: (skip, limit) => dispatch(getAllProperties(skip, limit)),
-  getMoreProperties: (skip, limit, filters) =>
-    dispatch(getMoreProperties(skip, limit, filters))
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardItems);
+export default connect(mapStateToProps, {
+  getAllProperties,
+  getWishlistProductsWithoutDetails,
+  getMoreProperties
+})(DashboardItems);

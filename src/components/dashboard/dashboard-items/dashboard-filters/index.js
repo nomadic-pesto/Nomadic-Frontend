@@ -12,12 +12,14 @@ import RangeSlider from "./priceSlider";
 import ModalComponent from "../../../common/modal";
 
 
+
 //importing actions
 import { getAllProperties } from "../../../../actions/propertyAction";
 
 //importing images
 import crossIcon from "../../../../public/images/custom-color-cross.svg";
 import SortDropDown from "./sortDropDown";
+import DashboardSubFilter from "./dashboard-filter/dashboardSubFilter";
 
 const DashboardFilters = ({ propertyState, getAllProperties }) => {
   const [displayFilters, setDisplayFilters] = useState([]);
@@ -25,6 +27,45 @@ const DashboardFilters = ({ propertyState, getAllProperties }) => {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
+    setDisplayDestinations();
+    
+  }, []);
+
+  useEffect(()=>{
+    if(propertyState.destination && propertyState.destination!==''){
+
+      const destination = constants.DESTINATION_TYPES.find(destination=>destination.name===propertyState.destination)
+
+
+      const subdestination = constants.SUB_DESTINATION_TYPES.map((filter) => {
+        if(filter.destination===propertyState.destination){
+          return (
+            <DashboardSubFilter
+              key={filter.name}
+              icon={filter.icon}
+              name={filter.name}
+            />
+          );
+        }
+        return [];
+      })
+
+      
+      setDisplayFilters([<DashboardSubFilter
+        key={destination.name}
+        icon={destination.icon}
+        name={destination.name}
+      />,
+        ...(subdestination)]
+      );
+    }
+    else{
+      setDisplayDestinations();
+    }
+
+  },[propertyState.destination])
+
+  const setDisplayDestinations = () =>{
     setDisplayFilters(
       constants.DESTINATION_TYPES.map((filter) => {
         return (
@@ -36,7 +77,7 @@ const DashboardFilters = ({ propertyState, getAllProperties }) => {
         );
       })
     );
-  }, []);
+  }
 
   useEffect(() => {
     // console.log(propertyState);
@@ -102,6 +143,7 @@ const DashboardFilters = ({ propertyState, getAllProperties }) => {
         <section id="filter-icons" className={styles["filter-icons-section"]}>
           {displayFilters}
         </section>
+       
         <section className={styles["filter-button-section"]}>
           {diplayClearFilter && (
             <section className={`${styles["filter-button"]} ${styles["red"]}`}>

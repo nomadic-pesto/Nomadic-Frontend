@@ -31,7 +31,9 @@ const DashboardFilter = ({getAllProperties,name,icon,propertyState}) => {
       onClick={setFilters.bind(null,name)}
       >
       <i className={`fa ${styles["fa-height"]} ${propertyState.destination===name && styles["highlight"]} ${icon}`}></i>  
-        {name}
+        <span
+        className={`${styles["filter-name"]} ${propertyState.destination===name && styles["highlight"]}`}
+        >{name}</span>
       </div>}
     </>
   );
