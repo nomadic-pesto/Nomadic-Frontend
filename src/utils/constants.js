@@ -140,5 +140,27 @@ export const constants = {
 
     
   ],
+  AMENITIES_LIST: [  "24hrs water supply",
+    "Pool",
+    "smoke alarm",
+    "kitchen",
+    "outdoor dinning",
+    "Wifi",
+    "Parking",
+    "Heating",
+    "Washing Machine",
+    "TV",
+    "Furniture",
+    "Security Camera",
+    "Dedicated workspace"
+  ],
+  HOUSE_TYPES:[{name:"Single House"},
+      {name:"Apartment"},
+      {name:"Duplex"},
+      {name:"villa"},
+      {name:"Farm"},
+      {name:"Bunglow"},
+      {name:"Mansion"},
+      {name:"Tree house"}],
   SLIDER_MAX_VALUE : 10000
 };

@@ -27,7 +27,6 @@
     
 }
 
-
 .property-title{
     font-size: 2rem;
     font-weight: 500;
@@ -94,6 +93,30 @@
     margin-top: 0.3rem;
 }
 
+.dropzone {
+    text-align:center !important;
+    padding: 20px !important;
+    border: 3px blue dashed !important;
+    width: 60% !important;
+    margin: auto !important;
+  }
+
+.file-list {
+    /* border: 3px dotted black; */
+    display: flex !important;
+    flex-wrap: wrap;
+    width: auto;
+    padding: 10px 20px;
+    margin: 20px 30px;
+    /* border: 3px dotted black; */
+  }
+  .file-list img {
+    height: 100%;
+    width: 100px;
+    padding-right: 10px;
+    object-fit: cover;
+  }
+  
 @media (max-width: 900px) {
     .property-container{
         padding: 2rem 1rem 10rem 1rem;
