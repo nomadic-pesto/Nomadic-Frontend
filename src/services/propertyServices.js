@@ -63,9 +63,23 @@ export const addToWishlistService = async(userId, rentalId) =>{
   return await apiCall(`${constants.BACKEND_URL}/v1/wishlist/addwishlist`,'POST',{},{userId, rentalId})
 }
 
+
+export const uploadImageService = async(file)=>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/upload`,'POST',{"Content-Type": "multipart/form-data"},{file})
+}
+
+export const addRentalService = async({rentalName, destination, subDestination, noOfPeopleAccomodate, price, houseType, amenities, overview, address, streetName, district, state, originalImages}) =>{
+  return await apiCall(`${constants.BACKEND_URL}/v1/rental/addRental`,'POST',{},{rentalName, destination, subDestination, noOfPeopleAccomodate, price, houseType, amenities, overview, address, streetName, district, state, originalImages})
+}
+
+export const updateRentalService = async(id,rentalName, destination, subDestination, noOfPeopleAccomodate, price, houseType, amenities, overview, address, streetName, district, state, originalImages) => {
+  return await apiCall(`${constants.BACKEND_URL}/v1/rental/${id}`,'PATCH',{},{rentalName, destination, subDestination, noOfPeopleAccomodate, price, houseType, amenities, overview, address, streetName, district, state, originalImages})
+}
+
 export const getPropertyBookedDatesService = async(id) =>{
   return await apiCall(`${constants.BACKEND_URL}/v1/booking/getBlockDate/${id}`,'GET',{},{})
 }
+
 
 
 
