@@ -2,7 +2,7 @@
     /* border: 1px solid #575757; */
     border: 2px solid #f586146b;
     border-radius: 0.8rem;
-    margin: 5rem 0 0 2rem;
+    margin: 2rem 0 0 2rem;
     width: 100%;
 }
 .row{
@@ -36,7 +36,7 @@
 }
 .price{
     font-size: 1.2rem;
-    color: #3C88F1;
+    color: #924bf8;
     font-weight: 700;
 }
 .calender-row{
@@ -66,6 +66,9 @@
 }
 .guests{
     width: 100% !important;
+}
+.guests-dd fieldset{
+    border: none !important;
 }
 
 @media (max-width: 900px) {
