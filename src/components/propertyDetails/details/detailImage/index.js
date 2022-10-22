@@ -30,6 +30,7 @@ const DetailImage = ({ displayProperty }) => {
         showThumbs={false}
         showStatus={false}
         className={styles["image-container"]}
+        showIndicators={false}
       >
         {propertyImages}
       </Carousel>

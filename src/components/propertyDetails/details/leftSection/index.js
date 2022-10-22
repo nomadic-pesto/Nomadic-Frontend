@@ -36,9 +36,9 @@ const LeftSection = ({ displayProperty }) => {
 
   return (
     <>
-      <div className={styles["property-name"]}>{rentalName}</div>
+      {/* <div className={styles["property-name"]}>{rentalName}</div> */}
 
-      <section id="amenities" className={styles["amenities"]}>
+      {/* <section id="amenities" className={styles["amenities"]}>
         <div className={styles["amenities-rooms"]}>
           {noOfPeopleAccomodate} guests
         </div>
@@ -46,7 +46,7 @@ const LeftSection = ({ displayProperty }) => {
         <Grid className={styles["amenities-options"]} container spacing={2}>
           {amenitiesGrid}
         </Grid>
-      </section>
+      </section> */}
       <section id="overview" className={styles["overview"]}>
         <div className={styles["title"]}>Overview</div>
         <div className={styles["info"]}>{overview}</div>
