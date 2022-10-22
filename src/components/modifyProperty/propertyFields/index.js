@@ -6,6 +6,8 @@ import cuid from "cuid";
 import Dropzone from "./dropZone";
 import ImageGrid from "./imageGrid";
 
+//importing api's
+import { addRentalService, updateRentalService, uploadImageService } from "../../../services/propertyServices";
 //importing styles
 import styles from "./styles.module.css";
 
@@ -57,6 +59,7 @@ const PropertyFields = ({ userState, editProfile }) => {
     district: "",
     state: "",
     amenities: [],
+    originalImages:[]
   };
   const [loading, setLoading] = useState(false);
 
@@ -96,12 +99,9 @@ let imagesArray=[]
           { file })
         }
         let response = await uploadImage(file)
-        console.log(response)
-        console.log(response.data[0].Location)
-        // imagesArray.push(response.Lo)
+        imagesArray.push(response.data[0].Location)
       };
       reader.readAsDataURL(file);
-      // console.log(file)
       return file;
     });
   }, []);
@@ -114,7 +114,17 @@ let imagesArray=[]
 // }
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    values.originalImages = imagesArray
+    values.ownerId = user._id
+    console.log({...values})
+    setLoading(true)
+    if(params.id === "add"){
+      let response = await addRentalService({...values})
+      // let response = await addRentalService(values.destination,values.subDestination,values.accommodation,values.price,values.houseType,values.overview,values.address,values.propertyName,values.streetName,values.district,values.state,values.amenities,values.originalImages)
+      console.log(response)
+    }else{
+
+    }
     // setLoading(true);
     // const editProfileResponse =  await editProfile({...values,token:localStorage.getItem("authToken")});
     // if(editProfileResponse.status === 'success'){
@@ -127,6 +137,8 @@ let imagesArray=[]
     // }
     // setLoading(false);
   };
+
+
 
   return (
     <>
