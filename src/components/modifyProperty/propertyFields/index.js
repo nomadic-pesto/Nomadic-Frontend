@@ -7,7 +7,11 @@ import Dropzone from "./dropZone";
 import ImageGrid from "./imageGrid";
 
 //importing api's
-import { addRentalService, updateRentalService, uploadImageService } from "../../../services/propertyServices";
+import {
+  addRentalService,
+  updateRentalService,
+  uploadImageService,
+} from "../../../services/propertyServices";
 //importing styles
 import styles from "./styles.module.css";
 
@@ -59,7 +63,7 @@ const PropertyFields = ({ userState, editProfile }) => {
     district: "",
     state: "",
     amenities: [],
-    originalImages:[]
+    originalImages: [],
   };
   const [loading, setLoading] = useState(false);
 
@@ -79,10 +83,10 @@ const PropertyFields = ({ userState, editProfile }) => {
     district: Yup.string().required("District is required"),
     state: Yup.string().required("State is required"),
     amenities: Yup.array()
-      .length(1, "Amenities is required")
+      .min(1, "Amenities is required")
       .required("Amenities is required"),
   });
-let imagesArray=[]
+  let imagesArray = [];
   const [images, setImages] = useState([]);
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.map((file) => {
@@ -92,38 +96,39 @@ let imagesArray=[]
           ...prevState,
           { id: cuid(), src: e.target.result },
         ]);
-        const uploadImage = async(file)=>{
-          return await apiCall(`${constants.BACKEND_URL}/v1/upload`,
-          "POST",
-          {"Content-Type": "multipart/form-data"},
-          { file })
-        }
-        let response = await uploadImage(file)
-        imagesArray.push(response.data[0].Location)
+        const uploadImage = async (file) => {
+          return await apiCall(
+            `${constants.BACKEND_URL}/v1/upload`,
+            "POST",
+            { "Content-Type": "multipart/form-data" },
+            { file }
+          );
+        };
+        let response = await uploadImage(file);
+        imagesArray.push(response.data[0].Location);
       };
       reader.readAsDataURL(file);
       return file;
     });
   }, []);
 
-// async function uploadImage(file){
-//   return await apiCall(`${constants.BACKEND_URL}/v1/upload`,
-//   "POST",
-//   {"Content-Type": "multipart/form-data"},
-//   { file })
-// }
+  // async function uploadImage(file){
+  //   return await apiCall(`${constants.BACKEND_URL}/v1/upload`,
+  //   "POST",
+  //   {"Content-Type": "multipart/form-data"},
+  //   { file })
+  // }
 
   const handleSubmit = async (values) => {
-    values.originalImages = imagesArray
-    values.ownerId = user._id
-    console.log({...values})
-    setLoading(true)
-    if(params.id === "add"){
-      let response = await addRentalService({...values})
+    values.originalImages = imagesArray;
+    values.ownerId = user._id;
+    console.log({ ...values });
+    setLoading(true);
+    if (params.id === "add") {
+      let response = await addRentalService({ ...values });
       // let response = await addRentalService(values.destination,values.subDestination,values.accommodation,values.price,values.houseType,values.overview,values.address,values.propertyName,values.streetName,values.district,values.state,values.amenities,values.originalImages)
-      console.log(response)
-    }else{
-
+      console.log(response);
+    } else {
     }
     // setLoading(true);
     // const editProfileResponse =  await editProfile({...values,token:localStorage.getItem("authToken")});
@@ -137,8 +142,6 @@ let imagesArray=[]
     // }
     // setLoading(false);
   };
-
-
 
   return (
     <>
@@ -160,7 +163,7 @@ let imagesArray=[]
               onSubmit={form.handleSubmit}
               className={styles["input-container"]}
             >
-              <Dropzone onDrop={onDrop}  className={styles.dropzone}/>
+              <Dropzone onDrop={onDrop} className={styles.dropzone} />
               <ImageGrid images={images} />
               <Grid container>
                 <Grid
@@ -311,45 +314,47 @@ let imagesArray=[]
                       </Grid>
                       <Grid item md={9} xs={12} padding={0}>
                         <Grid container className={styles["item-container"]}>
-                          {constants.AMENITIES_LIST && constants.AMENITIES_LIST.map((list) => (
-                            <React.Fragment key={list}>
-                              <Grid item xs={6} padding={0}>
-                                <CheckboxComponent
-                                  label={list}
-                                  name="amenities"
-                                  form={form}
-                                  onClick={() => {
-                                    if (
-                                      !form.values["amenities"].includes(list)
-                                    ) {
-                                      let tempValues = [
-                                        ...form.values["amenities"],
-                                        list,
-                                      ];
-                                      return form.setFieldValue(
-                                        "amenities",
-                                        tempValues
-                                      );
-                                    } else {
-                                      let tempValues = [
-                                        ...form.values["amenities"],
-                                      ];
-                                      tempValues.splice(
-                                        tempValues.findIndex(
-                                          (val) => val === list
-                                        ),
-                                        1
-                                      );
-                                      return form.setFieldValue(
-                                        "amenities",
-                                        tempValues
-                                      );
-                                    }
-                                  }}
-                                />
-                              </Grid>
-                            </React.Fragment>
-                          ))}
+                          {constants.AMENITIES_LIST &&
+                            constants.AMENITIES_LIST.map((list) => (
+                              <React.Fragment key={list}>
+                                <Grid item xs={6} padding={0}>
+                                  <CheckboxComponent
+                                    label={list}
+                                    name="amenities"
+                                    form={form}
+                                    onClick={() => {
+                                      if (
+                                        !form.values["amenities"].includes(list)
+                                      ) {
+                                        let tempValues = [
+                                          ...form.values["amenities"],
+                                          list,
+                                        ];
+                                        console.log(tempValues);
+                                        return form.setFieldValue(
+                                          "amenities",
+                                          tempValues
+                                        );
+                                      } else {
+                                        let tempValues = [
+                                          ...form.values["amenities"],
+                                        ];
+                                        tempValues.splice(
+                                          tempValues.findIndex(
+                                            (val) => val === list
+                                          ),
+                                          1
+                                        );
+                                        return form.setFieldValue(
+                                          "amenities",
+                                          tempValues
+                                        );
+                                      }
+                                    }}
+                                  />
+                                </Grid>
+                              </React.Fragment>
+                            ))}
                         </Grid>
 
                         <ErrorMessage
