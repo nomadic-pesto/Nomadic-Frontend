@@ -10,10 +10,12 @@ import Loader from "../../common/loader";
 import DetailImage from "./detailImage";
 import LeftSection from "./leftSection";
 import TopSection from "./topSection";
+import ReviewSection from "./reviewSection";
 
 //importing MUI
 import Grid from "@mui/material/Grid";
 import RightSection from "./rightSection";
+import StarIcon from "@mui/icons-material/Star";
 
 //importing actions
 import { getPropertyById } from "../../../actions/propertyAction";
@@ -25,8 +27,8 @@ import { toast } from "react-toastify";
 import serviceImage1 from "../../../public/images/service1.webp";
 import serviceImage2 from "../../../public/images/service2.webp";
 import serviceImage3 from "../../../public/images/service3.webp";
-import parking from "../../../public/images/parking.png";
-import essentials from "../../../public/images/essentials.png";
+
+import { constants } from "../../../utils/constants";
 
 const Details = ({ getPropertyById }) => {
   const [loading, setLoading] = useState(false);
@@ -101,51 +103,38 @@ const Details = ({ getPropertyById }) => {
       </Grid>
       <Grid container spacing={2} className={styles["amenities-grid"]}>
         <div className={styles["amenities-title"]}>Amenities</div>
-        <Grid sx={{ flexGrow: 1 }} container spacing={2} className={styles["amenities-items"]}>
-          <Grid item md={3} xs={6}>
-            <div className={styles["amenities-item"]}>
-              <img src={parking} />
-              <span>Parking</span>
-            </div>
-          </Grid>
-          <Grid item md={3} xs={6}>
-            <div className={styles["amenities-item"]}>
-              <img src={parking} />
-              <span>Parking</span>
-            </div>
-          </Grid>
-          <Grid item md={3} xs={6}>
-            <div className={styles["amenities-item"]}>
-              <img src={parking} />
-              <span>Parking</span>
-            </div>
-          </Grid>
-          <Grid item md={3} xs={6}>
-            <div className={styles["amenities-item"]}>
-              <img src={parking} />
-              <span>Parking</span>
-            </div>
-          </Grid>
-          <Grid item md={3} xs={6}>
-            <div className={styles["amenities-item"]}>
-              <img src={parking} />
-              <span>Parking</span>
-            </div>
-          </Grid>
-          <Grid item md={3} xs={6}>
-            <div className={styles["amenities-item"]}>
-              <img src={essentials} />
-              <span>essentials</span>
-            </div>
-          </Grid>
+        <Grid
+          sx={{ flexGrow: 1 }}
+          container
+          spacing={2}
+          className={styles["amenities-items"]}
+        >
+          {displayProperty.amenities &&
+            displayProperty.amenities.length > 0 &&
+            displayProperty.amenities.map((amenity) => {
+              return (
+                constants.AMENITIES_LIST.includes(amenity) && <Grid key={amenity} item md={3} xs={6}>
+                  <div className={styles["amenities-item"]}>
+                    <img
+                      className={styles["amenities-image"]}
+                      src={require(`../../../public/images/amenities/${amenity}.png`)}
+                    />
+                    <span>{amenity}</span>
+                  </div>
+                </Grid>
+              );
+            })}
         </Grid>
-        {/* <div className={styles["amenities-items"]}>
-         
-          <div className={styles["amenities-item"]}>
-            <img src={essentials} />
-            Essentials
-          </div>
-        </div> */}
+      </Grid>
+      <Grid container spacing={2} className={styles["ratings-grid"]}>
+        <div className={styles["ratings-title"]}>
+          {" "}
+          <StarIcon />
+          <span>{displayProperty.avgReview} ({displayProperty.noOfReview} reviews)</span>
+        </div>
+        <ReviewSection 
+        displayProperty={displayProperty ? displayProperty : {}}
+        />
       </Grid>
     </div>
   );
