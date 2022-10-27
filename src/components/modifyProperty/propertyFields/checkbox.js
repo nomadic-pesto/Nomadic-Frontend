@@ -20,6 +20,7 @@ const CheckboxComponent = (props) => {
           }
           label={props.label}
           onClick={props.onClick}
+          style={{textAlign:"left"}}
         />
       </FormGroup>
     </>

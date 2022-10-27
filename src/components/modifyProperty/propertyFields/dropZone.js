@@ -6,9 +6,9 @@ import Button from "../../common/button";
 import styles from "./styles.module.css";
 
 //dropzone component
-function Dropzone({ open, onDrop, accept }) {
+function Dropzone({ open, onDrop, accept,disabled }) {
     const { getRootProps, getInputProps, acceptedFiles, isDragActive } =
-        useDropzone({ accept:"image/*", onDrop, maxFiles:5,maxSize:3145728 });
+        useDropzone({ accept:"image/*", onDrop, maxFiles:5,maxSize:8145728,disabled:disabled });
 
 
     return (
@@ -21,10 +21,14 @@ function Dropzone({ open, onDrop, accept }) {
                     </p>
                 ) : (
                     <p className="dropzone-content">
-                        Drag’n’drop some files here, or click to select files (Max 5 file)
+                        Drag’n’drop files or click to Select (Max 5 file)
                     </p>
                 )}
-                <Button onClick={open} className="btn">
+                <Button 
+                onClick={open} 
+                className="btn"
+                disabled={disabled}
+                >
                     Click here to select files
                 </Button>
             </div>

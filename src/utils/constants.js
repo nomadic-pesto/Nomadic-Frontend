@@ -2,7 +2,6 @@ export const constants = {
   BACKEND_URL: "http://localhost:5001",
   PRODUCT_LIMIT: 24,
   DESTINATION_TYPES: [
-    { icon: "fa-anchor", name: "Karnataka" },
     { icon: "fa-anchor", name: "Beaches" },
     { icon: "fa-area-chart", name: "Hills" },
     { icon: "fa-thermometer-full", name: "Dessert" },

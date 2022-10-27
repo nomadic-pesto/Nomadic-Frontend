@@ -84,7 +84,10 @@ const MyPropertiesCards = ({getProperties}) => {
                     <div className={styles["properties-time"]}>
                       Check-in Time 11 am
                     </div>
-                    <ButtonComponent className={styles["properties-button"]}>
+                    <ButtonComponent 
+                    className={styles["properties-button"]}
+                    onClick={()=>navigate(`/property/${rental._id}`)}
+                    >
                       Edit Property
                     </ButtonComponent>
                   </Grid>
@@ -114,6 +117,7 @@ const MyPropertiesCards = ({getProperties}) => {
         {properties.map((rental) => rental)}
         <ButtonComponent
           className={`${styles["properties-button"]} ${styles["add-property"]}`}
+          onClick={()=>navigate("/property/add")}
         >
           Add Property
         </ButtonComponent>
