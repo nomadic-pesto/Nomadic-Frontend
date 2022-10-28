@@ -13,11 +13,11 @@
     margin-left: 0  !important;/*included *!important* - conflicting with MUI */
     margin-bottom: 3rem  !important;/*included *!important* - conflicting with MUI */
 }
-.services-grid,.amenities-grid{
+.services-grid,.amenities-grid,.ratings-grid{
     margin-top: 3rem !important;
     padding: 0 15% 0 15% !important;/*included *!important* - conflicting with MUI */
 }
-.amenities-grid{
+.amenities-grid,.ratings-grid{
     display: flex !important;/*included *!important* - conflicting with MUI */
     flex-direction: column !important;/*included *!important* - conflicting with MUI */
 }
@@ -32,9 +32,19 @@
     overflow: auto;
 }
 .services-title,
-.amenities-title{
+.amenities-title,
+.ratings-title{
     font-size: 1.2rem;
     text-align: left;
+    font-weight: 500;
+}
+.ratings-title{
+    display: flex;
+    align-items: center;
+}
+.ratings-title span{
+    padding-top: 3px;
+    margin-left: 1.2rem;
 }
 .services-info{
     margin-top: 1rem;
@@ -46,23 +56,31 @@
 .amenities-item{
     display: flex;
     flex-direction: column;
-    background-color: rgb(247, 247, 247) !important;
+    /* background-color: rgb(247, 247, 247) !important; */
+    border: 1px solid #c1c1c1;
     border-radius: 1.2rem;
 }
 .amenities-item{
     width: 100%;
     padding-bottom: 1.2rem;
+    height: 12rem;
 }
 .amenities-item span{
     margin-top: 0.8rem;
     font-weight: 500;
+}
+.amenities-image{
+    max-height: 9rem;
+    width: fit-content;
+    margin: auto;
+    border-radius: 1.2rem;
 }
 @media (max-width: 1250px) {
     .details-grid{
         width: 90% !important;/*included *!important* - conflicting with MUI */
         padding:0 !important;/*included *!important* - conflicting with MUI */
     }
-    .services-grid,.amenities-grid{
+    .services-grid,.amenities-grid,.ratings-grid{
         width: 90% !important;/*included *!important* - conflicting with MUI */
         padding:0 !important;/*included *!important* - conflicting with MUI */
         margin: 3rem auto 0 !important;/*included *!important* - conflicting with MUI */
@@ -85,7 +103,7 @@
     .services-grid{
         padding: 0 !important;/*included *!important* - conflicting with MUI */
     }
-    .amenities-grid{
+    .amenities-grid,.ratings-grid{
         padding: 0 !important;/*included *!important* - conflicting with MUI */
     }
 }

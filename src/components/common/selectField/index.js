@@ -30,12 +30,13 @@ const SelectFieldComponent = (props) => {
         value={props.value}
         name={props.name}
         displayEmpty
-        onChange={(event) => {
+        onChange={props.onChange || ((event) => {
           props.form.setFieldValue(props.name, event.target.value);
-        }}
+        })}
         className={`${
           meta.touched && meta.error
         } ${props.className}`}
+        onClick={props.onClick}
       >
         <MenuItem value="">
           <em className={`${styles["non-italic-select-option"]}`}>
