@@ -10,7 +10,7 @@ import ImageGrid from "./imageGrid";
 import {
   addRentalService,
   updateRentalService,
-  uploadImageService,
+  uploadImage,
 } from "../../../services/propertyServices";
 //importing styles
 import styles from "./styles.module.css";
@@ -33,14 +33,14 @@ import CheckboxComponent from "./checkbox";
 
 //importing actions
 import { editProfile } from "../../../actions/userAction";
-import { apiCall } from "../../../services/methods";
+import { getModifyProperty } from "../../../actions/propertyAction";
 
 //importing toastr
 import { toast } from "react-toastify";
 
 //importing constants
 import { constants } from "../../../utils/constants";
-import { getModifyProperty } from "../../../actions/propertyAction";
+
 
 const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
   const params = useParams();
@@ -103,13 +103,14 @@ const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      console.log(addedImages.length)
+      
       if (addedImages.length + imagesToUpload.length + acceptedFiles.length > 5) {
         toast.error("Only 5 images are allowed");
         return;
       }
       acceptedFiles.map((file) => {
         setImagesToUpload((prev) => {
+          
           return [...prev, file];
         });
         const reader = new FileReader();
@@ -127,12 +128,9 @@ const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
   );
 
   const uploadImageHandler = async (file) => {
-    let response = await apiCall(
-      `${constants.BACKEND_URL}/v1/upload`,
-      "POST",
-      { "Content-Type": "multipart/form-data" },
-      { file }
-    );
+    const token = localStorage.getItem("authToken")
+   let response = await uploadImage(file)
+ 
     if (
       response.status === "success" &&
       response.data[0] &&
@@ -195,6 +193,7 @@ const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
     }
     let uploadedImages = [];
     for (let image of imagesToUpload) {
+     
       uploadedImages.push(await uploadImageHandler(image));
     }
     values.originalImages = uploadedImages;

@@ -16,7 +16,7 @@ import styles from "./styles.module.css";
 import { getPropertyBookedDates } from "../../../../actions/propertyAction";
 import { useParams } from "react-router-dom";
 
-const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates }) => {
+const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates,setDatesHandler,refreshBookedDates }) => {
   const [value, setValue] = React.useState([null, null]);
   const [bookedDates, setBookedDates] = React.useState([]);
 
@@ -25,6 +25,15 @@ const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates }) => {
   React.useEffect(() => {
     getPropertyBookedDatesHandler();
   }, []);
+
+  React.useEffect(()=>{
+
+    if(refreshBookedDates>0){
+      setValue([null, null])
+      getPropertyBookedDatesHandler()
+    }
+
+  },[refreshBookedDates])
 
   const getPropertyBookedDatesHandler = async () => {
     const getBookedDates = await getPropertyBookedDates(params.id);
@@ -58,6 +67,7 @@ const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates }) => {
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
+          setDatesHandler([new Date(newValue[0]),new Date(newValue[1])]);
         }}
         renderInput={(startProps, endProps) => (
           <div className={styles["calender-row"]}>

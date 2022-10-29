@@ -2,9 +2,10 @@
   padding: 1rem 2rem;
   margin: auto;
   /* background: rgb(239, 239, 239, 0.82); */
-  background: linear-gradient(#ffafbc6e, #ffc3a09e);
+  /* background: linear-gradient(#ffafbc6e, #ffc3a09e); */
   min-height: 81vh;
-  color: #706F6F;
+  color: #000;
+ 
 }
 .title {
   font-size: 1.8rem;
@@ -15,6 +16,7 @@
 }
 .properties-card{
   height: 100%;
+  
 }
 .properties-card-left {
   display: flex !important;
@@ -33,6 +35,7 @@
 }
 .property-name {
   font-size: 1.5rem;
+  color: #000;
 }
 .text-thin {
   font-size: 0.9rem;
@@ -55,7 +58,7 @@
   font-size: 1.3rem;
 }
 .properties-time{
-  color: #706F6F;
+  color: #000;
   font-weight: 500;
   text-align: center;
 }
