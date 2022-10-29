@@ -15,6 +15,7 @@ import Orders from "./orders";
 import Wishlist from "./wishlist";
 import MyProperties from "./myProperties";
 import Property from "./property";
+import ChangePassword from "./changePassword";
 
 
 const AllPages = () => {
@@ -32,6 +33,7 @@ const AllPages = () => {
         <Route exact path="/resetpassword/:token" element={<Resetpassword/>}/>
         <Route exact path="/forgotPassword" element={<Forgotpassword/>}/>
         <Route exact path="/profile" element={<Profile/>}/>
+        <Route exact path="/update/password" element={<ChangePassword/>}/>
         <Route exact path="/bookings" element={<Bookings/>}/>
         <Route exact path="/orders" element={<Orders/>}/>
         <Route exact path="/wishlist" element={<Wishlist />}/>

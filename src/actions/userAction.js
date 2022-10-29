@@ -4,6 +4,7 @@ import {
   loginUserService,
   resetPasswordService,
   signupService,
+  updatePasswordService,
 } from "../services/userService";
 import { types } from "./actionTypes";
 
@@ -62,9 +63,20 @@ export const resetPassword =
   export const editProfile =
   ({ name, phoneNumber,address,token }) =>
   async (dispatch) => {
-    let signupResponse = await editProfileService(
+    let editProfileResponse = await editProfileService(
       name, phoneNumber,address,token
     );
    
-    return signupResponse;
+    return editProfileResponse;
   };
+
+  export const updatePassword =
+  ({ passwordCurrent,password,confirmPassword }) =>
+  async (dispatch) => {
+    let updatePasswordResponse = await updatePasswordService(
+      passwordCurrent,password,confirmPassword
+    );
+   
+    return updatePasswordResponse;
+  };
+  

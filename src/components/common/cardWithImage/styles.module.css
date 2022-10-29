@@ -4,7 +4,8 @@
     background: #fff;
     margin-top: 2rem !important;/*included *!important* - conflicting with MUI */
     border-radius: 0.8rem !important;/*included *!important* - conflicting with MUI */
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: 5px 5px 10px 5px #8831f31f;
+    border: 2px solid #f586146b;
     margin-left: 0 !important;/*included *!important* - conflicting with MUI */
 
 }

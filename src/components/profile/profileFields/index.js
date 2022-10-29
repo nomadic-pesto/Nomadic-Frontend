@@ -24,9 +24,10 @@ import { toast } from "react-toastify";
 
 const ProfileFields = ({userState,editProfile}) => {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    if (user._id && user.name && localStorage.getItem("authToken")) {
+    if (user!=null && user._id && user.name && localStorage.getItem("authToken")) {
 
     }
     else{
@@ -35,13 +36,13 @@ const ProfileFields = ({userState,editProfile}) => {
     }
   }, [])
 
-  const user = JSON.parse(localStorage.getItem("user"));
+
   
   const initialValues = {
-    name: user.name ? user.name : "",
-    phoneNumber: user.mobileNumber ? user.mobileNumber : "",
-    email: user.email ? user.email : "",
-    address: user.address ? user.address : "",
+    name: user && user.name ? user.name : "",
+    phoneNumber: user && user.mobileNumber ? user.mobileNumber : "",
+    email: user && user.email ? user.email : "",
+    address: user && user.address ? user.address : "",
   };
   const [loading, setLoading] = useState(false);
 
@@ -72,6 +73,7 @@ const ProfileFields = ({userState,editProfile}) => {
   return (
     <>
       {loading && <Loader />}
+      
       <div
       className={styles["profile-container"]}
       >
@@ -192,6 +194,7 @@ const ProfileFields = ({userState,editProfile}) => {
         )}
       </Formik>
       </div>
+      
     </>
   );
 };

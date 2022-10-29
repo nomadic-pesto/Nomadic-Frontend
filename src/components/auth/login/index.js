@@ -23,7 +23,7 @@ import { loginUser } from "../../../actions/userAction";
 import { toast } from "react-toastify";
 
 //importing methods 
-import { apiCall } from "../../../services/methods";
+import { Apicall } from "../../../services/methods";
 
 //importing constants
 import { constants } from "../../../utils/constants";
@@ -43,8 +43,8 @@ const LogIn = ({ userState, loginUser }) => {
   });
 
   const initailValues = {
-    email: "",
-    password: "",
+    email: "nomadic.pesto@gmail.com",
+    password: "Nomadic@pesto",
   };
 
   const handleSubmit = async (values) => {
@@ -56,7 +56,7 @@ const LogIn = ({ userState, loginUser }) => {
   };
 
   const googleSuccessHandler = async (response) => {
-    let backendResponse =await apiCall(`${constants.BACKEND_URL}/v1/auth/googlelogin`,'POST',{},{ tokenId: response.credential })
+    let backendResponse =await Apicall(`${constants.BACKEND_URL}/v1/auth/googlelogin`,'POST',{},{ tokenId: response.credential })
     loginResponseHandler(backendResponse)
   }
 

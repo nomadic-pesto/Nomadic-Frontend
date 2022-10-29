@@ -1,8 +1,10 @@
 import { constants } from "../utils/constants";
-import { apiCall } from "./methods";
+import { Apicall } from "./methods";
+
+
 
 export const loginUserService = async (email, password) => {
-  return await apiCall(
+  return await Apicall(
     `${constants.BACKEND_URL}/v1/auth/login`,
     "POST",
     {},
@@ -11,7 +13,7 @@ export const loginUserService = async (email, password) => {
 };
 
 export const signupService = async (email, password, confirmPassword, name) => {
-  return await apiCall(
+  return await Apicall(
     `${constants.BACKEND_URL}/v1/auth/signup`,
     "POST",
     {},
@@ -20,7 +22,7 @@ export const signupService = async (email, password, confirmPassword, name) => {
 };
 
 export const forgotService = async (email) => {
-  return await apiCall(
+  return await Apicall(
     `${constants.BACKEND_URL}/v1/auth/forgotpassword`,
     "POST",
     {},
@@ -33,7 +35,7 @@ export const resetPasswordService = async (
   confirmPassword,
   token
 ) => {
-  return await apiCall(
+  return await Apicall(
     `${constants.BACKEND_URL}/v1/auth/resetPassword/${token}`,
     "PATCH",
     {},
@@ -41,11 +43,21 @@ export const resetPasswordService = async (
   );
 };
 
-export const editProfileService = async (name, mobileNumber, address, token) => {
-  return await apiCall(
+export const editProfileService = async (name, mobileNumber, address, tokenDetails) => {
+  return await Apicall(
     `${constants.BACKEND_URL}/v1/auth/updateUser`,
     "PATCH",
-    { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("authToken")}` },
     { name, mobileNumber, address }
   );
 };
+
+export const updatePasswordService = async (passwordCurrent,password,confirmPassword) => {
+  return await Apicall(
+    `${constants.BACKEND_URL}/v1/auth/updatePassword`,
+    "PATCH",
+    { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+    { passwordCurrent,password,confirmPassword }
+  );
+};
+
