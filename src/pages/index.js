@@ -16,9 +16,11 @@ import Wishlist from "./wishlist";
 import MyProperties from "./myProperties";
 import Property from "./property";
 import ChangePassword from "./changePassword";
+import NotFound from "./notFound";
 
 
 const AllPages = () => {
+  // const NotFoundRedirect = () => <Redirect to='/not-found' />
   return (
     <>
      <Toast />
@@ -39,6 +41,8 @@ const AllPages = () => {
         <Route exact path="/wishlist" element={<Wishlist />}/>
         <Route exact path="/properties" element={<MyProperties />}/>
         <Route exact path="/property/:id" element={<Property />}/>
+        <Route path='*' element={<NotFound />} />
+        
         </Routes>
       </BrowserRouter>
     </>
