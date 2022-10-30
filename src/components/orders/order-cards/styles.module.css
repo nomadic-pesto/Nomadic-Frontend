@@ -18,7 +18,14 @@
 .orders-card {
   height: 100%;
 }
-
+.orders-card-container{
+  min-height: 14rem;
+}
+.orders-card-conatiner__left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .orders-card-left {
   display: flex !important;
   /*included *!important* - conflicting with MUI */
@@ -66,13 +73,13 @@
 }
 
 .price {
-  color: #3C88F1;
+  color: #924bf8;
   font-size: 1.3rem;
   margin: 0 auto;
 }
 
 .phone {
-  color: #3C88F1;
+  color: #924bf8;
   font-weight: 400;
 }
 

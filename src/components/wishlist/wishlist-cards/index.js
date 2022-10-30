@@ -39,6 +39,8 @@ const WishlistCards = ({ propertyState, getWishlist,removeWishlist }) => {
         ...prev,
         <Fragment key={list._id}>
           <CardWithImage 
+            className={styles["wishlist-card-container"]}
+            classNameImage={styles["wishlist-card-conatiner__left"]}
           image={list.rentalId.originalImages[0]}
           >
             <Grid container spacing={2} className={styles["wishlist-card"]}>

@@ -82,15 +82,24 @@
   justify-content: space-between;
 }
 .danger-button{
-  background: #DF736E !important;/*included *!important* - conflicting with MUI */
+  background: #ff0040 !important;/*included *!important* - conflicting with MUI */
 }
 .danger-button:hover{
-  background: #c26460 !important;/*included *!important* - conflicting with MUI */
+  background: #ff0040 !important;/*included *!important* - conflicting with MUI */
 }
 
 .wishlist-button{
-  padding: 0.4rem 2.5rem !important;
+  padding: 0.4rem 2rem !important;
   font-size: 1rem !important;
+}
+
+.wishlist-card-container{
+  min-height: 14rem;
+}
+.wishlist-card-conatiner__left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {

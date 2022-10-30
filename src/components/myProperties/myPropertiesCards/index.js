@@ -46,7 +46,10 @@ const MyPropertiesCards = ({getProperties}) => {
           setProperties((prev) => [
             ...prev,
             <Fragment key={rental._id}>
-              <CardWithImage image={rental.originalImages[0]}>
+              <CardWithImage 
+               className={styles["properties-card-container"]}
+               classNameImage={styles["properties-card-conatiner__left"]}
+              image={rental.originalImages[0]}>
                 <Grid
                   container
                   spacing={2}

@@ -47,7 +47,11 @@ const OrderCards = ({ getBookingsAdmin }) => {
             setUpcomingBookings((prev) => [
               ...prev,
               <Fragment key={booking._id}>
-                <CardWithImage image={booking.rentalID.originalImages[0]}>
+                <CardWithImage
+                  className={styles["orders-card-container"]}
+                  classNameImage={styles["orders-card-conatiner__left"]}
+                  image={booking.rentalID.originalImages[0]}
+                >
                   <Grid container spacing={2} className={styles["orders-card"]}>
                     <Grid
                       className={`${styles["orders-card-left"]} ${styles["card-item"]}`}
@@ -60,7 +64,8 @@ const OrderCards = ({ getBookingsAdmin }) => {
                         <span
                           className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                         >
-                          {booking.rentalID.subDestination}, {booking.rentalID.state}
+                          {booking.rentalID.subDestination},{" "}
+                          {booking.rentalID.state}
                         </span>
                       </div>
                       <div className={styles["rooms-row"]}>
@@ -110,7 +115,8 @@ const OrderCards = ({ getBookingsAdmin }) => {
               <Fragment key={booking._id}>
                 <CardWithImage
                   image={booking.rentalID.originalImages[0]}
-                  className={styles["orders-past"]}
+                  className={`${styles["orders-past"]} ${styles["orders-card-container"]}`}
+                  classNameImage={styles["orders-card-conatiner__left"]}
                 >
                   <Grid container spacing={2} className={styles["orders-card"]}>
                     <Grid
@@ -124,7 +130,8 @@ const OrderCards = ({ getBookingsAdmin }) => {
                         <span
                           className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                         >
-                          {booking.rentalID.subDestination}, {booking.rentalID.state}
+                          {booking.rentalID.subDestination},{" "}
+                          {booking.rentalID.state}
                         </span>
                       </div>
                       <div className={styles["rooms-row"]}>
