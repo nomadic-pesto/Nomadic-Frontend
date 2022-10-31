@@ -192,7 +192,7 @@ const Header = ({ displaySearch = false, className = "" }) => {
                   <Avatar sx={{ bgcolor: "#3697959e" }}>
                     <LocationOnIcon />
                   </Avatar>
-                  My Properties
+                  My Rentals
                 </Link>
               </MenuItem>
               <MenuItem onClick={logoutHandler}>

@@ -11,6 +11,8 @@ import { Grid } from "@mui/material";
 //importing other components
 import Loader from "../../common/loader";
 import ButtonComponent from "../../common/button";
+import ModalComponent from "../../common/modal";
+import SuccessModal from "../../common/successModal";
 
 //importing images
 import CardWithImage from "../../common/cardWithImage";
@@ -20,7 +22,6 @@ import roomsImage from "../../../public/images/sofa.png";
 import { toast } from "react-toastify";
 
 import { getBookings, cancelBookings } from "../../../actions/propertyAction";
-import ModalComponent from "../../common/modal";
 
 const BookingCards = ({ getBookings, cancelBookings }) => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +30,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
   const [pastBookings, setPastBookings] = useState([]);
   const [confirmCancelModal, setConfirmCancelModal] = useState(false);
   const [cancelId, setCancelId] = useState("");
+  const [successModal, setSuccessModal] = useState(false);
 
   useEffect(() => {
     setBookingsEmpty();
@@ -37,18 +39,14 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
 
   useEffect(() => {
     setPastBookings([]);
-    setUpcomingBookings([])
+    setUpcomingBookings([]);
     rawBookingsData.forEach((booking) => {
       if (new Date(booking.startDate) > new Date()) {
         setUpcomingBookings((prev) => [
           ...prev,
           <Fragment key={booking._id}>
             <CardWithImage image={booking.rentalID.originalImages[0]}>
-              <Grid
-                container
-                spacing={2}
-                className={styles["bookings-card"]}
-              >
+              <Grid container spacing={2} className={styles["bookings-card"]}>
                 <Grid
                   className={`${styles["bookings-card-left"]} ${styles["card-item"]}`}
                   item
@@ -65,33 +63,23 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
                     </span>
                   </div>
                   <div className={styles["rooms-row"]}>
-                    <img
-                      className={styles["rooms-image"]}
-                      src={roomsImage}
-                    />
+                    <img className={styles["rooms-image"]} src={roomsImage} />
                     <span
                       className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                     >
                       {booking.rentalID.noOfPeopleAccomodate} rooms
                     </span>
                   </div>
-                  <div
-                    className={`${styles["rooms-row"]} ${styles["date"]} `}
-                  >
+                  <div className={`${styles["rooms-row"]} ${styles["date"]} `}>
                     <span
                       className={`${styles["text-thin"]} ${styles["margin-right"]}`}
                     >
                       From
                     </span>
-                    {new Date(booking.startDate).toLocaleDateString(
-                      "en-GB"
-                    )}{" "}
-                    -{" "}
+                    {new Date(booking.startDate).toLocaleDateString("en-GB")} -{" "}
                     {new Date(booking.endDate).toLocaleDateString("en-GB")}
                   </div>
-                  <div
-                    className={`${styles["rooms-row"]} ${styles["price"]} `}
-                  >
+                  <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
                     Booked for ₹{booking.rentalID.price.toLocaleString()}
                   </div>
                 </Grid>
@@ -107,7 +95,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
                   {!booking.isCancelled && (
                     <ButtonComponent
                       className={styles["bookings-button"]}
-                      onClick={setCancelBookingHandler.bind(null,booking._id)}
+                      onClick={setCancelBookingHandler.bind(null, booking._id)}
                     >
                       Cancel Booking
                     </ButtonComponent>
@@ -133,11 +121,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
               image={booking.rentalID.originalImages[0]}
               className={styles["bookings-past"]}
             >
-              <Grid
-                container
-                spacing={2}
-                className={styles["bookings-card"]}
-              >
+              <Grid container spacing={2} className={styles["bookings-card"]}>
                 <Grid
                   className={`${styles["bookings-card-left"]} ${styles["card-item"]}`}
                   item
@@ -154,33 +138,23 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
                     </span>
                   </div>
                   <div className={styles["rooms-row"]}>
-                    <img
-                      className={styles["rooms-image"]}
-                      src={roomsImage}
-                    />
+                    <img className={styles["rooms-image"]} src={roomsImage} />
                     <span
                       className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                     >
                       {booking.rentalID.noOfPeopleAccomodate} rooms
                     </span>
                   </div>
-                  <div
-                    className={`${styles["rooms-row"]} ${styles["date"]} `}
-                  >
+                  <div className={`${styles["rooms-row"]} ${styles["date"]} `}>
                     <span
                       className={`${styles["text-thin"]} ${styles["margin-right"]}`}
                     >
                       From
                     </span>
-                    {new Date(booking.startDate).toLocaleDateString(
-                      "en-GB"
-                    )}{" "}
-                    -{" "}
+                    {new Date(booking.startDate).toLocaleDateString("en-GB")} -{" "}
                     {new Date(booking.endDate).toLocaleDateString("en-GB")}
                   </div>
-                  <div
-                    className={`${styles["rooms-row"]} ${styles["price"]} `}
-                  >
+                  <div className={`${styles["rooms-row"]} ${styles["price"]} `}>
                     Booked for ₹{booking.rentalID.price.toLocaleString()}
                   </div>
                 </Grid>
@@ -211,8 +185,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
         ]);
       }
     });
-  }, [rawBookingsData])
-  
+  }, [rawBookingsData]);
 
   const navigate = useNavigate();
 
@@ -226,7 +199,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
         bookingsResponse.status === "success" &&
         bookingsResponse.data.bookings.length > 0
       ) {
-        setRawBookingsData(bookingsResponse.data.bookings)
+        setRawBookingsData(bookingsResponse.data.bookings);
       } else {
         setBookingsEmpty();
         toast.error("No bookings found!");
@@ -253,16 +226,23 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
     setLoading(true);
     const bookingsResponse = await cancelBookings(cancelId);
 
-    if(bookingsResponse.status === "success" &&
-    bookingsResponse.data.booking._id){
-      let tempRawBooking = [...rawBookingsData]
-      tempRawBooking[tempRawBooking.findIndex(booking=>booking._id===cancelId)].isCancelled = true;
-      setRawBookingsData(tempRawBooking)
-      toast.success("Successfully cancelled Booking");
+    if (
+      bookingsResponse.status === "success" &&
+      bookingsResponse.data.booking._id
+    ) {
+      let tempRawBooking = [...rawBookingsData];
+      tempRawBooking[
+        tempRawBooking.findIndex((booking) => booking._id === cancelId)
+      ].isCancelled = true;
+      setRawBookingsData(tempRawBooking);
+
+      // toast.success("Successfully cancelled Booking");
       closeModal();
-    }
-    else{
-      let errorMessage = bookingsResponse.message ? bookingsResponse.message : "Error Occurred!"
+      setSuccessModal(true);
+    } else {
+      let errorMessage = bookingsResponse.message
+        ? bookingsResponse.message
+        : "Error Occurred!";
       toast.error(errorMessage);
       closeModal();
     }
@@ -278,9 +258,19 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
   return (
     <>
       {loading && <Loader />}
+      {successModal && (
+        <SuccessModal
+          mainTitle="Booking Cancelled !"
+          subTitle="Your payment will be refunded in next 7 days!"
+          onClick={() => setSuccessModal(false)}
+        />
+      )}
       {confirmCancelModal && (
         <ModalComponent className={styles["modal-padding"]}>
-          <div className={styles["modal-text"]}>Are you sure <br />you want to cancel?</div>
+          <div className={styles["modal-text"]}>
+            Are you sure <br />
+            you want to cancel?
+          </div>
           <div className={styles["modal-buttons"]}>
             <ButtonComponent
               className={`${styles["bookings-button"]} ${styles["danger-button"]}`}

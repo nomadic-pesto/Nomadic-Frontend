@@ -15,12 +15,12 @@ const TopSection = ({ displayProperty }) => {
       <div className={styles["property-info"]}>
         <div className={styles["ratings"]}>
           <StarIcon />
-          <span>4.85</span>
+          <span>{displayProperty.avgReview}</span>
         </div>
         <div className={styles["dot"]}>.</div>
         <div className={styles["reviews"]}>
           <div className={styles["reviews-box"]}>
-            <span>350 </span> reviews
+            <span>{displayProperty.noOfReview} </span> reviews
           </div>
         </div>
         <div className={styles["dot"]}>.</div>

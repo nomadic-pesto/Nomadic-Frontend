@@ -21,31 +21,31 @@ import {
 import { toast } from "react-toastify";
 
 import moment from "moment";
+import SuccessModal from "../../../common/successModal";
 
 const RightSection = ({ displayProperty }) => {
   const [guests, setGuests] = useState("");
   const [bookedDates, setBookedDates] = useState([]);
   const [numberOfBookedDays, setNumberOfBookedDays] = useState(1);
   const [refreshBookedDates, dorefreshBookedDates] = useState(0);
+  const [successModal, setSuccessModal] = useState(false);
 
   const { price } = displayProperty;
 
   const navigate = useNavigate();
 
   useEffect(() => {
-
     if (bookedDates.length > 0) {
-    var startDateForDuration = moment(bookedDates[0], "YYYY-MM-DD");
-    var endDateForDuration = moment(bookedDates[1], "YYYY-MM-DD");
+      var startDateForDuration = moment(bookedDates[0], "YYYY-MM-DD");
+      var endDateForDuration = moment(bookedDates[1], "YYYY-MM-DD");
 
-    setNumberOfBookedDays(moment.duration(endDateForDuration.diff(startDateForDuration)).asDays() + 1);
+      setNumberOfBookedDays(
+        moment.duration(endDateForDuration.diff(startDateForDuration)).asDays()
+      );
     }
-
-  }, [bookedDates])
-  
+  }, [bookedDates]);
 
   const checkoutHandler = async (price) => {
-
     //checking if user has selected dates
     if (bookedDates.length <= 0) {
       toast.error("Please choose Dates");
@@ -59,16 +59,15 @@ const RightSection = ({ displayProperty }) => {
     //adding 11 hours for check in time
     const startDate = moment(bookedDates[0])
       // .add("11", "hours")
-      .zone("KOLKATA")
-      
+      .zone("KOLKATA");
+
     const endDate = moment(bookedDates[1])
       // .add("11", "hours")
-      .zone("KOLKATA")
-      
+      .zone("KOLKATA");
 
-      //calcuating number of days
-  
-      // price multiplied by number of days
+    //calcuating number of days
+
+    // price multiplied by number of days
     price *= numberOfBookedDays;
 
     const currentDate = moment(new Date()).zone("KOLKATA").unix();
@@ -87,9 +86,9 @@ const RightSection = ({ displayProperty }) => {
       key,
       amount: orderResponse.data.amount,
       currency: "INR",
-      name: "Nomadic", 
-      description: "Nomadic Rental Payment", 
-      // image: "https://example.com/your_logo", 
+      name: "Nomadic",
+      description: "Nomadic Rental Payment",
+      // image: "https://example.com/your_logo",
       order_id: orderResponse.data.id,
       handler: async function (response) {
         if (response.razorpay_payment_id) {
@@ -112,18 +111,19 @@ const RightSection = ({ displayProperty }) => {
             displayProperty.ownerId ? displayProperty.ownerId : null,
             price
           );
-          setBookedDates([])
-          setGuests([])
-          setNumberOfBookedDays(1)
-          dorefreshBookedDates(prev => prev + 1)
-          toast.success("Rental Booked!")
+          setBookedDates([]);
+          setGuests([]);
+          setNumberOfBookedDays(1);
+          dorefreshBookedDates((prev) => prev + 1);
+          setSuccessModal(true);
+          // toast.success("Rental Booked!")
           // navigate("/dashboard");
         }
       },
       prefill: {
         name: user.name,
         email: user.email,
-        contact: user.mobileNumber ? user.mobileNumber :"9999999999",
+        contact: user.mobileNumber ? user.mobileNumber : "9999999999",
       },
     };
     var razorpay = new window.Razorpay(options);
@@ -138,6 +138,13 @@ const RightSection = ({ displayProperty }) => {
   };
   return (
     <>
+      {successModal && (
+        <SuccessModal
+          mainTitle="Thank you!"
+          subTitle="We wish you a pleasant stay!"
+          onClick={() => setSuccessModal(false)}
+        />
+      )}
       <section id="book-now" className={styles["book-now"]}>
         <div className={`${styles["row"]} ${styles["border-bottom"]}`}>
           <BasicDateRangePicker
@@ -172,7 +179,7 @@ const RightSection = ({ displayProperty }) => {
           </FormControl>
         </div>
         <div className={`${styles["row"]} ${styles["price"]}`}>
-          ₹{(price * numberOfBookedDays).toFixed(0,2)} /- Day
+          ₹{(price * numberOfBookedDays).toFixed(0, 2)} /- Day
         </div>
       </section>
       <ButtonComponent
