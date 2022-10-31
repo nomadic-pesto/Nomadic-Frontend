@@ -71,6 +71,15 @@
   padding: 0.4rem 3rem !important;/*included *!important* - conflicting with MUI */
 }
 
+.properties-card-container{
+  min-height: 14rem;
+}
+.properties-card-conatiner__left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 900px) {
   .property-name span {
       margin-left: 0;
