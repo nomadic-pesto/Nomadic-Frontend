@@ -102,3 +102,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { forgotPassword })(ForgotPassword);
+
+export {ForgotPassword as ForgotPasswordTest}
