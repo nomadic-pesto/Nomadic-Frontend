@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<p align="center">
+    <img src="./public/images/nomadic-logo.png" alt="Logo"  >
+</p>
+Nomadic is rental booking service, especially made for all remote working professional who want to have extended stay in all famous worcation places along with thier family and friends.
+<br />
+<br />
+This repo contains front-end source code.<br/>
+For back-end repository <a href="https://github.com/nomadic-pesto/Nomadic-Backend">click here</a>.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- TABLE OF CONTENTS -->
+<br/>
 
-## Available Scripts
+Table of Contents
 
-In the project directory, you can run:
+1. [Demo](#demo)
+2. [Installation](#installation)
+3. [Technology Stack](#technology-stack)
+4. [Authors](#authors)
+5. [License](#license)
 
-### `npm start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Live Demo](https://nomadic-life.netlify.app/)
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Please Note:
 
-### `npm run build`
+-  We recommend using this app in latest browser with javascript support.
+-  Try demo credentials if you not comfortable with Google SignIn OAuth.
+-  Payment Gateway is in test mode, so use <code>4111 1111 1111</code> as card no to continue.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
+Test Credentials:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-  For User and Admin
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Currently A normal user can also be admin by just onboarding thier own rentals to platform from my rental page, demo account is both normal user who can rent also an admin by renting his own rentals
 
-### `npm run eject`
+Demo login credential are auto populated in the login page, click login to do one-click login
+   -  [User/Admin Login Page Link](https://nomadic-life.netlify.app/login)
+   -  Username: nomdic.pesto+1@gmail.com
+   -  Password: Nomadicpestodemo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+      <br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/nomadic-pesto/Nomadic-Frontend
+   ```
+2. Set environment variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+        REACT_APP_API_BASE_URL=https://nomadic.onrender.com<br />
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Install NPM packages
+   ```sh
+   cd Nomadic-Frontend && npm install
+   ```
+4. Run
+   ```sh
+   npm start
+   ```
+5. Open http://localhost:3000 to view it in the browser
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. Run Test cases
+   ```sh
+   npm test
+   ```
+   <br/>
 
-### Code Splitting
+# Technology Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We tried to use a completely modern tech stack while testing out some new technologies that we had never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future-proof for the coming next several years. We used:
 
-### Analyzing the Bundle Size
+-  [React JS](https://reactjs.org/)
+-  [Material UI](https://mui.com/)
+-  [Axios](https://axios-http.com/docs/intro)
+-  [React redux](https://redux.js.org/) 
+-  [Razarpay](https://razorpay.com/)
+-  [Enzyme](https://enzymejs.github.io/enzyme/)
+-  [Sentry](https://sentry.io/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Mobile Responsive
+ - Fits to Mobile Screen
+ - Fits to Tab Screen - Ipad
+ - Fits to various Desktop screen resolution
+# Authors
 
-### Advanced Configuration
+-  [Jatin Gupta](https://github.com/Jatingupta-2)
+-  [Daniel Raj](https://github.com/raj-daniel)
+-  [Shubham Mourya](https://github.com/kawnkush)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br/>
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://opensource.org/licenses/MIT)
