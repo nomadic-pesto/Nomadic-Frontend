@@ -5,7 +5,7 @@ export const constants = {
   DESTINATION_TYPES: [
     { icon: "fa-anchor", name: "Beaches" },
     { icon: "fa-area-chart", name: "Hill station" },
-    { icon: "fa-thermometer-full", name: "Dessert" },
+    { icon: "fa-thermometer-full", name: "Desert" },
     { icon: "fa-envira", name: "Wildlife" },
     { icon: "fa-envira", name: "Heritage" },
     // { icon: "fa-tree", name: "Forest" },
@@ -47,39 +47,24 @@ export const constants = {
     { destination: "Hill station", name: "Kodaikanal", icon: "fa-area-chart" },
     { destination: "Hill station", name: "Wayanad", icon: "fa-area-chart" },
 
-    { destination: "Dessert", name: "Jaisalmer", icon: "fa-thermometer-full" },
-    { destination: "Dessert", name: "kutch", icon: "fa-thermometer-full" },
-    { destination: "Dessert", name: "bikaner", icon: "fa-thermometer-full" },
-    { destination: "Dessert", name: "barmer", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "Jaisalmer", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "kutch", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "bikaner", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "barmer", icon: "fa-thermometer-full" },
     {
-      destination: "Dessert",
+      destination: "Desert",
       name: "chittorgarh",
       icon: "fa-thermometer-full",
     },
     {
-      destination: "Dessert",
+      destination: "Desert",
       name: "Kumbhalgarh",
       icon: "fa-thermometer-full",
     },
-    { destination: "Dessert", name: "Bundi", icon: "fa-thermometer-full" },
-    { destination: "Dessert", name: "Pushkar", icon: "fa-thermometer-full" },
-    { destination: "Dessert", name: "Ajmer", icon: "fa-thermometer-full" },
-    { destination: "Dessert", name: "Khimsar", icon: "fa-thermometer-full" },
-    {
-      destination: "Dessert",
-      name: "Nubra valley",
-      icon: "fa-thermometer-full",
-    },
-    {
-      destination: "Dessert",
-      name: "Spiti valley",
-      icon: "fa-thermometer-full",
-    },
-    {
-      destination: "Dessert",
-      name: "Rann of Kutch",
-      icon: "fa-thermometer-full",
-    },
+    { destination: "Desert", name: "Bundi", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "Pushkar", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "Ajmer", icon: "fa-thermometer-full" },
+    { destination: "Desert", name: "Khimsar", icon: "fa-thermometer-full" },
 
     { destination: "Wildlife", name: "Jim Corbett", icon: "fa-envira" },
     { destination: "Wildlife", name: "Ranthambore", icon: "fa-envira" },
@@ -123,7 +108,6 @@ export const constants = {
       name: "Mahabalipuram Monuments",
       icon: "fa-tree",
     },
-    { destination: "Heritage", name: "Agra", icon: "fa-tree" },
 
     { destination: "Winter", name: "Gulmarg", icon: "fa-snowflake-o" },
     { destination: "Winter", name: "Manali", icon: "fa-snowflake-o" },
@@ -152,12 +136,6 @@ export const constants = {
     { destination: "Winter", name: "Dalhousie", icon: "fa-snowflake-o" },
     { destination: "Winter", name: "Tawang", icon: "fa-snowflake-o" },
     { destination: "Winter", name: "Gangtok", icon: "fa-snowflake-o" },
-    { destination: "Winter", name: "Shillong", icon: "fa-snowflake-o" },
-    {
-      destination: "Winter",
-      name: "Darjeeling",
-      icon: "fa-snowflake-o",
-    },
 
     { destination: "Cities", name: "Udaipur", icon: "fa-home" },
     { destination: "Cities", name: "Jodhpur", icon: "fa-home" },
@@ -240,4 +218,6 @@ export const constants = {
     { name: "Tree house" },
   ],
   SLIDER_MAX_VALUE: 10000,
+  GUEST_LOGIN:"nomadic.pesto+1@gmail.com",
+  GUEST_PASSOWRD:"nomadicpestodemo"
 };

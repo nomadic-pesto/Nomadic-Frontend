@@ -43,8 +43,8 @@ const LogIn = ({ userState, loginUser }) => {
   });
 
   const initailValues = {
-    email: "nomadic.pesto@gmail.com",
-    password: "Nomadic@pesto",
+    email: constants.GUEST_LOGIN,
+    password: constants.GUEST_PASSOWRD,
   };
 
   const handleSubmit = async (values) => {

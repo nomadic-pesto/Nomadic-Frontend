@@ -91,7 +91,7 @@ const MyPropertiesCards = ({getProperties}) => {
                     className={styles["properties-button"]}
                     onClick={()=>navigate(`/property/${rental._id}`)}
                     >
-                      Edit Property
+                      Edit Rental
                     </ButtonComponent>
                   </Grid>
                 </Grid>
@@ -115,14 +115,14 @@ const MyPropertiesCards = ({getProperties}) => {
     <>
       {loading && <Loader />}
       <div className={styles["properties-container"]}>
-        <div className={styles["title"]}>My Properties</div>
+        <div className={styles["title"]}>My Rentals</div>
 
         {properties.map((rental) => rental)}
         <ButtonComponent
           className={`${styles["properties-button"]} ${styles["add-property"]}`}
           onClick={()=>navigate("/property/add")}
         >
-          Add Property
+          Edit Property
         </ButtonComponent>
       </div>
     </>
