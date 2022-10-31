@@ -156,3 +156,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getWishlist,removeWishlist })(WishlistCards);
+
+export {WishlistCards as Wishlist}

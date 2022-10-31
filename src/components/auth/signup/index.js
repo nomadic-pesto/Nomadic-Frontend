@@ -152,3 +152,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { signup })(SignUp);
+
+export {SignUp as Signuptest}
