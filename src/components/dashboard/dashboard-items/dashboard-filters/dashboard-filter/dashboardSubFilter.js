@@ -16,13 +16,15 @@ const DashboardSubFilter = ({
   propertyState,
 }) => {
   const setFilters = async (destination) => {
-    let filtersToSet = { ...propertyState };
+    if(propertyState.subDestination !== destination){
+      let filtersToSet = { ...propertyState };
 
-    delete filtersToSet.properties;
-    delete filtersToSet.loadMore;
-    filtersToSet.subDestination = destination;
-
-    await getAllProperties(0, constants.PRODUCT_LIMIT, filtersToSet);
+      delete filtersToSet.properties;
+      delete filtersToSet.loadMore;
+      filtersToSet.subDestination = destination;
+  
+      await getAllProperties(0, constants.PRODUCT_LIMIT, filtersToSet);
+    }
   };
 
   return (
