@@ -46,7 +46,6 @@ const SignUp = ({ userState, signup }) => {
   };
 
   const signupResponseHandler = (apiResponse) =>{
-    console.log(apiResponse)
     if(apiResponse && apiResponse.status === 'success'){
       toast.success("Welcome!");
       navigate("/dashboard");
@@ -57,10 +56,6 @@ const SignUp = ({ userState, signup }) => {
       toast.error(formatedErrorMessage);
     }
   }
-
-  useEffect(() => {
-    console.log(userState);
-  }, [userState]);
 
   return (
     <>

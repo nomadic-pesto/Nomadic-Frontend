@@ -19,7 +19,6 @@ export const Apicall = async (url, method, headers = {}, data = {}) => {
             return response.data;
         }
         else {
-            console.log("No status")
             return response.data;
         }
     } catch (error) {
