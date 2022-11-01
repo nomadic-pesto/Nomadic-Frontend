@@ -59,18 +59,18 @@ const RightSection = ({ displayProperty }) => {
     //adding 11 hours for check in time
     const startDate = moment(bookedDates[0])
       // .add("11", "hours")
-      .zone("KOLKATA");
+      .zone("KOLKATA").format('x');
 
     const endDate = moment(bookedDates[1])
       // .add("11", "hours")
-      .zone("KOLKATA");
+      .zone("KOLKATA").format('x');
 
     //calcuating number of days
 
     // price multiplied by number of days
     price *= numberOfBookedDays;
 
-    const currentDate = moment(new Date()).zone("KOLKATA").unix();
+    const currentDate = moment(new Date()).zone("KOLKATA").format('x');
 
     const user = JSON.parse(localStorage.getItem("user"));
 
