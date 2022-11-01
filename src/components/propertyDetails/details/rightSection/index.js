@@ -58,12 +58,11 @@ const RightSection = ({ displayProperty }) => {
 
     //adding 11 hours for check in time
     const startDate = moment(bookedDates[0])
-      // .add("11", "hours")
       .zone("KOLKATA").format('x');
 
     const endDate = moment(bookedDates[1])
-      // .add("11", "hours")
-      .zone("KOLKATA").format('x');
+    .subtract(1, "days") 
+    .zone("KOLKATA").format('x');
 
     //calcuating number of days
 
