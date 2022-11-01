@@ -122,7 +122,7 @@ const MyPropertiesCards = ({getProperties}) => {
           className={`${styles["properties-button"]} ${styles["add-property"]}`}
           onClick={()=>navigate("/property/add")}
         >
-          Edit Property
+          Add Rental
         </ButtonComponent>
       </div>
     </>
