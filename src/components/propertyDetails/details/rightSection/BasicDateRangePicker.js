@@ -16,7 +16,7 @@ import styles from "./styles.module.css";
 import { getPropertyBookedDates } from "../../../../actions/propertyAction";
 import { useParams } from "react-router-dom";
 
-const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates,setDatesHandler,refreshBookedDates }) => {
+const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates,setDatesHandler,setBookedDatesHandler,refreshBookedDates }) => {
   const [value, setValue] = React.useState([null, null]);
   const [bookedDates, setBookedDates] = React.useState([]);
 
@@ -43,6 +43,7 @@ const BasicDateRangePicker = ({ propertyState, getPropertyBookedDates,setDatesHa
       getBookedDates.data.blockedDates.length > 0
     ) {
       setBookedDates(getBookedDates.data.blockedDates);
+      setBookedDatesHandler(getBookedDates.data.blockedDates)
     }
   };
 

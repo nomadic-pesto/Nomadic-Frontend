@@ -179,7 +179,7 @@ const OrderCards = ({ getBookingsAdmin }) => {
         });
       } else {
         setBookingsEmpty();
-        toast.error("No bookings found!");
+        toast.error("No Orders found!");
       }
 
       setLoading(false);

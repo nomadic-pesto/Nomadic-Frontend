@@ -29,6 +29,7 @@ const RightSection = ({ displayProperty }) => {
   const [numberOfBookedDays, setNumberOfBookedDays] = useState(1);
   const [refreshBookedDates, dorefreshBookedDates] = useState(0);
   const [successModal, setSuccessModal] = useState(false);
+  const [bookedDatesHandler, setBookedDatesHandler] = useState([]);
 
   const { price } = displayProperty;
 
@@ -45,6 +46,24 @@ const RightSection = ({ displayProperty }) => {
     }
   }, [bookedDates]);
 
+  const checkBookedDatesHandler = () => {
+    let searchBookedDates = bookedDatesHandler.filter((date) => {
+      if (
+        (new Date(date.startDate) >= new Date(bookedDates[0]) &&
+          new Date(date.startDate) <= new Date(bookedDates[1])) ||
+        (new Date(date.endDate) >= new Date(bookedDates[0]) &&
+          new Date(date.endDate) <= new Date(bookedDates[1]))
+      ) {
+        return date;
+      }
+    });
+
+    if (searchBookedDates.length > 0) {
+      return false;
+    }
+    return true;
+  };
+
   const checkoutHandler = async (price) => {
     //checking if user has selected dates
     if (bookedDates.length <= 0) {
@@ -54,22 +73,25 @@ const RightSection = ({ displayProperty }) => {
     } else if (guests === "") {
       toast.error("Please select Guests");
       return;
+    } else if (!checkBookedDatesHandler()) {
+      toast.error("Dates not available");
+      return;
     }
 
     //adding 11 hours for check in time
-    const startDate = moment(bookedDates[0])
-      .zone("KOLKATA").format('x');
+    const startDate = moment(bookedDates[0]).zone("KOLKATA").format("x");
 
     const endDate = moment(bookedDates[1])
-    .subtract(1, "days") 
-    .zone("KOLKATA").format('x');
+      .subtract(1, "days")
+      .zone("KOLKATA")
+      .format("x");
 
     //calcuating number of days
 
     // price multiplied by number of days
     price *= numberOfBookedDays;
 
-    const currentDate = moment(new Date()).zone("KOLKATA").format('x');
+    const currentDate = moment(new Date()).zone("KOLKATA").format("x");
 
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -149,6 +171,7 @@ const RightSection = ({ displayProperty }) => {
           <BasicDateRangePicker
             setDatesHandler={(date) => setBookedDates(date)}
             refreshBookedDates={refreshBookedDates}
+            setBookedDatesHandler={setBookedDatesHandler}
           />
           {/* <div className={`${styles["col-6"]} ${styles["border-right"]}`}></div>
         <div className={`${styles["col-6"]}`}></div> */}
@@ -178,7 +201,11 @@ const RightSection = ({ displayProperty }) => {
           </FormControl>
         </div>
         <div className={`${styles["row"]} ${styles["price"]}`}>
-          ₹{(price * numberOfBookedDays).toFixed(0, 2)} /- Day
+          ₹
+          {numberOfBookedDays && numberOfBookedDays > 0
+            ? (price * numberOfBookedDays).toFixed(0, 2)
+            : price}{" "}
+          /- Day
         </div>
       </section>
       <ButtonComponent
