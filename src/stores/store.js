@@ -6,5 +6,6 @@ export default function configureStoreRoot(initialState = {}) {
   return configureStore({
     reducer: mainReducer,
     initialState: initialState,
+    state:{}
   });
 }

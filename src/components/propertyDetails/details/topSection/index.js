@@ -25,9 +25,9 @@ const TopSection = ({ displayProperty }) => {
         </div>
         <div className={styles["dot"]}>.</div>
         <div className={styles["reviews"]}>
-         
+        
           {streetName}, {state}
-         
+        
         </div>
       </div>
     </section>

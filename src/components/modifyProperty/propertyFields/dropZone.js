@@ -6,8 +6,8 @@ import Button from "../../common/button";
 import styles from "./styles.module.css";
 
 //dropzone component
-function Dropzone({ open, onDrop, accept,disabled }) {
-    const { getRootProps, getInputProps, acceptedFiles, isDragActive } =
+function Dropzone({ open, onDrop,disabled }) {
+    const { getRootProps, getInputProps, isDragActive } =
         useDropzone({ accept:"image/*", onDrop, maxFiles:5,maxSize:8145728,disabled:disabled });
 
 
