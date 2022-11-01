@@ -188,6 +188,7 @@ const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
   };
 
   const handleSubmit = async (values) => {
+    setLoading(true)
     if (addedImages + imagesToUpload.length < 1) {
       return;
     }
@@ -202,10 +203,9 @@ const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
     values.rentalName = values.propertyName;
     delete values.propertyName;
     
-    // setLoading(true);
     if (params.id === "add") {
       let response = await addRentalService({ ...values });
-      // console.log(response)
+      setLoading(false)
       if(response.status==='success'){
         toast.success("Rental Added!")
         navigate('/properties')
@@ -213,21 +213,17 @@ const PropertyFields = ({ userState, editProfile, getModifyProperty }) => {
       else{
         toast.error("Failed to add Rental!")
       }
-      // let response = await addRentalService(values.destination,values.subDestination,values.accommodation,values.price,values.houseType,values.overview,values.address,values.propertyName,values.streetName,values.district,values.state,values.amenities,values.originalImages)
      
     } else {
     
-    // setLoading(true);
-  
-    
-
     values.originalImages = [...addedImages,...values.originalImages];
     values.thumbnailImages = [...addedImages,...values.thumbnailImages];
+
     const updateRentalResponse = await updateRentalService({
       id: params.id,
       ...values,
     });
-    
+    setLoading(false)
     if(updateRentalResponse.status==='success'){
       toast.success("Rental Updated!")
       navigate('/properties')

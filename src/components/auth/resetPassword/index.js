@@ -40,10 +40,8 @@ const ResetPassword = ({ userState, resetPassword }) => {
     setLoading(true);
     let response = await resetPassword({...values,token});
     resetPasswordResponseHandler(response)
-    console.log(response);
 
     setLoading(false);
-    // navigate("/dashboard");
   };
 
   const resetPasswordResponseHandler = (apiResponse) =>{

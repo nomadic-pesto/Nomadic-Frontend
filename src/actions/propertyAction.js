@@ -6,7 +6,6 @@ export const getAllProperties =
   (skip, limit, filters = {}) =>
   async (dispatch) => {
     let properties = await getAllPropertiesService(skip, limit, filters);
-    // console.log(properties)
     if(properties.status === "success"){
       dispatch({
         type: types.GET_ALL_PROPERTIES,
@@ -53,7 +52,6 @@ export const getAllProperties =
   (skip, limit, filters = {}) =>
   async (dispatch) => {
     let properties = await getAllPropertiesService(skip, limit, filters);
-    // console.log(properties)
     if(properties.status === "success"){
       dispatch({
         type: types.GET_SEARCH_PROPERTIES,
