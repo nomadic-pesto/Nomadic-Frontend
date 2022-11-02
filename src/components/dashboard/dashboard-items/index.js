@@ -111,6 +111,7 @@ const DashboardItems = ({
             {displayProperties.map((property) => (
               <DashboardItem property={property} key={property._id} />
             ))}
+            {displayProperties.length===0 && <div className={styles["no-properties-found"]} >No Properties found!</div>}
           </Grid>
         </section>
         <section>
