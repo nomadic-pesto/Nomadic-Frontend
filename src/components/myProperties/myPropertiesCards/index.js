@@ -118,6 +118,7 @@ const MyPropertiesCards = ({getProperties}) => {
         <div className={styles["title"]}>My Rentals</div>
 
         {properties.map((rental) => rental)}
+        {properties.length===0 && <div className={styles["no-rentals-found"]} >No Rental found!</div>}
         <ButtonComponent
           className={`${styles["properties-button"]} ${styles["add-property"]}`}
           onClick={()=>navigate("/property/add")}
