@@ -146,6 +146,7 @@ const WishlistCards = ({ propertyState, getWishlist,removeWishlist }) => {
       <div className={styles["wishlist-container"]}>
         <div className={styles["title"]}>My Wishlist</div>
         {list}
+        {listRawData.length === 0 && <div className={styles["no-rentals-found"]} >No Rentals found!</div> }
       </div>
     </>
   );

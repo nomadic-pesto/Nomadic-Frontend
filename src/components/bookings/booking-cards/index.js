@@ -290,10 +290,12 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
       <div className={styles["bookings-container"]}>
         <div className={styles["title"]}>My Bookings</div>
         {upcomingBookings.map((booking) => booking)}
+        {upcomingBookings.length===0 && <div className={styles["no-bookings-found"]} >No Bookings found!</div>}
         <div className={`${styles["title"]} ${styles["title-margin"]}`}>
           Past Bookings
         </div>
         {pastBookings.map((booking) => booking)}
+        {pastBookings.length===0 && <div className={styles["no-bookings-found"]} >No Bookings found!</div>}
       </div>
     </>
   );

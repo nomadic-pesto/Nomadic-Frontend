@@ -200,11 +200,13 @@ const OrderCards = ({ getBookingsAdmin }) => {
       <div className={styles["orders-container"]}>
         <div className={styles["title"]}>Upcoming Orders</div>
         {upcomingBookings.map((booking) => booking)}
+        {upcomingBookings.length===0 && <div className={styles["no-orders-found"]} >No Orders found!</div>}
 
         <div className={`${styles["title"]} ${styles["title-margin"]}`}>
           Past Orders
         </div>
         {pastBookings.map((booking) => booking)}
+        {pastBookings.length===0 && <div className={styles["no-orders-found"]} >No Orders found!</div>}
       </div>
     </>
   );
