@@ -99,6 +99,13 @@
 .orders-past{
   background: #e5e0e0f5 !important;
 }
+.no-orders-found{
+  width: 100%;
+  margin-top: 5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #787878;
+}
 
 
 @media (max-width: 900px) {

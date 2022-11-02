@@ -97,6 +97,13 @@
     border-radius: 0.2rem !important;
     padding: 0.75rem 4rem !important;
 }
+.no-bookings-found{
+    width: 100%;
+    margin-top: 5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #787878;
+}
 
 @media (max-width: 900px) {
     .property-name span {
