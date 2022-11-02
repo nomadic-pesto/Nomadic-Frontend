@@ -264,7 +264,7 @@ export const paymentVerification = async (
   razorpay_signature
 ) => {
   return await Apicall(
-    "http://localhost:5001/v1/payment/paymentVerification",
+    `${constants.BACKEND_URL}/v1/payment/paymentVerification`,
     "POST",
     {
       "Content-Type": "application/json",
@@ -290,7 +290,7 @@ export const bookARental = async (
   bookingCost
 ) => {
   return await Apicall(
-    "http://localhost:5001/v1/booking/bookARental",
+    `${constants.BACKEND_URL}/v1/booking/bookARental`,
     "POST",
     {
       "Content-Type": "application/json",
