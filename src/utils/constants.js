@@ -1,5 +1,5 @@
 export const constants = {
-  BACKEND_URL: "https://nomadic.onrender.com",
+  BACKEND_URL: "http://localhost:5001",
   FRONTEND_URL:"https://nomadic-life.netlify.app/",
   PRODUCT_LIMIT: 24,
   DESTINATION_TYPES: [
