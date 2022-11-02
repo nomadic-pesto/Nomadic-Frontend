@@ -114,7 +114,7 @@ const DashboardItem = ({ property, propertyState,addToWishlist }) => {
                     src={roomsImage}
                     alt="Rooms"
                   />
-                  2 rooms
+                  {property.noOfPeopleAccomodate} rooms
                 </div>
               </section>
               <section
