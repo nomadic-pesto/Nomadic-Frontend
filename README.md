@@ -42,7 +42,7 @@ Currently A normal user can also be admin by just onboarding thier own rentals t
 
 Demo login credential are auto populated in the login page, click login to do one-click login
    -  [User/Admin Login Page Link](https://nomadic-life.netlify.app/login)
-   -  Username: nomadic.agentproperty@gmail.com
+   -  Username: nomadic.pesto+1@gmail.com
    -  Password: nomadicpestodemo
 
       <br/>
