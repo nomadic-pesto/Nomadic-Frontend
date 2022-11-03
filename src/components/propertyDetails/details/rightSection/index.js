@@ -7,9 +7,11 @@ import styles from "./styles.module.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
+import { InputLabel } from "@mui/material";
 
 import ButtonComponent from "../../../common/button";
 import BasicDateRangePicker from "./BasicDateRangePicker";
+
 import {
   bookARental,
   paymentCheckout,
@@ -29,6 +31,7 @@ const RightSection = ({ displayProperty }) => {
   const [bookedDatesHandler, setBookedDatesHandler] = useState([]);
 
   const { price } = displayProperty;
+
 
   useEffect(() => {
     if (bookedDates.length > 0) {
