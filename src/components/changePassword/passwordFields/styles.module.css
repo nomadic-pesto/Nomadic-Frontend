@@ -30,6 +30,8 @@
 .input-title{
     font-size: 1.5rem;
     display: inherit;
+    font-weight: 700;
+    color: #d5d5d5;
 }
 .input-field{
     
