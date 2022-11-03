@@ -6,12 +6,12 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
+
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import { green, pink } from "@mui/material/colors";
+import { pink } from "@mui/material/colors";
 import PersonIcon from "@mui/icons-material/Person";
 import PasswordIcon from "@mui/icons-material/Password";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -72,7 +72,7 @@ const Header = ({ displaySearch = false, className = "" }) => {
           className={`${styles["custom-link"]} ${styles["logo"]}`}
           to={"/dashboard"}
         >
-          <img className={styles["nomadic"]} src={nomadic} />
+          <img className={styles["nomadic"]} src={nomadic} alt="nomadic"/>
         </Link>
         {displaySearch && <Search />}
         {!loggedIn && (
@@ -95,7 +95,7 @@ const Header = ({ displaySearch = false, className = "" }) => {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
             >
-              <img className={styles["profile-image"]} src={profile} />
+              <img className={styles["profile-image"]} src={profile} alt="nomadic" />
             </IconButton>
           </Tooltip>
         )}

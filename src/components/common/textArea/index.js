@@ -6,10 +6,9 @@ import { ErrorMessage, useField } from "formik";
 
 //importing styles
 import styles from "./styles.module.css";
-import { Box, TextareaAutosize } from "@mui/material";
+import {  TextareaAutosize } from "@mui/material";
 
 const TextAreaComponent = (props) => {
-  const width = props.width;
 
   const [field, meta] = useField(props);
   return (

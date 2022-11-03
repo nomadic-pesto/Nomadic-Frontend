@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 //importing styles
 import styles from "./styles.module.css";
 
 //importing MUI
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
+import { InputLabel } from "@mui/material";
 
 import ButtonComponent from "../../../common/button";
 import BasicDateRangePicker from "./BasicDateRangePicker";
-import SelectFieldComponent from "../../../common/selectField";
-import { InputLabel } from "@mui/material";
+
 import {
   bookARental,
   paymentCheckout,
@@ -33,7 +32,6 @@ const RightSection = ({ displayProperty }) => {
 
   const { price } = displayProperty;
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (bookedDates.length > 0) {

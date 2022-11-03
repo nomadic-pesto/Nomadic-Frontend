@@ -10,7 +10,6 @@ import "@fontsource/roboto/700.css";
 import "font-awesome/css/font-awesome.min.css";
 
 //importing MUI
-import { red } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 //Creating theme

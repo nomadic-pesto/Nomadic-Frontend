@@ -1,19 +1,14 @@
 import React from "react";
 
 // imporitng text field  from materalUi
-import TextField from "@mui/material/TextField";
 import { ErrorMessage, useField } from "formik";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 
 //importing styles
 import styles from "./styles.module.css";
-import { Box } from "@mui/material";
-import { constants } from "../../../utils/constants";
 
 const SelectFieldComponent = (props) => {
-  const width = props.width;
 
   const [field, meta] = useField(props);
 

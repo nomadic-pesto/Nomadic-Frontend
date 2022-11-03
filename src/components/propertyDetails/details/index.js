@@ -86,15 +86,15 @@ const Details = ({ getPropertyById }) => {
         </div>
         <div className={styles["services-items"]}>
           <div className={styles["services-item"]}>
-            <img src={serviceImage1} />
+            <img src={serviceImage1}  alt="nomadic"/>
             <div className={styles["services-info"]}>Always fully equipped</div>
           </div>
           <div className={styles["services-item"]}>
-            <img src={serviceImage2} />
+            <img src={serviceImage2}  alt="nomadic"/>
             <div className={styles["services-info"]}>One-of-a-kind details</div>
           </div>
           <div className={styles["services-item"]}>
-            <img src={serviceImage3} />
+            <img src={serviceImage3}  alt="nomadic"/>
             <div className={styles["services-info"]}>
               Exceptional hospitality
             </div>
@@ -118,6 +118,7 @@ const Details = ({ getPropertyById }) => {
                     <img
                       className={styles["amenities-image"]}
                       src={require(`../../../public/images/amenities/${amenity}.png`)}
+                      alt="nomadic"
                     />
                     <span>{amenity}</span>
                   </div>

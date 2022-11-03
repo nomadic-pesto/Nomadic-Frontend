@@ -12,7 +12,7 @@ const Rating = ({review}) => {
   return (
     <div className={styles["rating"]}>
       <div className={styles["user-grid"]}>
-        <img src={profile} />
+        <img src={profile}  alt="nomadic"/>
         <div className={styles["user-name_date"]}>
           <span className={styles["user-name"]}>{review.name}</span>
           <div className={styles["user-date"]}>{review.date}</div>

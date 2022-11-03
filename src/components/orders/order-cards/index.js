@@ -10,7 +10,6 @@ import { Grid } from "@mui/material";
 
 //importing other components
 import Loader from "../../common/loader";
-import ButtonComponent from "../../common/button";
 import CardWithImage from "../../common/cardWithImage";
 
 //importing images
@@ -72,6 +71,7 @@ const OrderCards = ({ getBookingsAdmin }) => {
                         <img
                           className={styles["rooms-image"]}
                           src={roomsImage}
+                          alt="nomadic"
                         />
                         <span
                           className={`${styles["text-thin"]} ${styles["margin-left"]}`}
@@ -138,6 +138,7 @@ const OrderCards = ({ getBookingsAdmin }) => {
                         <img
                           className={styles["rooms-image"]}
                           src={roomsImage}
+                          alt="nomadic"
                         />
                         <span
                           className={`${styles["text-thin"]} ${styles["margin-left"]}`}

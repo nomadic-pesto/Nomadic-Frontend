@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 //importing MUI
-import { CardContent, Link } from "@mui/material";
+import { CardContent } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 //importing styles

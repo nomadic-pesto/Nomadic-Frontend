@@ -106,7 +106,7 @@ const DashboardFilters = ({ propertyState, getAllProperties }) => {
             className={styles["close-modal"]}
             onClick={setOpenModal.bind(null, false)}
           >
-            <img src={crossIcon} />
+            <img src={crossIcon}  alt="nomadic"/>
           </div>
           <div className={styles["filter-modal"]}>
             <div

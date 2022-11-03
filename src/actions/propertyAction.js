@@ -1,4 +1,4 @@
-import { addToWishlistService, cancelBookingsService, getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyBookedDatesService, getPropertyByIdService, getSearchPropertiesService, getWishlistProductsWithoutDetailsService, getWishlistService, removeWishlistService } from "../services/propertyServices";
+import { addToWishlistService, cancelBookingsService, getAllPropertiesService, getBookingsService, getBookingsServiceAdmin, getPropertiesService, getPropertyBookedDatesService, getPropertyByIdService, getWishlistProductsWithoutDetailsService, getWishlistService, removeWishlistService } from "../services/propertyServices";
 import { constants } from "../utils/constants";
 import { types } from "./actionTypes";
 

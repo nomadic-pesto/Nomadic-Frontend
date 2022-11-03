@@ -1,7 +1,5 @@
 import React from "react";
 
-//importing styles
-import styles from "./styles.module.css";
 
 //importing MUI
 import Checkbox from "@mui/material/Checkbox";

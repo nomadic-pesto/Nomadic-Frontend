@@ -52,6 +52,7 @@ const Search = ({getAllProperties,propertyState}) => {
         <img 
         src={search} 
         className={styles['search-icon']}
+        alt="nomadic"
         />
         </ButtonComponent>
         

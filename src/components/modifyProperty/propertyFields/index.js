@@ -21,7 +21,6 @@ import { ErrorMessage, Formik } from "formik";
 
 //importing MUI
 import Grid from "@mui/material/Grid";
-import CancelIcon from '@mui/icons-material/Cancel';
 
 //importing other components
 import Loader from "../../common/loader";

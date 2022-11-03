@@ -3,36 +3,34 @@ import React, { useEffect, useState } from "react";
 //importing styles
 import styles from "./styles.module.css";
 
-//importing MUI
-import Grid from "@mui/material/Grid";
 
 const LeftSection = ({ displayProperty }) => {
-  const [amenitiesGrid, setAmenitiesGrid] = useState("");
-  const { rentalName, noOfPeopleAccomodate, amenities, overview } =
+  // const [amenitiesGrid, setAmenitiesGrid] = useState("");
+  const { amenities, overview } =
     displayProperty;
 
-  useEffect(() => {
-    if (amenities && amenities.length > 0) {
-      setAmenitiesGrid(
-        amenities.map((amenity) => {
-          return (
-            <Grid
-              key={amenity}
-              className={styles["amenities-option"]}
-              item
-              xs={6}
-              md={6}
-            >
-              <div>
-                <i className={`fa ${styles["fa-margin"]} fa-anchor`}></i>
-                {amenity}
-              </div>
-            </Grid>
-          );
-        })
-      );
-    }
-  }, [amenities]);
+  // useEffect(() => {
+  //   if (amenities && amenities.length > 0) {
+  //     setAmenitiesGrid(
+  //       amenities.map((amenity) => {
+  //         return (
+  //           <Grid
+  //             key={amenity}
+  //             className={styles["amenities-option"]}
+  //             item
+  //             xs={6}
+  //             md={6}
+  //           >
+  //             <div>
+  //               <i className={`fa ${styles["fa-margin"]} fa-anchor`}></i>
+  //               {amenity}
+  //             </div>
+  //           </Grid>
+  //         );
+  //       })
+  //     );
+  //   }
+  // }, [amenities]);
 
   return (
     <>

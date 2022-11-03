@@ -16,6 +16,7 @@
 .bookings-grid-item img{
     width: 100%;
     border-radius: 0.8rem !important;/*included *!important* - conflicting with MUI */
+    max-width: 350px;
 }
 .bookings-grid-item{
     text-align: left;
