@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div className={styles["main-footer"]}>
       <div className={styles["heading"]}>
-        <img className={styles["nomadic"]} src={nomadic} /> <span>© 2022</span>
+        <img className={styles["nomadic"]} src={nomadic} alt="nomadic"/> <span>© 2022</span>
       </div>
       <div className={styles["sub-headings"]}>
         <span>Support & resources</span>

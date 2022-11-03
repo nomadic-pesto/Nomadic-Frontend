@@ -70,7 +70,7 @@ const MyPropertiesCards = ({getProperties}) => {
                       </span>
                     </div>
                     <div className={styles["rooms-row"]}>
-                      <img className={styles["rooms-image"]} src={roomsImage} />
+                      <img className={styles["rooms-image"]} src={roomsImage}  alt="nomadic"/>
                       <span
                         className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                       >

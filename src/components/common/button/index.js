@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 //importing MUI
 import Button from "@mui/material/Button";
@@ -8,7 +7,6 @@ import Button from "@mui/material/Button";
 import styles from "./styles.module.css";
 
 const ButtonComponent = (props) => {
-    const navigate = useNavigate();
   return (
     <>
       <Button

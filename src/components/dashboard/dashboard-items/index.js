@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 //importing MUI
 import Grid from "@mui/material/Grid";
@@ -15,7 +14,6 @@ import ButtonComponent from "../../common/button";
 
 //importing other components
 import Loader from "../../common/loader";
-import ModalComponent from "../../common/modal";
 
 
 //importing actions
@@ -32,7 +30,6 @@ const DashboardItems = ({
   propertyState,
   getWishlistProductsWithoutDetails
 }) => {
-  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [displayProperties, setDisplayProperties] = useState([]);

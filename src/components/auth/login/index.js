@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -11,10 +11,12 @@ import Button from "./../../common/button";
 import ButtonComponent from "./../../common/button";
 import Loader from "../../common/loader";
 
+//importing YUP
 import * as Yup from "yup";
 import { Formik } from "formik";
+
+//importing Google Auth
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import axios from "axios";
 
 //importing actions
 import { loginUser } from "../../../actions/userAction";

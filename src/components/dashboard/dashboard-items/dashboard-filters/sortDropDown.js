@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useEffect} from "react";
 import { connect } from "react-redux";
 
-
+//importing MUI
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
+//importing actions
 import { getAllProperties } from "../../../../actions/propertyAction";
+
 import { constants } from "../../../../utils/constants";
 
 const SortDropDown = ({className,propertyState,getAllProperties}) => {

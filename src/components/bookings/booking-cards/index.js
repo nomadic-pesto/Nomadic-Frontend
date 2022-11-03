@@ -63,7 +63,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
                     </span>
                   </div>
                   <div className={styles["rooms-row"]}>
-                    <img className={styles["rooms-image"]} src={roomsImage} />
+                    <img className={styles["rooms-image"]} src={roomsImage} alt="Rooms image"/>
                     <span
                       className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                     >
@@ -138,7 +138,7 @@ const BookingCards = ({ getBookings, cancelBookings }) => {
                     </span>
                   </div>
                   <div className={styles["rooms-row"]}>
-                    <img className={styles["rooms-image"]} src={roomsImage} />
+                    <img className={styles["rooms-image"]} src={roomsImage} alt="Rooms image"/>
                     <span
                       className={`${styles["text-thin"]} ${styles["margin-left"]}`}
                     >

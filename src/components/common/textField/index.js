@@ -6,10 +6,8 @@ import { ErrorMessage, useField } from "formik";
 
 //importing styles
 import styles from "./styles.module.css";
-import { Box } from "@mui/material";
 
 const TextFieldComponent = (props) => {
-  const width = props.width;
 
   const [field, meta] = useField(props);
   return (

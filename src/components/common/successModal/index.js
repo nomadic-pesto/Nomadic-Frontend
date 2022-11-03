@@ -40,7 +40,7 @@ const SuccessModal = (props) => {
             className={styles["close-modal"]}
             onClick={props.onClick}
           >
-            <img src={crossIcon} />
+            <img src={crossIcon}  alt="nomadic"/>
           </div>
               <Typography
                 id="modal-modal-title"
